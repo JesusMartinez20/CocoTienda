@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <div style="width:33%;"></div>
+  <div style="width:33%;">
+      <h1 class= "flex-container center">Aqui va el logo del Isaí jsjsjs</h1>
+  </div>
+  <div style="width:33%;">
+  <div class="flex-container space-evenly">
+    <mat-form-field>
+      <input [(ngModel)]="value"  matInput type="text" placeholder="Buscar" >
+      <button mat-button matSuffix mat-icon-button (click)="search(value)">
+          <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+     <div>
+    <a>Carrito</a> |
+    <a>Usuario</a>
+  </div>
+  </div>
+</div>
+</mat-toolbar>
+
