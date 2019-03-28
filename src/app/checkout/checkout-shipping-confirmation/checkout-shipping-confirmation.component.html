@@ -1,0 +1,18 @@
+<form [formGroup]="Shipping" (ngSubmit)="onSubmit()">
+  <mat-form-field class="bigInput">
+    <input matInput placeholder="Dirección" formControlName="address">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="bigInput"> 
+    <input matInput placeholder="Municipio" formControlName="municipality">
+  </mat-form-field>
+  
+  <mat-form-field class="smallInput">
+    <input matInput placeholder="CP" formControlName="CP">
+  </mat-form-field>
+  <br>
+  <div style="display:flex; justify-content:flex-end;">  
+    <button mat-button type="reset">Limpiar</button>
+    <button mat-button type="submit">Confirmar</button>
+  </div>
+</form>

@@ -1,0 +1,15 @@
+<form [formGroup]="Payment" (ngSubmit)="onSubmit()">
+  <mat-form-field class="bigInput">
+    <input matInput placeholder="Número de tarjeta" formControlName="numCard">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="smallInput"> 
+    <input matInput placeholder="Fecha de vencimiento" formControlName="expiration">
+  </mat-form-field>
+  
+  <mat-form-field class="smallInput">
+    <input matInput placeholder="CVV" formControlName="CVV">
+  </mat-form-field>
+  <br>
+  <button mat-button type="submit">Confirmar</button>
+</form>
