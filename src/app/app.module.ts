@@ -12,6 +12,10 @@ import { MatComponentsModule } from './mat-components/mat-components.module';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutPaymentConfirmationComponent } from './checkout/checkout-payment-confirmation/checkout-payment-confirmation.component';
+import { CheckoutShippingConfirmationComponent } from './checkout/checkout-shipping-confirmation/checkout-shipping-confirmation.component';
+import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-confirmation/checkout-order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +23,14 @@ import { PruebaComponent } from './prueba/prueba.component';
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
-    PruebaComponent
+    PruebaComponent,
+    CheckoutComponent,
+    CheckoutPaymentConfirmationComponent,
+    CheckoutShippingConfirmationComponent,
+    CheckoutOrderConfirmationComponent
   ],
   imports: [
-  BrowserModule,
+BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
