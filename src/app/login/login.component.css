@@ -1,0 +1,46 @@
+label {
+    display: block;
+    width: 200%;
+    margin-bottom: 5px;
+    padding: 0.2em;
+}
+
+.flex-container{
+    display: flex;
+    height: auto;
+    margin: 1rem;
+    justify-content: center;
+    
+}
+.container {
+    background: #ffffff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-left: 250px;
+  }
+.center{
+    justify-content: center
+}
+
+.space-evenly{
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+mat-form-field, a{
+    font-size: 14px;
+}
+
+mat-toolbar {
+    /* position: fixed; */
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 3;
+    height: 100px;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
