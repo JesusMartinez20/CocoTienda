@@ -11,7 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatComponentsModule } from './mat-components/mat-components.module';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { PruebaComponent } from './prueba/prueba.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { PruebaComponent } from './prueba/prueba.component';
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
-    PruebaComponent
+    UserInfoComponent,
+    EditUserComponent,
+    PruebaComponent,
+
   ],
   imports: [
   BrowserModule,
