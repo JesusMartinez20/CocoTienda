@@ -14,6 +14,13 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutPaymentConfirmationComponent } from './checkout/checkout-payment-confirmation/checkout-payment-confirmation.component';
+import { CheckoutShippingConfirmationComponent } from './checkout/checkout-shipping-confirmation/checkout-shipping-confirmation.component';
+import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-confirmation/checkout-order-confirmation.component';
+import { LoginComponent } from './login/login.component';
+import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
+import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
 
 
 @NgModule({
@@ -22,13 +29,23 @@ import { PruebaComponent } from './prueba/prueba.component';
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
+
     UserInfoComponent,
     EditUserComponent,
+
+
     PruebaComponent,
+    CheckoutComponent,
+    CheckoutPaymentConfirmationComponent,
+    CheckoutShippingConfirmationComponent,
+    CheckoutOrderConfirmationComponent,
+    LoginComponent,
+    LoginUserLogInComponent,
+    SignupRegisterComponent
 
   ],
   imports: [
-  BrowserModule,
+BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

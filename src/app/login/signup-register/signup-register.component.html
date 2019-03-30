@@ -1,0 +1,63 @@
+<div class="container ">
+  <form [formGroup]="Usersignup" (ngSubmit)="onSubmit()">
+        <div style="width: 100%; height: 70px;">
+                <img src="https://qlu.ac.pa/wp-content/uploads/2018/10/Registrate.png" style="width: 100%; "/>
+        </div>
+      <br>
+    <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Apellidos" formControlName="Lastname">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 340px; ">
+        <input matInput placeholder="Usuario" formControlName="User" >
+    </mat-form-field>
+    <mat-icon>account_circle</mat-icon>
+    <br>
+    <mat-form-field style="width: 340px; ">
+        <input matInput placeholder="Password" formControlName="Password">
+    </mat-form-field>
+    <mat-icon>vpn_key</mat-icon>
+    <br>
+    <mat-form-field style="width: 340px; ">
+        <input matInput placeholder="Confirmacion" formControlName="Confirmation">
+    </mat-form-field>
+    <mat-icon>vpn_key</mat-icon>
+    <br>
+    <mat-form-field style="width: 340px; ">
+        <input matInput placeholder="Correo Electronico" formControlName="Email">
+    </mat-form-field>
+    <mat-icon>markunread_mailbox</mat-icon>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="CP" formControlName="CP">
+    </mat-form-field>
+    <mat-form-field>
+        
+        <mat-label >Estado</mat-label>
+        <mat-select formControlName="State" [(value)]="selected">
+                    <mat-option value="Estados">Estados</mat-option>
+                    <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>-->
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Municipio" formControlName="Municipality">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Direccion" formControlName="Address">     
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Tarjeta" formControlName="Card">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="CVV" formControlName="CVV">
+    </mat-form-field>
+    <br>
+      <button type="submit" id="signup-button">SignUp</button>
+
+  </form>
+</div>

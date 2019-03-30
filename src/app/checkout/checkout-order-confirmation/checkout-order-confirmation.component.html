@@ -1,0 +1,20 @@
+<mat-card *ngFor="let list of order">
+  <mat-card-content style="display:inline-flex;">
+    <img src="{{list.img}}">
+    <div>
+      <h2>{{list.name}}</h2>
+      <div style="display:inline-flex;">
+        <div>
+          <p>Cantidad</p>
+          <p>{{list.quantity}}</p>
+        </div>
+        <div>
+          <p>Total</p>
+          <p>{{list.total}}</p>
+        </div>
+        
+        
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

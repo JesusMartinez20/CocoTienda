@@ -1,0 +1,14 @@
+.bigInput{
+    width: 100%;
+    margin: 5px;
+}
+
+.smallInput{
+    width: 50%;
+    margin: 5px;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+}
