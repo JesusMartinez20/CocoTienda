@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatComponentsModule } from './mat-components/mat-components.module';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutPaymentConfirmationComponent } from './checkout/checkout-payment-confirmation/checkout-payment-confirmation.component';
@@ -20,12 +22,18 @@ import { LoginComponent } from './login/login.component';
 import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
 import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
+
+    UserInfoComponent,
+    EditUserComponent,
+
+
     PruebaComponent,
     CheckoutComponent,
     CheckoutPaymentConfirmationComponent,
@@ -34,6 +42,7 @@ import { SignupRegisterComponent } from './login/signup-register/signup-register
     LoginComponent,
     LoginUserLogInComponent,
     SignupRegisterComponent
+
   ],
   imports: [
 BrowserModule,

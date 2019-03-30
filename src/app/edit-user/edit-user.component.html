@@ -1,0 +1,57 @@
+<mat-card class="example-card">
+  <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>USUARIO</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="display:inline-flex;"> 
+    <div  class="my-image">
+        <img mat-card-image src="https://www.mechsauce.com/wp-content/uploads/2018/03/palm-tree-1024x1024.png" alt="Palm Tree">
+    </div>
+      
+      <div style="display:inline-flex;">  
+        <div>        
+              <mat-form-field width class="full-width">
+                  <input matInput placeholder="NOMBRE">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="APELLIDOS">
+              </mat-form-field>
+              <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="CORREO ELECTRONICO" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="PASSWORD" [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+              
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="DIRECCION">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="CP">
+              </mat-form-field>
+
+              <mat-form-field class="half-width">
+                  <input matInput placeholder="MUNICIPIO">
+                </mat-form-field>  
+
+              <mat-form-field class="half-width">
+                  <mat-label>ESTADO</mat-label>
+                  <mat-select>
+                      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+        </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+      <button mat-button>LISTO</button>
+      <div fxFlex></div>
+ </mat-card-actions>
+</mat-card>
+
