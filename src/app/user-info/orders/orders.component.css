@@ -1,0 +1,12 @@
+img{
+    width: 200px;
+    height: 200px;
+}
+
+mat-card{
+    margin: 5px;
+}
+
+p, h2{
+    padding: 5px;
+}

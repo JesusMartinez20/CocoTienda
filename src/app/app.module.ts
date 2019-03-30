@@ -21,6 +21,8 @@ import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-co
 import { LoginComponent } from './login/login.component';
 import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
 import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
+import { UserComponent } from './user-info/user/user.component';
+import { OrdersComponent } from './user-info/orders/orders.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { SignupRegisterComponent } from './login/signup-register/signup-register
     CheckoutOrderConfirmationComponent,
     LoginComponent,
     LoginUserLogInComponent,
-    SignupRegisterComponent
+    SignupRegisterComponent,
+    UserComponent,
+    OrdersComponent
 
   ],
   imports: [
