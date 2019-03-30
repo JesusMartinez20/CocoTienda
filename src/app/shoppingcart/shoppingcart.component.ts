@@ -33,5 +33,5 @@ export class ShoppingcartComponent implements OnInit {
     }
   ];
 
-  Total="15000";
+  Total="15000 ";
 }
