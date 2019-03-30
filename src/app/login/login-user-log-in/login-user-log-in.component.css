@@ -1,9 +1,3 @@
-label {
-    display: block;
-    width: 200%;
-    margin-bottom: 5px;
-}
-
 .container {
     background: #ffffff;
     padding:0;
@@ -28,7 +22,6 @@ mat-form-field, a{
 }
 
 mat-icon{
-
     margin-right: 20px;
 }
 
@@ -51,4 +44,7 @@ button{
     margin-bottom: 20px;
     font-size: 20px;
     border-radius: 10px 10px 10px 10px;
+}
+mat-card{
+    margin: 5px;
 }

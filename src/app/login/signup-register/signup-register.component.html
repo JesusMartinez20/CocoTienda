@@ -1,8 +1,8 @@
-<div class="container ">
-  <form [formGroup]="Usersignup" (ngSubmit)="onSubmit()">
-        <div style="width: 100%; height: 70px;">
-                <img src="https://qlu.ac.pa/wp-content/uploads/2018/10/Registrate.png" style="width: 100%; "/>
-        </div>
+
+<form [formGroup]="Usersignup" (ngSubmit)="onSubmit()">
+    <div >
+        <img src="https://qlu.ac.pa/wp-content/uploads/2018/10/Registrate.png" >
+    </div>
       <br>
     <mat-form-field>
         <input matInput placeholder="Nombre" formControlName="Name">
@@ -60,4 +60,3 @@
       <button type="submit" id="signup-button">SignUp</button>
 
   </form>
-</div>

@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>CARRITO</mat-card-title>
+    </mat-card-header>
+<mat-card *ngFor="let list of order">
+    <mat-card-content style="display:inline-flex;">
+      <div style="display:inline-flex; width: 400px;">
+      <img src="{{list.img}}">
+        <h1>{{list.name}}</h1>
+      </div>
+          <div style="display:inline-flex;">
+            <h2>PRECIO:</h2>
+            <p>{{list.price}}</p>
+          </div>
+          <div style="display:inline-flex; ">
+            <h2>CANTIDAD:</h2>
+            <div style="display:inline-flex; ">
+              <p>{{list.quantity}}</p>
+              <div>
+                      <button >^</button>
+                      <button >v</button>
+              </div>
+            </div>
+          </div>
+          <h1>Eliminar</h1>
+    </mat-card-content>
+  </mat-card>
+
+  <div style="display:flex; justify-content:flex-end;">  
+    <div >
+      <h1 style="display:flex;justify-content:flex-end">{{Total}}</h1>
+      <button type="submit" id="buy-button" style="width: 150px;">Comprar</button>
+    </div>
+  </div>
+
+</mat-card>
+
+  

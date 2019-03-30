@@ -19,6 +19,7 @@ import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-co
 import { LoginComponent } from './login/login.component';
 import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
 import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SignupRegisterComponent } from './login/signup-register/signup-register
     CheckoutOrderConfirmationComponent,
     LoginComponent,
     LoginUserLogInComponent,
-    SignupRegisterComponent
+    SignupRegisterComponent,
+    ShoppingcartComponent
   ],
   imports: [
 BrowserModule,
