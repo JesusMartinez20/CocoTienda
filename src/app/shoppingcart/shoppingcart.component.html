@@ -14,15 +14,10 @@
           </div>
           <div style="display:inline-flex; ">
             <h2>CANTIDAD:</h2>
-            <div style="display:inline-flex; ">
-              <p>{{list.quantity}}</p>
-              <div>
-                      <button >^</button>
-                      <button >v</button>
-              </div>
-            </div>
+            <input type="number" style="height: 30px; width: 80px; margin-top: 37%; font-size: 20px" [(ngModel)]="list.quantity" placeholder="0"/>
+       
           </div>
-          <h1>Eliminar</h1>
+          <button type="submit" id="delete-button" style="width: 150px;">Eliminar</button>
     </mat-card-content>
   </mat-card>
 
