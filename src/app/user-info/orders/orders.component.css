@@ -1,12 +1,65 @@
-img{
-    width: 200px;
-    height: 200px;
-}
+.example-form {
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
 
-mat-card{
-    margin: 5px;
-}
+  .half-width {
+    width: 50%;
+  }
 
-p, h2{
-    padding: 5px;
-}
+  .halfwidth {
+    min-width: 50%;
+  }
+
+  .example-card {
+    width: 75%;
+    height: 50%;
+    align-content: flex-end;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px, 5px;
+  }
+
+  .square-format {
+    align-content: flex-end;
+    margin-right: 50px;
+
+
+  }
+
+
+  .example-card-2 {
+    width: 90%;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: none;
+  }
+  
+  .header-image {
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+  }
+
+  .my-image {
+    width: 25%;
+    height: 25%;
+    background-size: contain;
+    align-content: center;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
