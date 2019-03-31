@@ -1,57 +1,64 @@
-<mat-card class="example-card">
-  <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>USUARIO</mat-card-title>
-  </mat-card-header>
-  <mat-card-content style="display:inline-flex;"> 
-    <div  class="my-image">
-        <img mat-card-image src="https://www.mechsauce.com/wp-content/uploads/2018/03/palm-tree-1024x1024.png" alt="Palm Tree">
-    </div>
-      
-      <div style="display:inline-flex;">  
-        <div>        
-              <mat-form-field width class="full-width">
-                  <input matInput placeholder="NOMBRE">
-              </mat-form-field>
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="APELLIDOS">
-              </mat-form-field>
-              <div class="example-container">
-                  <mat-form-field>
-                    <input matInput placeholder="CORREO ELECTRONICO" [formControl]="email" required>
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                  </mat-form-field>
-                </div>
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="PASSWORD" [type]="hide ? 'password' : 'text'">
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-              </mat-form-field>
-              
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="DIRECCION">
-              </mat-form-field>
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="CP">
-              </mat-form-field>
-
-              <mat-form-field class="half-width">
-                  <input matInput placeholder="MUNICIPIO">
-                </mat-form-field>  
-
-              <mat-form-field class="half-width">
-                  <mat-label>ESTADO</mat-label>
-                  <mat-select>
-                      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
-                  </mat-select>
+<form [formGroup]="Shipping" (ngSubmit)="onSubmit()">
+  <mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>USUARIO</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="display:inline-flex;"> 
+      <div  class="my-image">
+          <img mat-card-image src="../../assets/cc.png" alt="USER COCO">
+      </div>
+        
+        <div style="display:inline-flex;">  
+          <div>        
+                <mat-form-field width class="full-width">
+                    <input matInput placeholder="NOMBRE" formControlName="FirstName">
                 </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="APELLIDOS" formControlName="LastName">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="NOMBRE DE USUARIO" formControlName="UserName">
+              </mat-form-field>
+                <div class="example-container">
+                    <mat-form-field>
+                      <input matInput placeholder="CORREO ELECTRONICO" [formControl]="email" required formControlName="Email"> 
+                      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="CONSTRASEÑA" [type]="hide ? 'password' : 'text'" formControlName="Password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="DIRECCION"formControlName="Address">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="CP" formControlName="CP">
+                </mat-form-field>
+
+                <mat-form-field class="half-width">
+                    <input matInput placeholder="MUNICIPIO" formControlName="City">
+                  </mat-form-field>  
+
+                <mat-form-field class="half-width">
+                    <mat-label>ESTADO</mat-label>
+                    <mat-select formControlName="States">
+                        <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
           </div>
-        </div>
-  </mat-card-content>
-  <mat-card-actions align="end">
-      <button mat-button>LISTO</button>
-      <div fxFlex></div>
- </mat-card-actions>
-</mat-card>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <div style="display:flex; justify-content:flex-end;align:end">  
+            <button mat-button type="reset">Limpiar</button>
+            <button mat-button type="submit">Confirmar</button>
+          </div>
+  </mat-card-actions>
+  </mat-card>
+</form>
 

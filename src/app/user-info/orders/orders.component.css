@@ -42,10 +42,10 @@
     box-shadow: none;
   }
   
-  .example-header-image {
-    background-image: url('https://res.cloudinary.com/teepublic/image/private/s--qPD4eU6T--/t_Preview/b_rgb:eae0c7,c_limit,f_jpg,h_630,q_90,w_630/v1516317859/production/designs/2290233_0.jpg');
-    background-size: cover;
-    align-content: center;
+  .header-image {
+    width: 10%;
+    height: 10%;
+    background-size: contain;
   }
 
   .my-image {

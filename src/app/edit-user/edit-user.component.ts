@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Validators, FormGroup, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -14,8 +14,23 @@ export class EditUserComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor() { }
 
+  EditUser : FormGroup;
   ngOnInit() {
-    
+    this.EditUser = new FormGroup({
+      FirstName: new FormControl(),
+      LastName: new FormControl(),
+      UserName: new FormControl(),
+      Email: new FormControl(),
+      Password: new FormControl(),
+      Address: new FormControl(),
+      CP: new FormControl(),
+      City: new FormControl(),
+      States: new FormControl()
+    });
+  }
+
+  onSubmit(){
+    console.log(this.EditUser.value)
   }
 
   states: string[] = [
