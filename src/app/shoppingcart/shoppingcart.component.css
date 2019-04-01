@@ -1,0 +1,46 @@
+mat-card{
+    margin: 30px;
+    box-shadow: 10px 10px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border-radius:10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+p, h1{
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    align-self: center;
+}
+
+p, h2{
+    padding: 5px;
+    position: relative;
+    align-self: center;
+}
+p{
+    font-size: 20px;
+    position: relative;
+    align-self: center;
+
+}
+button{
+    background: #ffffff;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    border-radius: 10px ;
+    top: 30%;
+    position: relative;
+    align-self: center;
+}

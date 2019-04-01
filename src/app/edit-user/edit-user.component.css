@@ -1,0 +1,43 @@
+.example-form {
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .half-width {
+    width: 50%;
+  }
+
+  .example-card {
+    width: 90%;
+    align-content: flex-end;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px, 5px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://res.cloudinary.com/teepublic/image/private/s--qPD4eU6T--/t_Preview/b_rgb:eae0c7,c_limit,f_jpg,h_630,q_90,w_630/v1516317859/production/designs/2290233_0.jpg');
+    background-size: cover;
+    align-content: center;
+  }
+
+  .my-image {
+    width: 25%;
+    height: 25%;
+    background-size: contain;
+    align-content: center;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

@@ -1,0 +1,16 @@
+
+  <form [formGroup]="Userlogin" (ngSubmit)="onSubmit()" >
+      <img src="https://elandroidelibre.elespanol.com/wp-content/uploads/2014/05/coconut.png">
+      <br>
+      <mat-form-field>
+          <input matInput placeholder="User" formControlName="User">
+      </mat-form-field>
+      <mat-icon>account_circle</mat-icon>
+      <br>
+      <mat-form-field>
+          <input matInput placeholder="Password" formControlName="Password">
+      </mat-form-field>
+      <mat-icon>vpn_key</mat-icon>
+      <br>
+        <button type="submit" id="login-button">LogIn</button>
+  </form>
