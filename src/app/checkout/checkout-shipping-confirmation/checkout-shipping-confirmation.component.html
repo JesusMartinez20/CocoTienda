@@ -1,14 +1,20 @@
 <form [formGroup]="Shipping" (ngSubmit)="onSubmit()">
   <mat-form-field class="bigInput">
-    <input matInput placeholder="Dirección" formControlName="address">
+    <input matInput placeholder="Dirección" formControlName="address" required>
   </mat-form-field>
   <br>
-  <mat-form-field class="bigInput"> 
-    <input matInput placeholder="Municipio" formControlName="municipality">
+  <mat-form-field class="bigInput">
+    <mat-label>Municipio</mat-label>
+    <mat-select formControlName="municipality" required>
+        <mat-option *ngFor="let municipality of municipalities" [value]="municipality.value">
+            {{municipality.viewValue}}
+          </mat-option>
+    </mat-select> 
+    <!-- <input matInput placeholder="Municipio" formControlName="municipality"> -->
   </mat-form-field>
   
   <mat-form-field class="smallInput">
-    <input matInput placeholder="CP" formControlName="CP">
+    <input matInput placeholder="CP" formControlName="CP" required>
   </mat-form-field>
   <br>
   <div style="display:flex; justify-content:flex-end;">  
