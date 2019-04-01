@@ -11,14 +11,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatComponentsModule } from './mat-components/mat-components.module';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutPaymentConfirmationComponent } from './checkout/checkout-payment-confirmation/checkout-payment-confirmation.component';
 import { CheckoutShippingConfirmationComponent } from './checkout/checkout-shipping-confirmation/checkout-shipping-confirmation.component';
 import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-confirmation/checkout-order-confirmation.component';
+import { ProductUserComponent } from './product-user/product-user.component';
+import { ProductAdminComponent } from './product-admin/product-admin.component';
 import { LoginComponent } from './login/login.component';
 import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
 import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
+
+import { UserComponent } from './user-info/user/user.component';
+import { OrdersComponent } from './user-info/orders/orders.component';
+
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,14 +37,27 @@ import { SignupRegisterComponent } from './login/signup-register/signup-register
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
+
+    UserInfoComponent,
+    EditUserComponent,
+
+
     PruebaComponent,
     CheckoutComponent,
     CheckoutPaymentConfirmationComponent,
     CheckoutShippingConfirmationComponent,
     CheckoutOrderConfirmationComponent,
+    ProductUserComponent,
+    ProductAdminComponent,
     LoginComponent,
     LoginUserLogInComponent,
-    SignupRegisterComponent
+    SignupRegisterComponent,
+    
+    UserComponent,
+    OrdersComponent,
+    
+    ShoppingcartComponent
+
   ],
   imports: [
 BrowserModule,
