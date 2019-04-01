@@ -16,6 +16,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutPaymentConfirmationComponent } from './checkout/checkout-payment-confirmation/checkout-payment-confirmation.component';
 import { CheckoutShippingConfirmationComponent } from './checkout/checkout-shipping-confirmation/checkout-shipping-confirmation.component';
 import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-confirmation/checkout-order-confirmation.component';
+import { ProductUserComponent } from './product-user/product-user.component';
+import { ProductAdminComponent } from './product-admin/product-admin.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-co
     CheckoutComponent,
     CheckoutPaymentConfirmationComponent,
     CheckoutShippingConfirmationComponent,
-    CheckoutOrderConfirmationComponent
+    CheckoutOrderConfirmationComponent,
+    ProductUserComponent,
+    ProductAdminComponent
   ],
   imports: [
 BrowserModule,
