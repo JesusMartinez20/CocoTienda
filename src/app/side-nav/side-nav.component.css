@@ -3,3 +3,7 @@ button{
     width: 180px;
     padding: 5%
 }
+
+*{
+    background-color: #ffcd3c;
+}
