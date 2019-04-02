@@ -1,5 +1,6 @@
 <h1>¡Bienvenido a la Cocotienda!</h1>
-<div style="width:400px;">
+
+<div class="carrousel">
     <slideshow class="slide-homepage"
       [imageUrls]="imageUrlArray"
       [height]="height"
@@ -7,20 +8,20 @@
       [autoPlay]="true"
       [showArrows]="false">
     </slideshow>
-  </div>
-
-<div class="cdk-virtual-scroll-data-source-example">
-  <h1 *ngFor="let list of category">{{list.category}}</h1>
-  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="100" class="example-viewport">
-    <div *cdkVirtualFor="let list of category" class="example-item">
-        <mat-card class="category-card">
-            <img mat-card-image src="{{list.img}}" >
-            <mat-card-actions>
-              <p>{{list.name}}</p>
-              <p>{{list.total}}</p>
-            </mat-card-actions>
-        </mat-card>
-  
-      </div>
-  </cdk-virtual-scroll-viewport>
 </div>
+
+  <div *ngFor="let name of categories" class="category-card">
+      <h1>{{name.category}}</h1>
+      <div *ngFor="let list of content" class="content-card">
+        <div *ngIf= "list.category == name.category">     
+            <mat-card routerLink = "/product-user">
+                <img mat-card-image src="{{list.img}}" >
+                <mat-card-actions>
+                  <p>{{list.name}}</p>
+                  <p>{{list.total}}</p>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+      </div>  
+     <br> 
+  </div>

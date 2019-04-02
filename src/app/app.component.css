@@ -9,3 +9,8 @@
     background-color: #fefed5;
 }
 
+.router-outlet{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
