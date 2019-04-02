@@ -1,0 +1,26 @@
+<h1>¡Bienvenido a la Cocotienda!</h1>
+<div style="width:400px;">
+    <slideshow class="slide-homepage"
+      [imageUrls]="imageUrlArray"
+      [height]="height"
+      [minHeight]="'400px'"
+      [autoPlay]="true"
+      [showArrows]="false">
+    </slideshow>
+  </div>
+
+<div class="cdk-virtual-scroll-data-source-example">
+  <h1 *ngFor="let list of category">{{list.category}}</h1>
+  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="100" class="example-viewport">
+    <div *cdkVirtualFor="let list of category" class="example-item">
+        <mat-card class="category-card">
+            <img mat-card-image src="{{list.img}}" >
+            <mat-card-actions>
+              <p>{{list.name}}</p>
+              <p>{{list.total}}</p>
+            </mat-card-actions>
+        </mat-card>
+  
+      </div>
+  </cdk-virtual-scroll-viewport>
+</div>

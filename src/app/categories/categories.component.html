@@ -1,0 +1,10 @@
+<h1>Categoría</h1>
+<mat-card class="category-card" *ngFor="let list of category">
+    <img mat-card-image src="{{list.img}}" >
+    <mat-card-actions>
+      <p>{{list.name}}</p>
+      <p>{{list.price}}</p>
+    </mat-card-actions>
+  </mat-card>
+
+           

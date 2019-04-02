@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     MatSelectModule,
     MatListModule,
+    MatGridListModule
   ]
 })
 export class MatComponentsModule { }

@@ -1,8 +1,9 @@
+import {SlideshowModule} from 'ng-simple-slideshow';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,11 +22,14 @@ import { CheckoutOrderConfirmationComponent } from './checkout/checkout-order-co
 import { LoginComponent } from './login/login.component';
 import { LoginUserLogInComponent } from './login/login-user-log-in/login-user-log-in.component';
 import { SignupRegisterComponent } from './login/signup-register/signup-register.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 import { UserComponent } from './user-info/user/user.component';
 import { OrdersComponent } from './user-info/orders/orders.component';
 
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { HomepageComponent } from './homepage/homepage.component';
+
 
 
 
@@ -39,7 +43,6 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
     UserInfoComponent,
     EditUserComponent,
 
-
     PruebaComponent,
     CheckoutComponent,
     CheckoutPaymentConfirmationComponent,
@@ -52,17 +55,24 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
     UserComponent,
     OrdersComponent,
     
-    ShoppingcartComponent
+    ShoppingcartComponent,
+    
+    HomepageComponent,
+    CategoriesComponent,
+
+   
 
   ],
   imports: [
-BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatComponentsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ScrollDispatchModule,
+    SlideshowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

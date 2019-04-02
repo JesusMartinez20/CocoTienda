@@ -1,3 +1,77 @@
-<p>
-  prueba works!
-</p>
+<h1>¡Bienvenido a la Cocotienda!</h1>
+
+<div style="width:1115px;">
+    <slideshow class="slide-homepage"
+      [imageUrls]="imageUrlArray"
+      [height]="height"
+      [minHeight]="'400px'"
+      [autoPlay]="true"
+      [showArrows]="false">
+    </slideshow>
+</div>
+
+  <div *ngFor="let name of categories" class="category-card">
+      <h1>{{name.category}}</h1>
+      <div *ngFor="let list of content" class="content-card">
+        <div *ngIf= "list.category == name.category">     
+            <mat-card>
+                <img mat-card-image src="{{list.img}}" >
+                <mat-card-actions>
+                  <p>{{list.name}}</p>
+                  <p>{{list.total}}</p>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+      </div>  
+     <br> 
+  </div>
+
+  <!-- <div *ngFor="let list of content" class="category-card">
+      <div *ngIf= "list.category =='Figuras de acción'"> 
+        <h1>{{list.category}}</h1>
+          <mat-card class="content-card">
+              <img mat-card-image src="{{list.img}}" >
+              <mat-card-actions>
+                <p>{{list.name}}</p>
+                <p>{{list.total}}</p>
+              </mat-card-actions>
+          </mat-card>
+      </div>
+    </div>
+
+    <div *ngFor="let list of content" class="category-card">
+        <div *ngIf= "list.category =='Drones'"> 
+          <h1>{{list.category}}</h1>
+            <mat-card class="content-card">
+                <img mat-card-image src="{{list.img}}" >
+                <mat-card-actions>
+                  <p>{{list.name}}</p>
+                  <p>{{list.total}}</p>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+      </div>
+
+      <div *ngFor="let list of content" class="category-card">
+          <div *ngIf= "list.category =='Autos'"> 
+            <h1>{{list.category}}</h1>
+              <mat-card class="content-card">
+                  <img mat-card-image src="{{list.img}}" >
+                  <mat-card-actions>
+                    <p>{{list.name}}</p>
+                    <p>{{list.total}}</p>
+                  </mat-card-actions>
+              </mat-card>
+          </div>
+        </div>
+
+
+ -->
+
+
+<!-- 
+<div class="cdk-virtual-scroll">
+  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="100" class="viewport">
+
+  </cdk-virtual-scroll-viewport>
+</div> -->
