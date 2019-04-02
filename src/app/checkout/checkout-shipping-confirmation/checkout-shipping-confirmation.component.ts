@@ -19,6 +19,12 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
     });
   }
 
+  municipalities:any[]=[
+    {value:1,viewValue:'Zapopan'},
+    {value:2,viewValue:'Guadalajara'},
+    {value:3,viewValue:'Tonala'},
+  ];
+
   onSubmit(){
     console.log(this.Shipping.value)
   }

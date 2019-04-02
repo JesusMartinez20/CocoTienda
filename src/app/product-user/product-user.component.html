@@ -1,0 +1,41 @@
+<ul class="blocks">
+  <li class="left">
+      <img id="image" src="{{article.productImg1}}" class="bigImage">
+      <div>
+        <input id="img1" type=image src={{article.productImg1}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg'">
+        <input id="img2" type=image src={{article.productImg2}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg'">
+        <input id="img3" type=image src={{article.productImg3}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg'">
+        <input id="img4" type=image src={{article.productImg4}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg'">
+        <input id="img5" type=image src={{article.productImg5}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg'">
+      </div>
+  </li>
+  <li class="right">
+    <div>
+      <h1 style="font-family: Arial, Helvetica, sans-serif">
+        {{article.productName}}
+      </h1>
+      <p class="thisFont">
+        {{article.productDescription}}
+      </p>  
+    </div>
+    <br><br><br><br>
+    <div>
+      <p class="thisFont">
+        Precio:
+        {{article.productPrice}} Cocoins
+      </p>
+      <p class="thisFont">
+        En existencia:
+        {{article.productStock}}
+      </p>
+      <p class="thisFont">
+        <label for="productTotal">Cantidad: </label>
+        <input class="thisFont" name="productTotal" type="number" min="1" max={{article.productStock}} [(ngModel)]="article.productTotal" style="width: 45px"/>
+      </p>
+    </div>
+    <br>
+    <button mat-raised-button type="submit" style="background: #ffcd3c">
+        Comprar
+    </button>
+  </li>
+</ul>

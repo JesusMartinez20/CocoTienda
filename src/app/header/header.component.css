@@ -23,5 +23,16 @@ mat-toolbar {
     left: 0px;
     right: 0px;
     z-index: 3;
-    height: 100px;
+    height: 150px;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    width: 395px;
+    height: 145px;
+    justify-content: center;
+    display: flex;
 }
