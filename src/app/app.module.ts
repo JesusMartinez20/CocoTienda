@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -31,6 +32,7 @@ import { OrdersComponent } from './user-info/orders/orders.component';
 
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -63,6 +65,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     
     HomepageComponent,
     CategoriesComponent,
+    ProductComponent,
 
    
 

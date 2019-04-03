@@ -1,0 +1,84 @@
+<div *ngIf="user;else adminBlock">
+  <ul class="blocks">
+    <li class="left">
+        <img id="image" src="{{articleUser.productImg1}}" class="bigImage">
+        <div>
+          <input id="img1" type=image src={{articleUser.productImg1}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg'">
+          <input id="img2" type=image src={{articleUser.productImg2}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg'">
+          <input id="img3" type=image src={{articleUser.productImg3}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg'">
+          <input id="img4" type=image src={{articleUser.productImg4}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg'">
+          <input id="img5" type=image src={{articleUser.productImg5}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg'">
+        </div>
+    </li>
+    <li class="right">
+      <div>
+        <h1 style="font-family: Arial, Helvetica, sans-serif">
+          {{articleUser.productName}}
+        </h1>
+        <p class="thisFont">
+          {{articleUser.productDescription}}
+        </p>  
+      </div>
+      <br><br><br><br>
+      <div>
+        <p class="thisFont">
+          Precio:
+          {{articleUser.productPrice}} Cocoins
+        </p>
+        <p class="thisFont">
+          En existencia:
+          {{articleUser.productStock}}
+        </p>
+        <p class="thisFont">
+          <label for="productTotal">Cantidad: </label>
+          <input class="thisFont" name="productTotal" type="number" min="1" max={{articleUser.productStock}} [(ngModel)]="articleUser.productTotal" style="width: 45px"/>
+        </p>
+      </div>
+      <br>
+      <button mat-raised-button type="submit" style="background: #ffcd3c">
+          Comprar
+      </button>
+    </li>
+  </ul>
+</div>
+<ng-template #adminBlock>
+  <ul class="blocks">
+    <li class="left">
+        <img id="image" src="https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e" class="bigImage">
+        <div>
+          <input id="img1" type=image src="{{articleAdmin.productImg1}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
+          <input id="img2" type=image src="{{articleAdmin.productImg2}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
+          <input id="img3" type=image src="{{articleAdmin.productImg3}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
+          <input id="img4" type=image src="{{articleAdmin.productImg4}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
+          <input id="img5" type=image src="{{articleAdmin.productImg5}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
+        </div>
+    </li>
+    <li class="right">
+      <div>
+        <h1 style="font-family: Arial, Helvetica, sans-serif">
+          <label for="productName">Nombre del producto: </label><br>
+          <input id="productName" name="productName" type="text" [(ngModel)]="articleAdmin.productName" style="width: 300px"/>
+        </h1>
+        <p class="thisFont">
+          <label for="productDescription">Descripcion: </label><br>
+          <textarea rows="12" cols="50" name="productDescription" placeholder="Descripcion" class="thisFont" [(ngModel)]="articleAdmin.productDescription"></textarea>
+        </p>  
+      </div>
+      <br>
+      <div>
+        <p class="thisFont">
+          <label for="productPrice">Precio: </label>
+          <input name="productPrice" type="number" min="0" [(ngModel)]="articleAdmin.productPrice" style="width: 60px" class="thisFont"/>
+        </p>
+        <p class="thisFont">
+          <label for="productStock">Inventario: </label>
+          <input id="productStock" name="productStock" type="number" min="0" [(ngModel)]="articleAdmin.productStock" style="width: 60px"/>
+        </p>
+      </div>
+      <br>
+      <button mat-raised-button style="background: #ffcd3c">
+          Guardar
+      </button>
+    </li>
+  </ul>
+</ng-template>
