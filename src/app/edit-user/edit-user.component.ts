@@ -20,12 +20,12 @@ export class EditUserComponent implements OnInit {
       FirstName: new FormControl(),
       LastName: new FormControl(),
       UserName: new FormControl(),
-      Email: new FormControl(),
+      Email: this.email,
       Password: new FormControl(),
       Address: new FormControl(),
       CP: new FormControl(),
       City: new FormControl(),
-      States: new FormControl()
+      States: new FormControl(),
     });
   }
 
