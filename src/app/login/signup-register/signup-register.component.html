@@ -4,11 +4,15 @@
         <img src="https://qlu.ac.pa/wp-content/uploads/2018/10/Registrate.png" >
     </div>
       <br>
-    <mat-form-field>
+    <mat-form-field style="width: 370px; ">
         <input matInput placeholder="Nombre" formControlName="Name" required>
     </mat-form-field>
+    <br>
     <mat-form-field>
-        <input matInput placeholder="Apellidos" formControlName="Lastname" required>
+        <input matInput placeholder="Apellido Paterno" formControlName="Paterno" required>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Apellido Materno" formControlName="Materno" required>
     </mat-form-field>
     <br>
     <mat-form-field style="width: 340px; ">
@@ -28,6 +32,7 @@
     <br>
     <mat-form-field style="width: 340px; ">
         <input matInput placeholder="Correo Electronico" formControlName="Email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-icon>markunread_mailbox</mat-icon>
     <br>
@@ -38,8 +43,7 @@
         
         <mat-label >Estado</mat-label>
         <mat-select formControlName="State" [(value)]="selected" required>
-                    <mat-option value="Estados">Estados</mat-option>
-                    <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>-->
+                    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
         </mat-select>
     </mat-form-field>
     <br>
