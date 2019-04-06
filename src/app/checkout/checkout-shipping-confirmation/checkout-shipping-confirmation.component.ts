@@ -14,7 +14,8 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
   ngOnInit() {
     this.Shipping = new FormGroup({
       address: new FormControl(),
-      municipality: new FormControl(),
+      ciudad: new FormControl(),
+      estado: new FormControl(),
       CP: new FormControl()
     });
   }
@@ -23,6 +24,12 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
     {value:1,viewValue:'Zapopan'},
     {value:2,viewValue:'Guadalajara'},
     {value:3,viewValue:'Tonala'},
+  ];
+
+  estados:any[]=[
+    {value:1,viewValue:'Jalisco'},
+    {value:2,viewValue:'Michoaan'},
+    {value:3,viewValue:'Tlaxcala'},
   ];
 
   onSubmit(){

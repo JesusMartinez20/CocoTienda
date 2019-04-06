@@ -10,9 +10,17 @@
             {{municipality.viewValue}}
           </mat-option>
     </mat-select> 
-    <!-- <input matInput placeholder="Municipio" formControlName="municipality"> -->
   </mat-form-field>
-  
+  <br>
+  <mat-form-field class="bigInput">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="estado" required>
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+            {{estado.viewValue}}
+          </mat-option>
+    </mat-select> 
+  </mat-form-field>
+   
   <mat-form-field class="smallInput">
     <input matInput placeholder="CP" formControlName="CP" required>
   </mat-form-field>
