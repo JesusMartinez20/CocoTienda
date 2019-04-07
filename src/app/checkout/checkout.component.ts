@@ -12,6 +12,6 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  Ttotal="15000 Cocoins";
+  
   
 }

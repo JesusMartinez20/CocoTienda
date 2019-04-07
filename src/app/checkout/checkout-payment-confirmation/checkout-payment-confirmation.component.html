@@ -1,11 +1,12 @@
 <form [formGroup]="Payment" (ngSubmit)="onSubmit()">
+
   <mat-form-field class="bigInput">
-    <input matInput placeholder="Número de tarjeta" formControlName="numCard" required>
+    <input matInput placeholder="Número de tarjeta" formControlName="tarjetaCredito" required>
   </mat-form-field>
   <br>
 
   <mat-form-field class="smallInput">
-      <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName="expiration" required>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de expiración" formControlName="fechaExpiracion" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
