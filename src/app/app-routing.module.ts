@@ -8,7 +8,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
-import { ProductUserComponent } from './product-user/product-user.component';
+import { ProductComponent } from './product/product.component';
 
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'product-user', component: ProductUserComponent },
+  { path: 'product', component: ProductComponent },
 
 ];
 

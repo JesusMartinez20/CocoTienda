@@ -14,7 +14,7 @@
       <h1>{{name.category}}</h1>
       <div *ngFor="let list of content" class="content-card">
         <div *ngIf= "list.category == name.category">     
-            <mat-card routerLink = "/product-user">
+            <mat-card routerLink = "/product">
                 <img mat-card-image src="{{list.img}}" >
                 <mat-card-actions>
                   <p>{{list.name}}</p>
