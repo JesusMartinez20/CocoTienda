@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckoutService } from './../../Services/checkout.service';
 
 @Component({
   selector: 'app-checkout-order-confirmation',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutOrderConfirmationComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private http:CheckoutService) { }
+  urlG="/checkout/checkout-shipping.php";
+  urlP="/checkout/checkout-shipping-post.php"
+  data:any;
   ngOnInit() {
   }
 
@@ -33,5 +36,14 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
     }
   ];
 
+  Ttotal="15000 Cocoins";
+  
+  confirmOrder(){
+    console.log(this.order);
+    let form = JSON.stringify(this.order)
+    console.log(form);
+    this.http.url=this.urlP;
+    this.http.postMethod(form);
+  }
 
 }

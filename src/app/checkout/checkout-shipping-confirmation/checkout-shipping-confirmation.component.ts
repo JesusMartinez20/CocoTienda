@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CheckoutService } from './../../Services/checkout.service';
 
 @Component({
   selector: 'app-checkout-shipping-confirmation',
@@ -7,13 +8,15 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./checkout-shipping-confirmation.component.css']
 })
 export class CheckoutShippingConfirmationComponent implements OnInit {
-
-  constructor() { }
+  urlG="/checkout/checkout-shipping.php";
+  urlP="/checkout/checkout-shipping-post.php"
+  data:any;
+  constructor(private http:CheckoutService) { }
 
   Shipping : FormGroup;
   ngOnInit() {
     this.Shipping = new FormGroup({
-      address: new FormControl(),
+      calleYNumero: new FormControl(),
       ciudad: new FormControl(),
       estado: new FormControl(),
       CP: new FormControl()
@@ -28,11 +31,17 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
 
   estados:any[]=[
     {value:1,viewValue:'Jalisco'},
-    {value:2,viewValue:'Michoaan'},
+    {value:2,viewValue:'Michoacsan'},
     {value:3,viewValue:'Tlaxcala'},
   ];
 
   onSubmit(){
-    console.log(this.Shipping.value)
+    console.log(this.Shipping.value);
+    let form = JSON.stringify(this.Shipping.value)
+    console.log(form);
+    this.http.url=this.urlP;
+    this.http.postMethod(form);
   }
+
+  
 }

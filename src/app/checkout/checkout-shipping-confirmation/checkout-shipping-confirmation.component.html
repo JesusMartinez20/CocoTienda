@@ -1,12 +1,12 @@
 <form [formGroup]="Shipping" (ngSubmit)="onSubmit()">
   <mat-form-field class="bigInput">
-    <input matInput placeholder="Dirección" formControlName="address" required>
+    <input matInput placeholder="Dirección" formControlName="calleYNumero" required>
   </mat-form-field>
   <br>
   <mat-form-field class="bigInput">
     <mat-label>Municipio</mat-label>
-    <mat-select formControlName="municipality" required>
-        <mat-option *ngFor="let municipality of municipalities" [value]="municipality.value">
+    <mat-select formControlName="ciudad" required>
+        <mat-option *ngFor="let municipality of municipalities" [value]="municipality.viewValue">
             {{municipality.viewValue}}
           </mat-option>
     </mat-select> 
@@ -15,7 +15,7 @@
   <mat-form-field class="bigInput">
     <mat-label>Estado</mat-label>
     <mat-select formControlName="estado" required>
-        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+        <mat-option *ngFor="let estado of estados" [value]="estado.viewValue">
             {{estado.viewValue}}
           </mat-option>
     </mat-select> 
