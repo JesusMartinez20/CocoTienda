@@ -1,14 +1,22 @@
 <div *ngIf="user;else adminBlock">
   <ul class="blocks">
     <li class="left">
-        <img id="image" src="{{articleUser.productImg1}}" class="bigImage">
-        <div>
-          <input id="img1" type=image src={{articleUser.productImg1}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg'">
-          <input id="img2" type=image src={{articleUser.productImg2}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg'">
-          <input id="img3" type=image src={{articleUser.productImg3}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg'">
-          <input id="img4" type=image src={{articleUser.productImg4}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg'">
-          <input id="img5" type=image src={{articleUser.productImg5}} class="smallImage" onclick="document.getElementById('image').src = 'https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg'">
-        </div>
+      <div class="carrousel">
+        <slideshow #slideshow class="slide-homepage"
+          [imageUrls]="imageUrlArray"
+          [autoPlay]="false"
+          [height]="height"
+          [minHeight]="'300px'"
+          [showArrows]="false">
+        </slideshow>
+      </div>
+      <div>
+        <input id="img1" type=image src={{imageUrlArray[0]}} class="smallImage" (click)="this.slideshow.goToSlide(0);">
+        <input id="img2" type=image src={{imageUrlArray[1]}} class="smallImage" (click)="this.slideshow.goToSlide(1);">
+        <input id="img3" type=image src={{imageUrlArray[2]}} class="smallImage" (click)="this.slideshow.goToSlide(2);">
+        <input id="img4" type=image src={{imageUrlArray[3]}} class="smallImage" (click)="this.slideshow.goToSlide(3);">
+        <input id="img5" type=image src={{imageUrlArray[4]}} class="smallImage" (click)="this.slideshow.goToSlide(4);">
+      </div>
     </li>
     <li class="right">
       <div>
