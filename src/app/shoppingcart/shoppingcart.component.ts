@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ShoppingcartService } from './../Services/shoppingcart.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingcartComponent implements OnInit {
 
-  constructor() { }
+  urlG="/shoppingcart/shoppingcart.php";
+  urlP="/shoppingcart/shoppingcart-post.php"
+  data:any;
+  constructor(private http:ShoppingcartService) { }
 
   ngOnInit() {
   }
@@ -34,4 +39,20 @@ export class ShoppingcartComponent implements OnInit {
   ];
 
   Total="15000 ";
+
+  delete(){
+    
+
+  }
+
+  onSubmit(){
+    /*
+    console.log(this.order);
+    let form = JSON.stringify(this.order)
+    console.log(form);
+    this.http.url=this.urlP;
+    this.http.postMethod(form);*/
+
+  }
+
 }
