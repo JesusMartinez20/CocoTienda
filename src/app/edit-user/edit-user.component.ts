@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormGroup, FormControl} from '@angular/forms';
+import { EditUserService } from './../Services/edit-user.service'
 
 
 @Component({
@@ -12,25 +13,43 @@ export class EditUserComponent implements OnInit {
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
-  constructor() { }
+
+  urlGet="";
+  urlPost="";
+
+  data:any;
+
+  constructor(private http:EditUserService) { }
 
   EditUser : FormGroup;
   ngOnInit() {
     this.EditUser = new FormGroup({
-      FirstName: new FormControl(),
-      LastName: new FormControl(),
-      UserName: new FormControl(),
-      Email: this.email,
-      Password: new FormControl(),
-      Address: new FormControl(),
+      nombre: new FormControl(),
+      apellidoMaterno: new FormControl(),
+      nombreUsuario: new FormControl(),
+      correo: this.email,
+      contrasena: new FormControl(),
+      direccion: new FormControl(),
       CP: new FormControl(),
-      City: new FormControl(),
-      States: new FormControl(),
+      municipio: new FormControl(),
+      estado: new FormControl(),
     });
+
+    this.http.url=this.urlGet;
+    this.data=this.http.getMethod().subscribe(d=>this.info=d)
   }
 
+
+
+
+  info:any;
+
   onSubmit(){
-    console.log(this.EditUser.value)
+    console.log(this.EditUser.value);
+    let form = JSON.stringify(this.EditUser.value);
+    console.log(form);
+    this.http.url = this.urlPost;
+    this.http.postMethod(form);
   }
 
   states: string[] = [
