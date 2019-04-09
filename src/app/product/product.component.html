@@ -51,51 +51,25 @@
 
 <ng-template #adminBlock>
   <ul class="blocks">
-    <li class="left">
-      <div class="carrousel">
-        <slideshow #slideshow class="slide-homepage"
-          [imageUrls]="imageUrlArray"
-          [autoPlay]="false"
-          [height]="height"
-          [minHeight]="'300px'"
-          [showArrows]="false">
-        </slideshow>
-      </div>
-      <div>
-        <input id="img1" type=image src={{article.imageUrlArray[0]}} class="smallImage" (click)="this.slideshow.goToSlide(0);">
-        <input id="img2" type=image src={{article.imageUrlArray[1]}} class="smallImage" (click)="this.slideshow.goToSlide(1);">
-        <input id="img3" type=image src={{article.imageUrlArray[2]}} class="smallImage" (click)="this.slideshow.goToSlide(2);">
-        <input id="img4" type=image src={{article.imageUrlArray[3]}} class="smallImage" (click)="this.slideshow.goToSlide(3);">
-        <input id="img5" type=image src={{article.imageUrlArray[4]}} class="smallImage" (click)="this.slideshow.goToSlide(4);">
-      </div>
-      
-      <form method="post" [formGroup]="articleImages" (ngSubmit)="onSubmit2()">
-          <div>
-            <label for="Img1">Imagen 1:</label>
-            <input type="file" id="Img1" accept=".jpg, .jpeg, .png" formControlName="Img1" required>
-          </div>
-          <div>
-            <label for="img2">Imagen 2:</label>
-            <input type="file" id="Img2" accept=".jpg, .jpeg, .png" formControlName="Img2" required>
-          </div>
-          <div>
-            <label for="img3">Imagen 3:</label>
-            <input type="file" id="Img3" accept=".jpg, .jpeg, .png" formControlName="Img3" required>
-          </div>
-          <div>
-            <label for="img4">Imagen 4:</label>
-            <input type="file" id="Img4" accept=".jpg, .jpeg, .png" formControlName="Img4" required>
-          </div>
-          <div>
-            <label for="img5">Imagen 5:</label>
-            <input type="file" id="Img5" accept=".jpg, .jpeg, .png" formControlName="Img5" required>
-          </div>
-          <div>
-            <button mat-button type="submit" style="background: #ffcd3c">Submit</button>
-          </div>
-        </form>
+    <li class="left">    
+      <form method="post" [formGroup]="articleImages" (ngSubmit)="onSubmit2()" class="product-form">
+        <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" required/><br>
 
+        <button mat-button type="button" (click)="imgFileInput2.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 2</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput2 formControlName="Img2" required/><br>
 
+        <button mat-button type="button" (click)="imgFileInput3.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 3</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput3 formControlName="Img3" required/><br>
+          
+        <button mat-button type="button" (click)="imgFileInput4.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 4</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput4 formControlName="Img4" required/><br>
+          
+        <button mat-button type="button" (click)="imgFileInput5.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 5</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br>
+
+        <button mat-button type="submit" style="background: #ffcd3c;margin: 10px">Guardar</button>
+      </form>
     </li>
     <li class="right">
       <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="product-form">
