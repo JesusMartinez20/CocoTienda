@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { ShoppingcartService } from './../Services/shoppingcart.service';
 
 @Component({
@@ -8,15 +7,19 @@ import { ShoppingcartService } from './../Services/shoppingcart.service';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
+  order:any;
+  urlG="";
+  urlP=""
+  urlD=""
 
-  urlG="/shoppingcart/shoppingcart.php";
-  urlP="/shoppingcart/shoppingcart-post.php"
-  data:any;
   constructor(private http:ShoppingcartService) { }
 
   ngOnInit() {
+    
+    this.http.url=this.urlG;
+    this.order=this.http.getMethod();
   }
-
+/*
   order:any[]=[
     {
       name:"Dron",
@@ -36,17 +39,21 @@ export class ShoppingcartComponent implements OnInit {
       price:"4000 Cocoins",
       img:"https://olimpica.vteximg.com.br/arquivos/ids/177568-900-900/Max-Steel-Turbo-Deslizador-Mattel.jpg?v=636782577566470000"
     }
-  ];
+  ];*/
 
   Total="15000 ";
 
-  delete(){
-    
+  delete(){/*
+    console.log(this.order);
+    let form = JSON.stringify(this.order)
+    console.log(form);
+    this.http.url=this.urlD;
+    this.http.deleteMethod(form);*/
 
   }
 
   onSubmit(){
-    /*
+    /*//Post?
     console.log(this.order);
     let form = JSON.stringify(this.order)
     console.log(form);

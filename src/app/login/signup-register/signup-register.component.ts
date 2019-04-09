@@ -8,7 +8,7 @@ import { LoginService } from './../../Services/login.service';
   styleUrls: ['./signup-register.component.css']
 })
 export class SignupRegisterComponent implements OnInit {
-  urlP="/login/login-user-post.php"
+  urlP=""
   
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private http:LoginService) { }
