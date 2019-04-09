@@ -19,21 +19,21 @@ export class OrdersComponent implements OnInit {
 
 
   }
- /* order_done:any[]=[
+  /*order_done:any[]=[
     {
-      Num:"Dron",
-      Item_quantity:6,
-      Total:"6000",
+      id:"Dron",
+      cantidad:6,
+      total:"6000",
     },
     {
-      Num:"Barbie",
-      Item_quantity:5,
-      Total:"5000",
+      id:"Barbie",
+      cantidad:5,
+      total:"5000",
     },
     {
-      Num:"Max-Steel",
-      Item_quantity:4,
-      Total:"4000",
+      id:"Max-Steel",
+      cantidad:4,
+      total:"4000",
       
     }
   ];*/

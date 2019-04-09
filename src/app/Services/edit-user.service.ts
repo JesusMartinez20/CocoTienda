@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../../src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditUserService {
 
-  url;
+  urlA;
+  urlB;
   constructor(private http: HttpClient) {}
 
-  getMethod(){
-    return this.http.get(environment.serverUrl+this.url);
+  getUsersMethod(){
+    return this.http.get(environment.serverUrl+this.urlA);
   }
 
-  postMethod(form){
-    return this.http.post(environment.serverUrl+this.url,form);
+  postUsersMethod(form){
+    return this.http.post(environment.serverUrl+this.urlA,form);
+  }
+
+  getStatesMethod(){
+    return this.http.get(environment.serverUrl+this.urlA);
   }
 }

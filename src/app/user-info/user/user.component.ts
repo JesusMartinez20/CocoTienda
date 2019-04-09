@@ -21,10 +21,10 @@ export class UserComponent implements OnInit {
   }
   /*user_data:any[]=[
     {
-      FirstName:"Ismael",
-      LastName:"Lopez",
-      UserName:"Coco",
-      Email:"yareplico@distribuidos.coco",
+      nombre:"IsmzxZXael",
+      apellidoPaterno:"Lopez",
+      nombreUsuario:"Coco",
+      correo:"yareplico@distribuidos.coco",
     },
   ];*/
 

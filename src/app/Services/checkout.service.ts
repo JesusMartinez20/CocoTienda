@@ -18,5 +18,7 @@ export class CheckoutService {
     return this.http.post(environment.serverUrl+this.url,form);
   }
 
-
+  putMethod(form){
+    return this.http.put(environment.serverUrl+this.url,form);
+  }
 }

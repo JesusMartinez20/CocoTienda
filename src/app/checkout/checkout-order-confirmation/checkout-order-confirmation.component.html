@@ -1,4 +1,4 @@
-<mat-card *ngFor="let list of order">
+<mat-card *ngFor="let list of pedido">
   <mat-card-content style="display:inline-flex;">
     <img src="{{list.img}}">
     <div>
@@ -10,7 +10,7 @@
         </div>
         <div>
           <p>Total</p>
-          <p>{{list.total}}</p>
+          <p>{{list.price}}</p>
         </div>
       </div>
     </div>
