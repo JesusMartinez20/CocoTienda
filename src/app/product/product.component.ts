@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
+import { ProductService } from './../Services/product.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-product',
@@ -11,10 +13,11 @@ import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
 // }
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:ProductService, private snackBar: MatSnackBar) { }
 
   urlGetAdmn="";
   urlPostAdmn=""
+  urlPutAdmn=""
   urlDeleteAdmn=""
 
   urlGetClient="";
@@ -74,18 +77,40 @@ export class ProductComponent implements OnInit {
   ];
 
   buyArticle(){
-
+    //console.log(this.article);
   }
 
   imageSubmit(){
- 
+    console.log(this.articleImages.value);
+    if(this.articleImages.get('Img1')!==null){
+    let form = JSON.stringify(this.articleImages.value)
+    console.log(form);
+    this.http.url=this.urlPutAdmn;
+    //this.http.putMethod(form);
+    this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
+    }
   }
 
   articleSubmit(){
-
+    console.log(this.articleForm.value);
+    if(this.articleForm.get('Name')!==null){
+    let form = JSON.stringify(this.articleForm.value)
+    console.log(form);
+    this.http.url=this.urlPutAdmn;
+    //this.http.putMethod(form);
+    this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
+    }
   }
 
   deleteArticle(){
-
+    console.log(this.articleForm.value);
+    let form = JSON.stringify(this.articleForm.value)
+    console.log(form);
+    console.log(this.articleImages.value);
+    let formI = JSON.stringify(this.articleImages.value)
+    console.log(formI);
+    this.http.url=this.urlDeleteAdmn;
+    //this.http.deleteMethod(form);
+    //this.http.deleteMethod(formI);
   }
 }

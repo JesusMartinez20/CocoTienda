@@ -74,7 +74,7 @@
       </form>
     </li>
     <li class="right">
-      <form [formGroup]="articleForm" (ngSubmit)="articleSubmit()" class="product-form">
+      <form [formGroup]="articleForm"  class="product-form">
         <mat-form-field class="product-full-width">
           <input matInput placeholder="Nombre del producto" formControlName="Name" required>
         </mat-form-field>
@@ -99,7 +99,7 @@
         </mat-form-field>
 
         <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
-        <button mat-button type="submit" style="background: #ffcd3c">Guardar</button>
+        <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Guardar</button>
         <button mat-button style="background: #ffcd3c" (click)="deleteArticle()">Eliminar</button>
       </form>
     </li>

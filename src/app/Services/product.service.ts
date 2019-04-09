@@ -13,11 +13,11 @@ export class ProductService {
     return this.http.get(environment.serverUrl+this.url);
   }
 
-  postMethod(form){
-    return this.http.post(environment.serverUrl+this.url,form);
-  }
-
   deleteMethod(form){
     return this.http.delete(environment.serverUrl+this.url,form);
+  }
+
+  putMethod(form){
+    return this.http.put(environment.serverUrl+this.url,form);
   }
 }
