@@ -12,12 +12,28 @@ import { EditUserService } from './../Services/edit-user.service'
 export class EditUserComponent implements OnInit {
 
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  correo = new FormControl('', [Validators.required, Validators.email]);
 
-  urlGet="";
-  urlPost="";
+  urlGetUsers="";
+  urlPostUsers="";
+  urlGetStates="";
 
-  data:any;
+ data:any;
+ 
+ /*[]=[
+    {
+      nombre: "YoMero",
+      apellidoPaterno: "Daddy",
+      apellidoMaterno: "Mommy",
+      nombreUsuario: "Guacamero",
+      correo: "Depresion@ceti.proyecto",
+      contrasena: "solomititulopls",
+      direccion: "Cocolinas de los MoMolinos",
+      CP: "12345",
+      municipio: "GDL",
+      estado: "Zacatecas",
+    }
+ ];*/
 
   constructor(private http:EditUserService) { }
 
@@ -25,9 +41,10 @@ export class EditUserComponent implements OnInit {
   ngOnInit() {
     this.EditUser = new FormGroup({
       nombre: new FormControl(),
+      apellidoPaterno: new FormControl(),
       apellidoMaterno: new FormControl(),
       nombreUsuario: new FormControl(),
-      correo: this.email,
+      correo: this.correo,
       contrasena: new FormControl(),
       direccion: new FormControl(),
       CP: new FormControl(),
@@ -35,31 +52,38 @@ export class EditUserComponent implements OnInit {
       estado: new FormControl(),
     });
 
-    this.http.url=this.urlGet;
-    this.data=this.http.getMethod().subscribe(d=>this.info=d)
+    this.http.urlA=this.urlGetUsers;
+    this.data=this.http.getUsersMethod().subscribe(d=>this.info=d);
+
+
+    this.http.urlB=this.urlGetStates;
+    this.estados=this.http.getStatesMethod();
   }
 
 
 
 
-  info:any;
-
+  info:any;  
+  estados:any;
+  /*[]=[
+    {id:1,estado:'Jalisco'},
+    {id:2,estado:'Michoacsan'},
+    {id:3,estado:'Tlaxcala'},
+  ];*/
+  
   onSubmit(){
     console.log(this.EditUser.value);
     let form = JSON.stringify(this.EditUser.value);
     console.log(form);
-    this.http.url = this.urlPost;
-    this.http.postMethod(form);
+    this.http.urlA = this.urlPostUsers;
+    this.http.postUsersMethod(form);
   }
 
-  states: string[] = [
-    'Jalisco', 'Monterrey', 'Colima', 'Zacatecas', 'Baja California', 'Baja California Sur', 'Sonora', 'Tlaxcala',
-    'Veracruz', 'Quintanta Roo', 'Yucatan', 'Sinaloa', 'Chiapas', 'Oaxaca',
-  ];
+
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'Debe ingresar un valor' :
-        this.email.hasError('email') ? 'Correo invalido' :
+    return this.correo.hasError('required') ? 'Debe ingresar un valor' :
+        this.correo.hasError('email') ? 'Correo invalido' :
             '';
   }
 }
