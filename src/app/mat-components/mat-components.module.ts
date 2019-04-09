@@ -13,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule} from '@angular/material';
 
 
 
@@ -35,7 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ]
 })
 export class MatComponentsModule { }

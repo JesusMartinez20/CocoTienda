@@ -22,9 +22,12 @@ export class CheckoutPaymentConfirmationComponent implements OnInit {
     });
 
     this.http.url=this.urlG;
-    this.data=this.http.getMethod().subscribe(d=>this.info=d);
+    this.data=this.http.getMethod().subscribe(d=>{this.info=d;this.datos=this.info.cvv;
+      console.log(this.datos);
+    });
 
 
+      
   }
   info:any;
 
@@ -47,7 +50,9 @@ export class CheckoutPaymentConfirmationComponent implements OnInit {
     let form = JSON.stringify(this.Payment.value)
     console.log(form);
     this.http.url=this.urlP;
-    this.http.postMethod(form);
+    this.http.putMethod(form);
+    
+    console.log(this.datos);
 
   }
 }

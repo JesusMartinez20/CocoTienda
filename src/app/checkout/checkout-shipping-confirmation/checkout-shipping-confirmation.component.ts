@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CheckoutService } from './../../Services/checkout.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-checkout-shipping-confirmation',
@@ -11,7 +12,7 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
   urlG="/checkout/checkout-shipping.php";
   urlP="/checkout/checkout-shipping-post.php"
   data:any;
-  constructor(private http:CheckoutService) { }
+  constructor(private http:CheckoutService, private snackBar: MatSnackBar) { }
 
   Shipping : FormGroup;
   ngOnInit() {
@@ -37,11 +38,17 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
 
   onSubmit(){
     console.log(this.Shipping.value);
+    if(this.Shipping.get('calleYNumero')!==null){
     let form = JSON.stringify(this.Shipping.value)
     console.log(form);
     this.http.url=this.urlP;
-    this.http.postMethod(form);
+    this.http.putMethod(form);
+    this.snackBar.open("¡Informacion guardada!", "Ok", {
+      duration: 2000,
+    });
   }
+  }
+
 
   
 }

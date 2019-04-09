@@ -24,7 +24,7 @@
   <div style="display:flex; justify-content:flex-end;">  
     <div >
       <h1 style="display:flex;justify-content:flex-end">{{Total}}</h1>
-      <button type="submit" id="buy-button" style="width: 150px;">Comprar</button>
+      <button type="submit" id="buy-button" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
     </div>
   </div>
 
