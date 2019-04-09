@@ -8,7 +8,7 @@ import { LoginService } from './../../Services/login.service';
   styleUrls: ['./login-user-log-in.component.css']
 })
 export class LoginUserLogInComponent implements OnInit {
-  urlP="/login/login-user-post.php"
+  urlP=""
 
   constructor(private http:LoginService) { }
 

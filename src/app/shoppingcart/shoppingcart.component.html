@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>CARRITO</mat-card-title>
     </mat-card-header>
-<mat-card *ngFor="let list of order">
+<mat-card *ngFor="let list of order | async">
     <mat-card-content style="display:inline-flex;">
       <div style="display:inline-flex; width: 400px;">
       <img src="{{list.img}}">
