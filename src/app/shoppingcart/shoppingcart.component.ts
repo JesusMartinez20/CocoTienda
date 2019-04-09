@@ -1,5 +1,6 @@
-import { Component, OnInit,  Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PassingDataService } from './../Services/passing-data.service';
+import { ShoppingcartService } from './../Services/shoppingcart.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -7,11 +8,17 @@ import { PassingDataService } from './../Services/passing-data.service';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
+  order1:any;
+  urlG="";
+  urlP=""
+  urlD=""
 
-  constructor(private data: PassingDataService) { }
+  constructor(private http:ShoppingcartService, private data: PassingDataService) { }
 
   ngOnInit() {
     
+    this.http.url=this.urlG;
+    this.order1=this.http.getMethod();
   }
 
   order:any[]=[
@@ -40,4 +47,24 @@ export class ShoppingcartComponent implements OnInit {
   passOrder() {
     this.data.changeMessage(this.order);
   }
+
+  delete(){/*
+    console.log(this.order);
+    let form = JSON.stringify(this.order)
+    console.log(form);
+    this.http.url=this.urlD;
+    this.http.deleteMethod(form);*/
+
+  }
+
+  onSubmit(){
+    /*//Post?
+    console.log(this.order);
+    let form = JSON.stringify(this.order)
+    console.log(form);
+    this.http.url=this.urlP;
+    this.http.postMethod(form);*/
+
+  }
+
 }

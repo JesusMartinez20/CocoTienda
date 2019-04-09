@@ -11,82 +11,94 @@
         </slideshow>
       </div>
       <div>
-        <input id="img1" type=image src={{imageUrlArray[0]}} class="smallImage" (click)="this.slideshow.goToSlide(0);">
-        <input id="img2" type=image src={{imageUrlArray[1]}} class="smallImage" (click)="this.slideshow.goToSlide(1);">
-        <input id="img3" type=image src={{imageUrlArray[2]}} class="smallImage" (click)="this.slideshow.goToSlide(2);">
-        <input id="img4" type=image src={{imageUrlArray[3]}} class="smallImage" (click)="this.slideshow.goToSlide(3);">
-        <input id="img5" type=image src={{imageUrlArray[4]}} class="smallImage" (click)="this.slideshow.goToSlide(4);">
+        <input id="img1" type=image src={{article.imageUrlArray[0]}} class="smallImage" (click)="this.slideshow.goToSlide(0);">
+        <input id="img2" type=image src={{article.imageUrlArray[1]}} class="smallImage" (click)="this.slideshow.goToSlide(1);">
+        <input id="img3" type=image src={{article.imageUrlArray[2]}} class="smallImage" (click)="this.slideshow.goToSlide(2);">
+        <input id="img4" type=image src={{article.imageUrlArray[3]}} class="smallImage" (click)="this.slideshow.goToSlide(3);">
+        <input id="img5" type=image src={{article.imageUrlArray[4]}} class="smallImage" (click)="this.slideshow.goToSlide(4);">
       </div>
     </li>
     <li class="right">
       <div>
         <h1 style="font-family: Arial, Helvetica, sans-serif">
-          {{articleUser.productName}}
+          {{article.productName}}
         </h1>
         <p class="thisFont">
-          {{articleUser.productDescription}}
+          {{article.productDescription}}
         </p>  
       </div>
-      <br><br><br><br>
+      <br><br>
       <div>
         <p class="thisFont">
           Precio:
-          {{articleUser.productPrice}} Cocoins
+          {{article.productPrice}} Cocoins
         </p>
         <p class="thisFont">
           En existencia:
-          {{articleUser.productStock}}
+          {{article.productStock}}
         </p>
         <p class="thisFont">
           <label for="productTotal">Cantidad: </label>
-          <input class="thisFont" name="productTotal" type="number" min="1" max={{articleUser.productStock}} [(ngModel)]="articleUser.productTotal" style="width: 45px"/>
+          <input class="thisFont" name="productTotal" type="number" min="1" max={{article.productStock}} [(ngModel)]="article.productTotal" style="width: 45px"/>
         </p>
       </div>
       <br>
-      <button mat-raised-button type="submit" style="background: #ffcd3c">
-          Comprar
-      </button>
+      <button mat-raised-button type="submit" style="background: #ffcd3c">Comprar</button>
     </li>
   </ul>
 </div>
+
+
 <ng-template #adminBlock>
   <ul class="blocks">
-    <li class="left">
-        <img id="image" src="https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e" class="bigImage">
-        <div>
-          <input id="img1" type=image src="{{articleAdmin.productImg1}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
-          <input id="img2" type=image src="{{articleAdmin.productImg2}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
-          <input id="img3" type=image src="{{articleAdmin.productImg3}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
-          <input id="img4" type=image src="{{articleAdmin.productImg4}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
-          <input id="img5" type=image src="{{articleAdmin.productImg5}}" class="smallImage" onclick="document.getElementById('image').src = 'https://qph.fs.quoracdn.net/main-qimg-09e661a56e384cbadf54b3ffc18ffb9e'">
-        </div>
+    <li class="left">    
+      <form method="post" [formGroup]="articleImages" (ngSubmit)="onSubmit2()" class="product-form">
+        <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" required/><br>
+
+        <button mat-button type="button" (click)="imgFileInput2.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 2</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput2 formControlName="Img2" required/><br>
+
+        <button mat-button type="button" (click)="imgFileInput3.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 3</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput3 formControlName="Img3" required/><br>
+          
+        <button mat-button type="button" (click)="imgFileInput4.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 4</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput4 formControlName="Img4" required/><br>
+          
+        <button mat-button type="button" (click)="imgFileInput5.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 5</button>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br>
+
+        <button mat-button type="submit" style="background: #ffcd3c;margin: 10px">Guardar</button>
+      </form>
     </li>
     <li class="right">
-      <div>
-        <h1 style="font-family: Arial, Helvetica, sans-serif">
-          <label for="productName">Nombre del producto: </label><br>
-          <input id="productName" name="productName" type="text" [(ngModel)]="articleAdmin.productName" style="width: 300px"/>
-        </h1>
-        <p class="thisFont">
-          <label for="productDescription">Descripcion: </label><br>
-          <textarea rows="12" cols="50" name="productDescription" placeholder="Descripcion" class="thisFont" [(ngModel)]="articleAdmin.productDescription"></textarea>
-        </p>  
-      </div>
-      <br>
-      <div>
-        <p class="thisFont">
-          <label for="productPrice">Precio: </label>
-          <input name="productPrice" type="number" min="0" [(ngModel)]="articleAdmin.productPrice" style="width: 60px" class="thisFont"/>
-        </p>
-        <p class="thisFont">
-          <label for="productStock">Inventario: </label>
-          <input id="productStock" name="productStock" type="number" min="0" [(ngModel)]="articleAdmin.productStock" style="width: 60px"/>
-        </p>
-      </div>
-      <br>
-      <button mat-raised-button style="background: #ffcd3c">
-          Guardar
-      </button>
+      <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="product-form">
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Nombre del producto" formControlName="Name" required>
+        </mat-form-field>
+      
+        <mat-form-field class="product-full-width">
+          <textarea matInput placeholder="Descripcion" formControlName="Description" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Precio" type="number" formControlName="Price" required>
+        </mat-form-field>
+
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="En existencia" type="number" formControlName="Stock" required>
+        </mat-form-field>
+
+        <mat-form-field class="product-full-width">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="Category" required>
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
+        <button mat-button type="submit" style="background: #ffcd3c">Guardar</button>
+      </form>
     </li>
   </ul>
 </ng-template>

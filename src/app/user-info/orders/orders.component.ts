@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{ OrdersService } from './../../Services/orders.service'
 
 @Component({
   selector: 'app-orders',
@@ -6,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
-  constructor() { }
+  order_done:any;
+  urlGet="";
+  constructor(private http:OrdersService) { }
 
   ngOnInit() {
+
+
+    this.http.url=this.urlGet;
+    this.order_done=this.http.getMethod();
+
+
   }
-  order_done:any[]=[
+ /* order_done:any[]=[
     {
       Num:"Dron",
       Item_quantity:6,
@@ -28,6 +36,8 @@ export class OrdersComponent implements OnInit {
       Total:"4000",
       
     }
-  ];
+  ];*/
+
+
 
 }

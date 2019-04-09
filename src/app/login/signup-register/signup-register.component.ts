@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from './../../Services/login.service';
 
 @Component({
   selector: 'app-signup-register',
@@ -7,10 +8,10 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./signup-register.component.css']
 })
 export class SignupRegisterComponent implements OnInit {
-
+  urlP=""
   
   email = new FormControl('', [Validators.required, Validators.email]);
-  constructor() { }
+  constructor(private http:LoginService) { }
 
   Usersignup : FormGroup;
   ngOnInit() {
@@ -34,6 +35,10 @@ export class SignupRegisterComponent implements OnInit {
 
   onSubmit(){
     console.log(this.Usersignup.value)
+    let form = JSON.stringify(this.Usersignup.value)
+    console.log(form);
+    this.http.url=this.urlP;
+    this.http.postMethod(form);
   }
 
   states: string[] = [

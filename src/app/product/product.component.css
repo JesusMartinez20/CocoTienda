@@ -29,6 +29,8 @@
     width: 9%;
     overflow: visible;
     margin: 1%;
+    border: black;
+    background: white;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -40,24 +42,26 @@
     width: 50%;
     height: 100%;
     margin-top: 5%;
+    margin-right: 5%;
 }
 
 .thisFont{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14;
+    width: 80%;
 }
 
-
-
-
-
+.product-form {
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .product-full-width {
+    width: 100%;
+  }
 
   .carrousel{
-    /* display:flex; */
-    /* justify-content: center;
-    margin-left: 7%;
-    margin-right: 7% ; */
-
     width: 53%;
     align-content: center;
     justify-content: center;

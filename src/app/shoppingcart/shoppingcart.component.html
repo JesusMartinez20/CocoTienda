@@ -17,7 +17,7 @@
             <input type="number"  min="1" style="height: 30px; width: 80px; margin-top: 37%; font-size: 20px" [(ngModel)]="list.quantity" placeholder="0"/>
        
           </div>
-          <button type="submit" id="delete-button" style="width: 150px;">Eliminar</button>
+          <button (click)="delete()"  style="width: 150px;">Eliminar</button>
     </mat-card-content>
   </mat-card>
 
