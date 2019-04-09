@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -13,11 +13,20 @@ export class ProductComponent implements OnInit {
 
   constructor() { }
 
+  urlGetAdmn="";
+  urlPostAdmn=""
+  urlDeleteAdmn=""
+
+  urlGetClient="";
+  urlPostClient="";
+
   @ViewChild('slideshow') slideshow: any;
   user: boolean = false; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
+  article: any;
+
   ngOnInit() {
     this.articleForm = new FormGroup({
       Name: new FormControl(),
@@ -42,17 +51,15 @@ export class ProductComponent implements OnInit {
     })
   }
   
- 
-
-  imageUrlArray:string[]=[
+  /*imageUrlArray:string[]=[
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg"
-  ];
+  ];*/
 
-  article = {
+  /*article:any = {
     productName: 'Articulo de prueba', 
     productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg', 
     productPrice: '2000', 
@@ -60,17 +67,25 @@ export class ProductComponent implements OnInit {
     productTotal: '0',
     productCategory: 'Drones',
     imageUrlArray: this.imageUrlArray
-  };
+  };*/
 
   categories: string[] = [
     'Drones', 'Muñecas', 'Pelotas', 'Figuras de acción', 'Carros'
   ];
 
-  onSubmit(){
-    console.log(this.articleForm.value)
+  buyArticle(){
+
   }
 
-  onSubmit2(){
-    console.log(this.articleImages.value)
+  imageSubmit(){
+ 
+  }
+
+  articleSubmit(){
+
+  }
+
+  deleteArticle(){
+
   }
 }
