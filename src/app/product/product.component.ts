@@ -14,7 +14,8 @@ export class ProductComponent implements OnInit {
   constructor() { }
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = true; //False = Admin | True = Client or Guest
+  user: boolean = false; //False = Admin | True = Client or Guest
+
   articleForm : FormGroup;
   articleImages : FormGroup;
   ngOnInit() {
