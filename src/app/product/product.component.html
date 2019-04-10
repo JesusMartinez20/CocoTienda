@@ -55,7 +55,7 @@
   <ul class="blocks">
     <li class="left">    
       <form method="post" [formGroup]="articleImages" (ngSubmit)="imageSubmit()" class="product-form">
-        <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
+        <!-- <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
         <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" required/><br>
 
         <button mat-button type="button" (click)="imgFileInput2.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 2</button>
@@ -68,7 +68,14 @@
         <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput4 formControlName="Img4" required/><br>
           
         <button mat-button type="button" (click)="imgFileInput5.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 5</button>
-        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br> -->
+
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img2" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img3" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img4" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img5" style="margin: 10px" required/><br>
+
 
         <button mat-button type="submit" style="background: #ffcd3c;margin: 10px">Guardar</button>
       </form>
@@ -100,7 +107,7 @@
 
         <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
         <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Guardar</button>
-        <button mat-button style="background: #ffcd3c" (click)="deleteArticle()">Eliminar</button>
+        <button mat-button style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
       </form>
     </li>
   </ul>
