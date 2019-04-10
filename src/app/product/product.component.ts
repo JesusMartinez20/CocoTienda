@@ -2,21 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
 import { ProductService } from './../Services/product.service';
 import { MatSnackBar } from '@angular/material';
+import { PassingDataService } from './../Services/passing-data.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-// class ProductComponent {
-  
-// }
+
 export class ProductComponent implements OnInit {
 
-  constructor(private http:ProductService, private snackBar: MatSnackBar) { }
+  constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService) { }
 
   urlGetAdmn="";
-  urlPostAdmn=""
   urlPutAdmn=""
   urlDeleteAdmn=""
 
@@ -24,11 +22,11 @@ export class ProductComponent implements OnInit {
   urlPostClient="";
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = false; //False = Admin | True = Client or Guest
+  user: boolean = true; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
-  article: any;
+  // article: any;
 
   ngOnInit() {
     this.articleForm = new FormGroup({
@@ -54,30 +52,38 @@ export class ProductComponent implements OnInit {
     })
   }
   
-  /*imageUrlArray:string[]=[
+  imageUrlArray:string[]=[
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg"
-  ];*/
+  ];
 
-  /*article:any = {
+  article:any = {
     productName: 'Articulo de prueba', 
     productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg', 
     productPrice: '2000', 
     productStock: '10',
-    productTotal: '0',
+    productTotal: '1',
     productCategory: 'Drones',
     imageUrlArray: this.imageUrlArray
-  };*/
+  };
+
+  articleSend:any = {
+    name: this.article.productName,
+    quantity: this.article.productTotal,
+    price: this.article.productPrice,
+    img: this.imageUrlArray[0],
+  }
 
   categories: string[] = [
     'Drones', 'Muñecas', 'Pelotas', 'Figuras de acción', 'Carros'
   ];
 
   buyArticle(){
-    //console.log(this.article);
+    console.log(this.articleSend);
+    this.data.changeMessage(this.articleSend);
   }
 
   imageSubmit(){
