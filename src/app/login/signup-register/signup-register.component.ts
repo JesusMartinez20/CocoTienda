@@ -8,7 +8,7 @@ import { LoginService } from './../../Services/login.service';
   styleUrls: ['./signup-register.component.css']
 })
 export class SignupRegisterComponent implements OnInit {
-  urlP=""
+  urlP="/usuarios"
   
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private http:LoginService) { }
@@ -16,19 +16,16 @@ export class SignupRegisterComponent implements OnInit {
   Usersignup : FormGroup;
   ngOnInit() {
     this.Usersignup = new FormGroup({
-        Name: new FormControl(),
-        Paterno: new FormControl(),
-        Materno: new FormControl(),
-        User: new FormControl(),
-        Password: new FormControl(),
-        Confirmation: new FormControl(),
-        Email: this.email,
+        nombre: new FormControl(),
+        apellidoPaterno: new FormControl(),
+        apellidoMaterno: new FormControl(),
+        nombreUsuario: new FormControl(),
+        contrasena: new FormControl(),
+        correo: this.email,
         CP: new FormControl(),
-        Municipality: new FormControl(),
-        Address: new FormControl(),
-        State: new FormControl(),
-        Card: new FormControl(),
-        CVV: new FormControl()
+        ciudad: new FormControl(),
+        direccionYNumero: new FormControl(),
+        tarjeta: new FormControl()
     });
 
   }
@@ -38,14 +35,11 @@ export class SignupRegisterComponent implements OnInit {
     let form = JSON.stringify(this.Usersignup.value)
     console.log(form);
     this.http.url=this.urlP;
-    this.http.postMethod(form);
+    //this.http.postMethod(form);
+    localStorage.setItem('userId', '');
+    localStorage.getItem('userId');
+    this.http.createUser(form).subscribe(d => console.log(d));
   }
-
-  states: string[] = [
-    'Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Coahuila de Zaragoza','Colima','Durango','Estado de México','Guanajuato',
-    'Guerrero','Hidalgo','Jalisco','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco',
-    'Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas',
-  ];
   
   getErrorMessage() {
     return this.email.hasError('required') ? '' :
