@@ -21,11 +21,13 @@ export class SignupRegisterComponent implements OnInit {
         apellidoMaterno: new FormControl(),
         nombreUsuario: new FormControl(),
         contrasena: new FormControl(),
+        confirmacion: new FormControl(),
         correo: this.email,
         CP: new FormControl(),
         ciudad: new FormControl(),
         direccionYNumero: new FormControl(),
-        tarjeta: new FormControl()
+        tarjeta: new FormControl(),
+        fechaExpiracion: new FormControl()
     });
 
   }
@@ -46,4 +48,26 @@ export class SignupRegisterComponent implements OnInit {
         this.email.hasError('email') ? 'Correo invalido' :
             '';
   }
+
+ 
+
+
+  private passwordsMatch = (_form: FormGroup): boolean => {
+    if (_form.controls['contrasena'].touched && _form.controls['confirmacion'].touched) {
+        if (_form.value.contrasena === _form.value.confirmacion) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return true;
+}
+/*
+ validarSiNumero(numero){
+    if (!/^([0-9])*$/.test(numero))
+      alert("El valor " + numero + " no es un número");
+  }*/
+
+
+ 
 }
