@@ -4,7 +4,7 @@
         <img src="https://qlu.ac.pa/wp-content/uploads/2018/10/Registrate.png" >
     </div>
       <br>
-    <mat-form-field style="width: 370px; ">
+    <mat-form-field style="width: 95%; ">
         <input matInput placeholder="Nombre" formControlName="nombre" required>
     </mat-form-field>
     <br>
@@ -21,12 +21,22 @@
     <mat-icon>account_circle</mat-icon>
     <br>
     <mat-form-field style="width: 340px; ">
-        <input matInput placeholder="Password" type="password" formControlName="contrasena" required>
+       <!--<input matInput placeholder="Password" type="password" formControlName="contrasena" required>-->
+       <input matInput placeholder="Contraseña" [type]="!hide ? 'password' : 'text'" formControlName="contrasena" required >
+       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+       <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+       </button>
     </mat-form-field>
     <mat-icon>vpn_key</mat-icon>
     <br>
     <mat-form-field style="width: 340px; ">
-        <input matInput placeholder="Confirmacion" type="password" required>
+        <!--<input matInput placeholder="Confirmacion" type="password" required>-->
+        <input matInput placeholder="Confirmacion" [type]="!hide1 ? 'password' : 'text'"  formControlName="confirmacion" required>
+        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+        <mat-icon>{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
+  
+        </button>
     </mat-form-field>
     <mat-icon>vpn_key</mat-icon>
     <br>
@@ -37,22 +47,32 @@
     <mat-icon>markunread_mailbox</mat-icon>
     <br>
     <mat-form-field>
-        <input matInput placeholder="CP" formControlName="CP" required> 
+        <input matInput placeholder="CP"  formControlName="CP" required> 
     </mat-form-field>
- 
-    <br>
     <mat-form-field>
         <input matInput placeholder="Municipio" formControlName="ciudad" required>
     </mat-form-field>
-    <mat-form-field>
+    <br>
+    <mat-form-field  style="width: 95%; ">
         <input matInput placeholder="Direccion" formControlName="direccionYNumero" required>     
     </mat-form-field>
     <br>
     <mat-form-field>
         <input matInput placeholder="Tarjeta" formControlName="tarjeta" required>
     </mat-form-field>
-   
+    <mat-form-field>
+        <input matInput placeholder="Expiración"  type="date" formControlName="fechaExpiracion" required>
+    </mat-form-field>
     <br>
-      <button type="submit" id="signup-button">SignUp</button>
+    <div *ngIf="!passwordsMatch(Usersignup); else muestraBoton" class="invalid-feedback">
+        <h2>Las contraseñas no coinciden</h2>
+    </div>
+
+    <ng-template #muestraBoton>
+        
+        <button type="submit" id="signup-button">SignUp</button>
+
+    </ng-template>
+      
 
   </form>
