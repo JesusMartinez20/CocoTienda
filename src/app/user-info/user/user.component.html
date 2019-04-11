@@ -1,4 +1,4 @@
-<mat-card class="example-card" *ngFor="let list of user_data | async">
+<mat-card class="example-card" *ngIf="user_data | async as list">
   <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>USUARIO</mat-card-title>
@@ -15,22 +15,22 @@
 
             <h3 mat-line><br>NOMBRE DE USUARIO</h3>
             <p mat-line>
-              <span>{{list.nombreUsuario}}<br></span>
+              <span>{{list.Nombre}}<br></span>
             </p>
             <mat-divider></mat-divider>
               <h3 mat-line><br>USUARIO</h3>
               <p mat-line>
-                <span>{{list.nombre}}<br></span>
+                <span>{{list.Nombre_usuario}}<br></span>
               </p>
             <mat-divider></mat-divider>
             
               <h3 mat-line><br>APELLIDOS</h3>
               <div style="display:inline-flex;">
                   <p mat-line>
-                      <span>{{list.apellidoPaterno}}<br></span>
+                      <span>{{list.Apellido_paterno}}<br></span>
                     </p>
                     <p mat-line>
-                        <span>{{list.apellidoMaterno}}<br></span>
+                        <span>{{list.Apellido_materno}}<br></span>
                       </p>
                 
               </div>
@@ -45,7 +45,7 @@
 
               <h3 mat-line><br>CORREO ELECTRONICO</h3>
               <p mat-line>
-                <span>{{list.correo}}<br></span>
+                <span>{{list.Correo}}<br></span>
               </p>
 
             <mat-divider></mat-divider>
