@@ -1,10 +1,10 @@
 <h1>Categoría</h1>
-<mat-card class="category-card" *ngFor="let list of category" routerLink ="/product">
-    <img mat-card-image src="{{list.img}}" >
-    <mat-card-actions>
-      <p>{{list.name}}</p>
-      <p>{{list.price}}</p>
-    </mat-card-actions>
-  </mat-card>
+<mat-card class="category-card" *ngFor="let element of elements" routerLink ="/product">
+  <img mat-card-image src="{{element.img}}" >
+  <mat-card-actions>
+    <p>{{element.Nombre}}</p>
+    <p>{{element.Precio}}</p>
+  </mat-card-actions>
+</mat-card>
 
            

@@ -16,10 +16,11 @@ const routes: Routes = [
   { path: 'user-info', component: UserInfoComponent },
   { path: 'user-edit', component: EditUserComponent},
   { path: 'cart', component: ShoppingcartComponent },
-  { path: 'categories', component: CategoriesComponent },
+  { path: 'categories/:id', component: CategoriesComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'product', component: ProductComponent },
+  {path: '**', redirectTo: ''}
 
 ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomepageService } from '../Services/homepage.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,17 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private catService:HomepageService) {
+    this.catService.URLCategoria="/categorias";
+    
+   }
 
   ngOnInit() {
+    this.catService.getCategoria().subscribe(cat=>{this.categories=cat ;console.log(this.categories);});
+    
   }
 
 
-  categories=[
-    {name:"Drones"},
-    {name:"Muñecas"},
-    {name:"Pelotas"},
-    {name:"Figuras de acción"},
-    {name:"Carros"},
-  ]
+  categories;
 }

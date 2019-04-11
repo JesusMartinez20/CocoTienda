@@ -54,6 +54,12 @@ export class ShoppingcartComponent implements OnInit {
     console.log(form);
     this.http.url=this.urlD;
     this.http.deleteMethod(form);*/
+    /*let i=this.order.findIndex();
+    if(i==-1){
+      this.order.push()
+    }else{
+      this.order.splice(i,1,{name:this.order1.name})
+    }*/
 
   }
 

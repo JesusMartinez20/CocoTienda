@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HomepageService } from '../Services/homepage.service';
+
 
 @Component({
   selector: 'app-homepage',
@@ -7,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomepageComponent implements OnInit {
+  urlCategorias="/categorias";
+  urlContenido="/";
+  posts:any;
 
-  constructor() { }
+  constructor(private categoria:HomepageService) { }
 
   ngOnInit() {
-  }
- 
+    this.categoria.URLContenido=this.urlContenido;
+    this.posts=this.categoria.getContenido();
+    console.log(this.posts);
 
-  content:any[]=[
+    this.categoria.URLCategoria=this.urlCategorias;
+    this.categoria.getCategoria().subscribe(cat=>console.log(cat));
+    console.log(this.posts);
+
+  /*content:any[]=[
     {
       category: "Drones",
       name:"Dron",
@@ -89,6 +99,7 @@ export class HomepageComponent implements OnInit {
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg"
   ];
 
+  */
   
-  
+  }
 }
