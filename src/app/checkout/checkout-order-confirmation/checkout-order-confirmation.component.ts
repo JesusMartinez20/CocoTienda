@@ -26,8 +26,8 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
   Ttotal=15000;
   ngOnInit() {
     this.data.currentMessage.subscribe(message=>{this.ped=message;this.pedido=JSON.parse(this.ped);});
-    this.http.url=this.urlGetUserAddress;
-    this.http.getMethod().subscribe(d=>{this.userAddress=d;this.address=this.userAddress.fkAddress});
+    /*this.http.url=this.urlGetUserAddress;
+    this.http.getMethod().subscribe(d=>{this.userAddress=d;this.address=this.userAddress.fkAddress});*/
     
   }
   
@@ -71,14 +71,14 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
     console.log(this.pedido);
     this.form = JSON.stringify(this.pedido)
     console.log(this.form);
-    this.http.url=this.urlPostPedido;
+    //this.http.url=this.urlPostPedido;
     this.http.postMethod(this.form);
   }
 
   makeOrder(){
     this.form= JSON.stringify(this.order);
     console.log(this.form);
-    this.http.url=this.urlPostOrder;
+    //this.http.url=this.urlPostOrder;
     this.http.postMethod(this.form);
   }
 

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CheckoutService {
-  url;
+  url="/orden";
   constructor(private http: HttpClient) {}
 
   getMethod(){
