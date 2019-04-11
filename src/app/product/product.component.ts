@@ -12,23 +12,26 @@ import { PassingDataService } from './../Services/passing-data.service';
 
 export class ProductComponent implements OnInit {
 
-  constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService) { }
+  urlGet="";
+  urlGetI="";
+  urlPut="";
+  urlDelete="";
 
-  urlGetAdmn="";
-  urlPutAdmn=""
-  urlDeleteAdmn=""
-
-  urlGetClient="";
-  urlPostClient="";
+  constructor(private producto:ProductService, private snackBar: MatSnackBar, private data: PassingDataService) { }
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = false; //False = Admin | True = Client or Guest
+  user: boolean = true; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
-  // article: any;
 
   ngOnInit() {
+    this.producto.url=this.urlGet;
+    this.article=this.producto.getMethod();
+
+    this.producto.url=this.urlGetI;
+    //this.imageUrlArray=this.producto.getMethod();
+
     this.articleForm = new FormGroup({
       Name: new FormControl(),
       Description: new FormControl(),
@@ -44,32 +47,33 @@ export class ProductComponent implements OnInit {
       Img5: new FormControl()
     })
     this.articleForm.setValue({
-      Name: 'Articulo de prueba', 
-      Description: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg', 
-      Price: '2000', 
-      Stock: '10',
-      Category: 'Drones'
+      Name: this.article.productName, 
+      Description: this.article.productDescription, 
+      Price: this.article.productPrice,
+      Stock: this.article.productStock,
+      Category: this.article.productCategory
     })
   }
   
-  imageUrlArray:string[]=[
+  imageUrlArray:string[5];
+  /*imageUrlArray:string[] = [
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg"
-  ];
+  ];*/
 
-  article:any = {
+  article:any;
+  /*article:any = {
     productName: 'Articulo de prueba', 
     productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg', 
     productPrice: '2000', 
     productStock: '10',
     productTotal: '1',
     productCategory: 'Drones',
-    imageUrlArray: this.imageUrlArray
-  };
-
+  };*/
+  
   articleSend:any = {
     name: this.article.productName,
     quantity: this.article.productTotal,
@@ -91,8 +95,8 @@ export class ProductComponent implements OnInit {
     if(this.articleImages.get('Img1')!==null){
     let form = JSON.stringify(this.articleImages.value)
     console.log(form);
-    this.http.url=this.urlPutAdmn;
-    //this.http.putMethod(form);
+    this.producto.url=this.urlPut;
+    this.producto.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
     }
   }
@@ -102,8 +106,8 @@ export class ProductComponent implements OnInit {
     if(this.articleForm.get('Name')!==null){
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
-    this.http.url=this.urlPutAdmn;
-    //this.http.putMethod(form);
+    this.producto.url=this.urlPut;
+    this.producto.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
     }
   }
@@ -115,8 +119,8 @@ export class ProductComponent implements OnInit {
     console.log(this.articleImages.value);
     let formI = JSON.stringify(this.articleImages.value)
     console.log(formI);
-    this.http.url=this.urlDeleteAdmn;
-    //this.http.deleteMethod(form);
-    //this.http.deleteMethod(formI);
+    this.producto.url=this.urlDelete;
+    this.producto.deleteMethod(form);
+    this.producto.deleteMethod(formI);
   }
 }
