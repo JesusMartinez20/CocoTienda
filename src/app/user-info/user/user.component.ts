@@ -8,15 +8,15 @@ import { UserService } from './../../Services/user.service'
 })
 export class UserComponent implements OnInit {
   user_data:any;
-  urlGet="";
+  urlGet="/usuarios";
   constructor(private http:UserService) { }
 
   ngOnInit() {
 
 
     this.http.url=this.urlGet;
-    this.user_data=this.http.getMethod();
-
+    this.user_data = this.http.getMethod();
+    
 
   }
   /*user_data:any[]=[

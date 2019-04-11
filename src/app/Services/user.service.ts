@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../src/environments/environment';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,8 @@ export class UserService {
   url;
   constructor(private http: HttpClient) {}
 
-  getMethod(){
-    return this.http.get(environment.serverUrl+this.url);
+  getMethod(): Observable<any>{
+    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
 }

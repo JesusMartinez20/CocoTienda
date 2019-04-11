@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-signup-register',
   templateUrl: './signup-register.component.html',
@@ -11,7 +11,7 @@ export class SignupRegisterComponent implements OnInit {
   urlP="/usuarios"
   
   email = new FormControl('', [Validators.required, Validators.email]);
-  constructor(private http:LoginService) { }
+  constructor(private http:LoginService, private router : Router) { }
 
   Usersignup : FormGroup;
   ngOnInit() {
@@ -38,9 +38,11 @@ export class SignupRegisterComponent implements OnInit {
     console.log(form);
     this.http.url=this.urlP;
     //this.http.postMethod(form);
-    //localStorage.setItem('userId', '');
-    //localStorage.getItem('userId');
-    this.http.createUser(form).subscribe(d=>{let i=d.toString();localStorage.setItem('token',i)});
+    localStorage.setItem('userId', '');
+    localStorage.getItem('userId');
+    this.http.createUser(form).subscribe(token=>{localStorage.setItem('token',token.token)
+    this.router.navigate(['/user-info']);});
+    
   }
   
   getErrorMessage() {
