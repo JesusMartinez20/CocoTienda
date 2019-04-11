@@ -26,8 +26,8 @@ export class ShoppingcartComponent implements OnInit {
 
   }
 
-  order:Order[]=[];
-/*
+  //order:Order[]=[];
+
   order:any[]=[
     {
       name:"Dron",
@@ -52,7 +52,7 @@ export class ShoppingcartComponent implements OnInit {
     },
     
   ];
-*/
+
   caltotal(){
     this.numtotal = this.order.reduce((
       acc,

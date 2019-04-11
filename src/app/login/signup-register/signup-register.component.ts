@@ -38,9 +38,9 @@ export class SignupRegisterComponent implements OnInit {
     console.log(form);
     this.http.url=this.urlP;
     //this.http.postMethod(form);
-    localStorage.setItem('userId', '');
-    localStorage.getItem('userId');
-    this.http.createUser(form).subscribe(d => console.log(d));
+    //localStorage.setItem('userId', '');
+    //localStorage.getItem('userId');
+    this.http.createUser(form).subscribe(d=>{let i=d.toString();localStorage.setItem('token',i)});
   }
   
   getErrorMessage() {

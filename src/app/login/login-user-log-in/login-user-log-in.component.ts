@@ -9,6 +9,7 @@ import { LoginService } from './../../Services/login.service';
 })
 export class LoginUserLogInComponent implements OnInit {
   urlP=""
+  posts;
 
   constructor(private http:LoginService) { }
 
@@ -26,7 +27,7 @@ export class LoginUserLogInComponent implements OnInit {
     let form = JSON.stringify(this.Userlogin.value)
     console.log(form);
     this.http.url=this.urlP;
-    this.http.postMethod(form);
+    this.posts=this.http.postMethod(form).subscribe(d=>{let i=d.toString();localStorage.setItem('token',i)});
 
   }
 
