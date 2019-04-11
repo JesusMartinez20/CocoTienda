@@ -17,16 +17,30 @@ export interface Order{
 })
 export class ShoppingcartComponent implements OnInit {
   order1:any;
-  numtotal:any;
+  cont:number;
+  numtotal:number;
+  numsubtotal:number;
+  subtotal:number[]=[];
+  Ttotal:number;
   ped;
+  x:number;
   constructor(private http:ShoppingcartService, private data: PassingDataService) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message=>{this.ped=message;this.order=JSON.parse(this.ped);});
+    this.data.currentMessage.subscribe(message=>{this.ped=message;this.order1=JSON.parse(this.ped);});
+    console.log(this.order1);
+    this.agregar();
+    this.caltotal();
+    for(this.cont=0; this.cont<this.order.length;this.cont++){
+      this.calsubtotal(this.cont);
+    }
+    
+    
 
   }
 
   order:Order[]=[];
+  
 /*
   order:any[]=[
     {
@@ -53,6 +67,16 @@ export class ShoppingcartComponent implements OnInit {
     
   ];
 */
+
+
+
+calsubtotal(index: number){
+  this.numsubtotal = this.order[index].quantity*this.order[index].price;
+  console.log("Subtotal: ", this.numsubtotal);
+  this.subtotal[index]=this.numsubtotal;
+}
+
+
   caltotal(){
     this.numtotal = this.order.reduce((
       acc,
@@ -60,23 +84,23 @@ export class ShoppingcartComponent implements OnInit {
     ) => acc + (obj.price * obj.quantity),
     0);
     console.log("Total: ", this.numtotal)
+    this.Ttotal=this.numtotal;
   }
-  //Ttotal= 14014;
-Ttotal= this.numtotal;
 
   passOrder() {
     this.data.changeMessage(this.order);
   }
 
-  delete(){/*
-    console.log(this.order);
-    let form = JSON.stringify(this.order)
-    console.log(form);
-    this.http.url=this.urlD;
-    this.http.deleteMethod(form);*/
-    //Falta agregar delete para array
+  delete(index: number){
 
 
+      if (this.order[index]) {
+        this.order.splice(index,1);
+      }
+  }
+
+  agregar(){
+    this.order.push(this.order1);
   }
 
 
