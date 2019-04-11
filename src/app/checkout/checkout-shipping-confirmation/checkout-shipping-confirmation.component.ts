@@ -41,7 +41,7 @@ export class CheckoutShippingConfirmationComponent implements OnInit {
     if(this.Shipping.get('calleYNumero')!==null){
     let form = JSON.stringify(this.Shipping.value)
     console.log(form);
-    this.http.url=this.urlP;
+    //this.http.url=this.urlP;
     this.http.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {
       duration: 2000,

@@ -1,33 +1,34 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>CARRITO</mat-card-title>
-    </mat-card-header>
-<mat-card *ngFor="let list of order">
-    <mat-card-content style="display:inline-flex;">
-      <div style="display:inline-flex; width: 400px;">
-      <img src="{{list.img}}">
-        <h1>{{list.name}}</h1>
-      </div>
-          <div style="display:inline-flex;">
-            <h2>PRECIO:</h2>
-            <p>{{list.price}}</p>
-          </div>
-          <div style="display:inline-flex; ">
-            <h2>CANTIDAD:</h2>
-            <input type="number"  min="1" style="height: 30px; width: 80px; margin-top: 37%; font-size: 20px" [(ngModel)]="list.quantity" placeholder="0"/>
-       
-          </div>
-          <button (click)="delete()"  style="width: 150px;">Eliminar</button>
-    </mat-card-content>
-  </mat-card>
-
-  <div style="display:flex; justify-content:flex-end;">  
-    <div >
-      <h1 style="display:flex;justify-content:flex-end">{{Total}}</h1>
-      <button type="submit" id="buy-button" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
+  <mat-card-header>
+      <mat-card-title>CARRITO</mat-card-title>
+  </mat-card-header>
+<mat-card *ngFor="let list of currentOrders; let i=index;" >
+  <mat-card-content style="display:inline-flex;">
+    <div style="display:inline-flex; width: 400px;">
+    <img src="{{list.img}}">
+      <h1>{{list.name}}</h1>
     </div>
+        <div style="display:inline-flex;">
+          <h2>PRECIO:</h2>
+          <p>{{list.price}}</p>
+        </div>
+        <div style="display:inline-flex; ">
+          <h2>CANTIDAD:</h2>
+          <input type="number" (onload)="calsubtotal(i)" (click)="caltotal()" (click)="calsubtotal(i)"  min="1" style="height: 30px; width: 80px; margin-top: 37%; font-size: 20px" [(ngModel)]="list.quantity" placeholder="0"/>
+          
+        </div>
+        <h2>Total:</h2>
+        <p>{{this.subtotal[i]}}</p>
+        <button (click)="delete(i)"  (click)="caltotal()" style="width: 150px;">Eliminar</button>
+  </mat-card-content>
+</mat-card>
+
+<div style="display:flex; justify-content:flex-end;">  
+  <div *ngIf="this.visible;">
+    <h1 style="display:flex;justify-content:flex-end">{{this.Ttotal}}</h1>
+    <button  type="submit" id="bcomprar" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
   </div>
+</div>
 
 </mat-card>
 
-  

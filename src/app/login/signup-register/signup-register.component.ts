@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-signup-register',
   templateUrl: './signup-register.component.html',
@@ -11,7 +11,7 @@ export class SignupRegisterComponent implements OnInit {
   urlP="/usuarios"
   
   email = new FormControl('', [Validators.required, Validators.email]);
-  constructor(private http:LoginService) { }
+  constructor(private http:LoginService, private router : Router) { }
 
   Usersignup : FormGroup;
   ngOnInit() {
@@ -21,11 +21,13 @@ export class SignupRegisterComponent implements OnInit {
         apellidoMaterno: new FormControl(),
         nombreUsuario: new FormControl(),
         contrasena: new FormControl(),
+        confirmacion: new FormControl(),
         correo: this.email,
         CP: new FormControl(),
         ciudad: new FormControl(),
         direccionYNumero: new FormControl(),
-        tarjeta: new FormControl()
+        tarjeta: new FormControl(),
+        fechaExpiracion: new FormControl()
     });
 
   }
@@ -38,7 +40,9 @@ export class SignupRegisterComponent implements OnInit {
     //this.http.postMethod(form);
     localStorage.setItem('userId', '');
     localStorage.getItem('userId');
-    this.http.createUser(form).subscribe(d => console.log(d));
+    this.http.createUser(form).subscribe(token=>{localStorage.setItem('token',token.token)
+    this.router.navigate(['/user-info']);});
+    
   }
   
   getErrorMessage() {
@@ -46,4 +50,26 @@ export class SignupRegisterComponent implements OnInit {
         this.email.hasError('email') ? 'Correo invalido' :
             '';
   }
+
+ 
+
+
+  private passwordsMatch = (_form: FormGroup): boolean => {
+    if (_form.controls['contrasena'].touched && _form.controls['confirmacion'].touched) {
+        if (_form.value.contrasena === _form.value.confirmacion) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return true;
+}
+/*
+ validarSiNumero(numero){
+    if (!/^([0-9])*$/.test(numero))
+      alert("El valor " + numero + " no es un número");
+  }*/
+
+
+ 
 }

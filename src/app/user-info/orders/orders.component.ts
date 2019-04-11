@@ -8,7 +8,7 @@ import{ OrdersService } from './../../Services/orders.service'
 })
 export class OrdersComponent implements OnInit {
   order_done:any;
-  urlGet="";
+  urlGet="/orden?usuario=1";
   constructor(private http:OrdersService) { }
 
   ngOnInit() {

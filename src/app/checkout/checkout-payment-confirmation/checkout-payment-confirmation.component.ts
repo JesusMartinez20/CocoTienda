@@ -21,10 +21,10 @@ export class CheckoutPaymentConfirmationComponent implements OnInit {
       CVV: new FormControl()
     });
 
-    this.http.url=this.urlG;
+    /*this.http.url=this.urlG;
     this.data=this.http.getMethod().subscribe(d=>{this.info=d;this.datos=this.info.cvv;
       console.log(this.datos);
-    });
+    });*/
 
 
       
@@ -49,7 +49,7 @@ export class CheckoutPaymentConfirmationComponent implements OnInit {
     console.log(this.Payment.value);
     let form = JSON.stringify(this.Payment.value)
     console.log(form);
-    this.http.url=this.urlP;
+    //this.http.url=this.urlP;
     this.http.putMethod(form);
     
     console.log(this.datos);
