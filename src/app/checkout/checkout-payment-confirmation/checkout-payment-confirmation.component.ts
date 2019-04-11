@@ -49,7 +49,7 @@ export class CheckoutPaymentConfirmationComponent implements OnInit {
     console.log(this.Payment.value);
     let form = JSON.stringify(this.Payment.value)
     console.log(form);
-    this.http.url=this.urlP;
+    //this.http.url=this.urlP;
     this.http.putMethod(form);
     
     console.log(this.datos);
