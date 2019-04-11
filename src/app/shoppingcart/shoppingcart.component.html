@@ -2,7 +2,7 @@
   <mat-card-header>
       <mat-card-title>CARRITO</mat-card-title>
   </mat-card-header>
-<mat-card *ngFor="let list of order; let i=index;" >
+<mat-card *ngFor="let list of currentOrders; let i=index;" >
   <mat-card-content style="display:inline-flex;">
     <div style="display:inline-flex; width: 400px;">
     <img src="{{list.img}}">
@@ -24,10 +24,11 @@
 </mat-card>
 
 <div style="display:flex; justify-content:flex-end;">  
-  <div >
+  <div *ngIf="this.visible;">
     <h1 style="display:flex;justify-content:flex-end">{{this.Ttotal}}</h1>
-    <button type="submit" id="buy-button" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
+    <button  type="submit" id="bcomprar" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
   </div>
 </div>
 
 </mat-card>
+
