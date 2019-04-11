@@ -19,31 +19,33 @@
       </div>
     </li>
     <li class="right">
-      <div>
-        <h1 style="font-family: Arial, Helvetica, sans-serif">
-          {{article.productName}}
-        </h1>
-        <p class="thisFont">
-          {{article.productDescription}}
-        </p>  
-      </div>
-      <br><br>
-      <div>
-        <p class="thisFont">
-          Precio:
-          {{article.productPrice}} Cocoins
-        </p>
-        <p class="thisFont">
-          En existencia:
-          {{article.productStock}}
-        </p>
-        <p class="thisFont">
-          <label for="productTotal">Cantidad: </label>
-          <input class="thisFont" name="productTotal" type="number" min="1" max={{article.productStock}} [(ngModel)]="article.productTotal" style="width: 45px"/>
-        </p>
-      </div>
-      <br>
-      <button mat-raised-button type="submit" style="background: #ffcd3c">Comprar</button>
+      <mat-card style="background: #35d0ba">
+        <mat-card-header>
+          <mat-card-title>{{article.productName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card>
+          <mat-card-content>
+            <div>
+              <p>{{article.productDescription}}</p>
+            </div>
+            <div>
+              <p>Precio: {{article.productPrice}} Cocoins</p>
+            </div>
+            <div>
+              <p>En existencia: {{article.productStock}}</p>
+            </div>
+            <div>
+              <label for="productTotal">Cantidad: </label>
+              <input class="thisFont" name="productTotal" type="number" min="1" max={{article.productStock}} [(ngModel)]="article.productTotal" style="width: 45px"/>
+            </div>
+          </mat-card-content>
+        </mat-card>  
+        <div style="display:flex; justify-content:flex-end;">  
+          <div >
+            <button mat-raised-button style="background: #ffcd3c;margin-top: 5px" (click)="buyArticle()" routerLink="/cart">Comprar</button>
+          </div>
+        </div>
+      </mat-card>
     </li>
   </ul>
 </div>
@@ -52,8 +54,8 @@
 <ng-template #adminBlock>
   <ul class="blocks">
     <li class="left">    
-      <form method="post" [formGroup]="articleImages" (ngSubmit)="onSubmit2()" class="product-form">
-        <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
+      <form method="post" [formGroup]="articleImages" (ngSubmit)="imageSubmit()" class="product-form">
+        <!-- <button mat-button type="button" (click)="imgFileInput1.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 1</button>
         <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" required/><br>
 
         <button mat-button type="button" (click)="imgFileInput2.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 2</button>
@@ -66,13 +68,20 @@
         <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput4 formControlName="Img4" required/><br>
           
         <button mat-button type="button" (click)="imgFileInput5.click()" style="background: #35d0ba;margin: 10px">Agregar Imagen 5</button>
-        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br>
+        <input hidden type="file" accept=".jpg, .jpeg, .png" #imgFileInput5 formControlName="Img5" required/><br> -->
+
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img2" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img3" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img4" style="margin: 10px" required/><br>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img5" style="margin: 10px" required/><br>
+
 
         <button mat-button type="submit" style="background: #ffcd3c;margin: 10px">Guardar</button>
       </form>
     </li>
     <li class="right">
-      <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="product-form">
+      <form [formGroup]="articleForm"  class="product-form">
         <mat-form-field class="product-full-width">
           <input matInput placeholder="Nombre del producto" formControlName="Name" required>
         </mat-form-field>
@@ -97,7 +106,8 @@
         </mat-form-field>
 
         <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
-        <button mat-button type="submit" style="background: #ffcd3c">Guardar</button>
+        <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Guardar</button>
+        <button mat-button style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
       </form>
     </li>
   </ul>
