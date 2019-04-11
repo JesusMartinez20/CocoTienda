@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
+  user: boolean = false; //False = Admin | True = Client or Guest
   constructor() { }
 
   ngOnInit() {
