@@ -15,7 +15,7 @@ export class EditUserComponent implements OnInit {
   correo = new FormControl('', [Validators.required, Validators.email]);
 
   urlGetUsers="/usuarios";
-  urlPostUsers="/usuario";
+  urlPutUsers="/usuarios";
 
 
  data:any;
@@ -57,7 +57,6 @@ export class EditUserComponent implements OnInit {
 
 
   info:any;  
-  estados:any;
   /*[]=[
     {id:1,estado:'Jalisco'},
     {id:2,estado:'Michoacsan'},
@@ -68,8 +67,8 @@ export class EditUserComponent implements OnInit {
     console.log(this.EditUser.value);
     let form = JSON.stringify(this.EditUser.value);
     console.log(form);
-    this.http.url = this.urlPostUsers;
-    this.http.postMethod(form);
+    this.http.url = this.urlPutUsers;
+    this.http.putMethod(form);
   }
 
 

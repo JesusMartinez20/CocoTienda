@@ -1,4 +1,4 @@
-<form [formGroup]="EditUser" (ngSubmit)="onSubmit()" *ngFor="let list of data | async">
+<form [formGroup]="EditUser" (ngSubmit)="onSubmit()" *ngIf="data | async as list">
   <mat-card class="example-card">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -12,26 +12,26 @@
         <div style="display:inline-flex;">  
           <div>        
                 <mat-form-field width class="full-width">
-                    <input matInput placeholder="NOMBRE" formControlName="nombre" required [(ngModel)]="list.nombre">
+                    <input matInput placeholder="NOMBRE" formControlName="nombre" required [(ngModel)]="list.Nombre">
                     
                 </mat-form-field>
                 <mat-form-field class="half-width">
-                    <input matInput placeholder="APELLIDO PATERNO" formControlName="apellidoPaterno" required [(ngModel)]="list.apellidoPaterno">
+                    <input matInput placeholder="APELLIDO PATERNO" formControlName="apellidoPaterno" required [(ngModel)]="list.Apellido_paterno">
                 </mat-form-field>
                 <mat-form-field class="half-width">
-                  <input matInput placeholder="APELLIDO MATERNO" formControlName="apellidoMaterno" required [(ngModel)]="list.apellidoMaterno">
+                  <input matInput placeholder="APELLIDO MATERNO" formControlName="apellidoMaterno" required [(ngModel)]="list.Apellido_paterno">
               </mat-form-field>
                 <mat-form-field class="full-width">
-                  <input matInput placeholder="NOMBRE DE USUARIO" formControlName="nombreUsuario" required [(ngModel)]="list.nombreUsuario">
+                  <input matInput placeholder="NOMBRE DE USUARIO" formControlName="nombreUsuario" required [(ngModel)]="list.Nombre_usuario">
               </mat-form-field>
                 <div class="example-container">
                     <mat-form-field>
-                      <input matInput placeholder="CORREO ELECTRONICO" [formControl]="correo" required [(ngModel)]="list.correo"> 
+                      <input matInput placeholder="CORREO ELECTRONICO" [formControl]="correo" required [(ngModel)]="list.Correo"> 
                       <mat-error *ngIf="correo.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                   </div>
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="CONSTRASEÑA" [type]="hide ? 'password' : 'text'" formControlName="contrasena" required [(ngModel)]="list.contrasena">
+                    <input matInput placeholder="CONSTRASEÑA" [type]="hide ? 'password' : 'text'" formControlName="contrasena" required [(ngModel)]="list.Contrasena">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
