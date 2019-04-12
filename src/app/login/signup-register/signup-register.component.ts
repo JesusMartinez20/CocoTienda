@@ -42,7 +42,12 @@ export class SignupRegisterComponent implements OnInit {
     localStorage.getItem('userId');
     this.http.createUser(form).subscribe(token=>{
       localStorage.setItem('token',token.token);
-      console.log(token);
+      if (token.userType === 'Usuario') {
+        localStorage.setItem('admin', 'false');
+      }
+      else {
+        localStorage.setItem('admin', 'true');
+      }
       this.router.navigate(['/user-info']);
     });
     
