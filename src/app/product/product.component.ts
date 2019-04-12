@@ -5,6 +5,15 @@ import { MatSnackBar } from '@angular/material';
 import { PassingDataService } from './../Services/passing-data.service';
 import { ActivatedRoute } from '@angular/router';
 
+export interface article{
+  productName: String,
+  productDescription: String,
+  productPrice: number,
+  productStock: number,
+  productTotal: number,
+  productCategory: String,
+};
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,6 +22,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ProductComponent implements OnInit {
 
+  url;
   urlGet="/prueba/prueba.php";
   urlGetI="";
   urlPut="";
@@ -21,11 +31,11 @@ export class ProductComponent implements OnInit {
   
   constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute) 
   { 
-    this.route.params.subscribe(params=>this.id=params['id']);
+    //this.route.params.subscribe(params=>this.url="/productos?id="+params['id']);
   }
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = true; //False = Admin | True = Client or Guest
+  user: boolean = false; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
@@ -38,8 +48,6 @@ export class ProductComponent implements OnInit {
       Price: new FormControl(),
       Stock: new FormControl(),
       Category: new FormControl(),
-    });
-    this.articleImages = new FormGroup({
       Img1: new FormControl(),
       Img2: new FormControl(),
       Img3: new FormControl(),
@@ -47,13 +55,11 @@ export class ProductComponent implements OnInit {
       Img5: new FormControl()
     });
 
-    this.http.url=this.urlGet;
-    this.article=this.http.getMethod();
-    console.log(this.article);
+    this.http.getMethod(this.url).subscribe(data=>this.article=data);
   }
 
   //imageUrlArray:string[5];
-  imageUrlArray:string[] = [
+  imageUrlArray = [
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
@@ -71,7 +77,7 @@ export class ProductComponent implements OnInit {
   };*/
 
   articleSend:any = {
-    //name: this.article.productName,
+    // name: this.article.productName,
     // quantity: this.article.productTotal,
     // price: this.article.productPrice,
     img: this.imageUrlArray[0],
@@ -85,17 +91,6 @@ export class ProductComponent implements OnInit {
     //console.log(this.articleSend);
     this.data.changeMessage(this.articleSend);
     this.snackBar.open("Articulo agregado al carrito", "Ok", {duration: 3000,});
-  }
-
-  imageSubmit(){
-    console.log(this.articleImages.value);
-    if(this.articleImages.get('Img1')!==null){
-    let form = JSON.stringify(this.articleImages.value)
-    console.log(form);
-    this.http.url=this.urlPut;
-    this.http.putMethod(form);
-    this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
-    }
   }
 
   articleSubmit(){
@@ -113,11 +108,7 @@ export class ProductComponent implements OnInit {
     console.log(this.articleForm.value);
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
-    console.log(this.articleImages.value);
-    let formI = JSON.stringify(this.articleImages.value)
-    console.log(formI);
     this.http.url=this.urlDelete;
     this.http.deleteMethod(form);
-    this.http.deleteMethod(formI);
   }
 }
