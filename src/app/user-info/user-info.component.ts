@@ -10,8 +10,12 @@ export class UserInfoComponent implements OnInit {
 
   user: boolean = false; //False = Admin | True = Client or Guest
   constructor(private router : Router) { 
-    if(!localStorage.getItem('token')){
-      this.router.navigate(['/login']); 
+    console.log("not urferfr"); 
+    console.log(localStorage.getItem('token')); 
+    if((localStorage.getItem('token') === 'null')){
+      console.log("holajsjs"); 
+      this.router.navigate(['/login']);
+
     }
     
 
