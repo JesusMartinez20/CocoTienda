@@ -26,8 +26,18 @@ export class LoginUserLogInComponent implements OnInit {
     let form = JSON.stringify(this.Userlogin.value)
     console.log(form);
     this.http.url=this.urlP;
-    this.http.postMethod(form).subscribe(token=>{localStorage.setItem('token',token.token)
-    this.router.navigate(['/user-info']);});
+    this.http.postMethod(form).subscribe(token=>{
+      localStorage.setItem('token',token.token);
+      console.log(token);
+      console.log(token.userType === 'Usuario')
+      if (token.userType === 'Usuario') {
+        localStorage.setItem('admin', 'false');
+      }
+      else {
+        localStorage.setItem('admin', 'true');
+      }
+      this.router.navigate(['/user-info']);
+    });
      
   }
 

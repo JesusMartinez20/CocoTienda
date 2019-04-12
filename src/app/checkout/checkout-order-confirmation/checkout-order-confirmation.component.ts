@@ -7,6 +7,7 @@ export interface Pedido{
   cantidad: number;
   total: number;
   img: String;
+  ttotals: number;
 };
 
 @Component({
@@ -28,7 +29,12 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
   ped;
   Ttotal;
   ngOnInit() {
-    this.data.currentMessage.subscribe(message=>{this.ped=message;this.pedido=JSON.parse(this.ped);console.log(this.pedido)});
+    this.data.currentMessage.subscribe(message=>{
+      this.ped=message;
+      this.pedido=JSON.parse(this.ped);
+      console.log(this.pedido);
+      this.order.total=this.pedido[0].ttotals;
+    });
     //this.http.url=this.urlGetUserAddress;
     this.http.getMethod().subscribe(d=>{this.userAddress=d;this.address=this.userAddress.fkAddress});
     
@@ -88,6 +94,7 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
   }
 
   makeOrder(){
+    console.log (this.order);
     this.form= JSON.stringify(this.order);
     console.log(this.form);
     this.http.url=this.urlPedido;

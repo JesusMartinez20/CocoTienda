@@ -23,8 +23,11 @@ export class UserComponent implements OnInit {
   //No se si esto este bien xd
   ClickCloseSesion(){
     
-   // localStorage.removeItem('token');
-   localStorage.setItem('token', null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
+    //localStorage.setItem('token', null);
+    //localStorage.setItem('admin', null);
+    console.log('asdad');
     this.router.navigate(['/']);
     
   }

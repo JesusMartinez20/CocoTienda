@@ -10,6 +10,7 @@ export interface Order{
   precio: number;
   img: String;
   stock: number;
+  ttotals: number;
 };
 
 @Component({
@@ -69,6 +70,10 @@ calsubtotal(index: number) {
     0);
     console.log("Total: ", this.numtotal)
     this.Ttotal=this.numtotal;
+    for(this.cont=0; this.cont<ShoppingcartComponent.order.length;this.cont++){
+      ShoppingcartComponent.order[this.cont].ttotals=this.Ttotal;
+    }
+    
   }
 
   passOrder() {

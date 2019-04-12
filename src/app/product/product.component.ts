@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit {
   }
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = true; //False = Admin | True = Client or Guest
+  user: boolean; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
@@ -48,6 +48,15 @@ export class ProductComponent implements OnInit {
   productTotal=1;
 
   ngOnInit() {
+    const isAdmin = localStorage.getItem('admin');
+    console.log(isAdmin);
+    if (isAdmin === 'true') {
+      console.log('aasd');
+      this.user = false;
+    } else {
+      console.log('bbb');
+      this.user = true;
+    }
     this.articleForm = new FormGroup({
       Name: new FormControl(),
       Description: new FormControl(),
