@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  url ="/productos?idCategorias=";
+  url ="/productos?idCategoria=";
   elements:any;
   constructor(private categoria:CategoriesService,private router:ActivatedRoute) { 
     this.router.params.subscribe(params=>this.categoria.URL=this.url+params['id']);
