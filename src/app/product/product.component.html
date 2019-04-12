@@ -19,30 +19,30 @@
         </div>
       </li>
       <li class="right">
-        <mat-card style="background: #35d0ba" *ngFor="let list of article | async">
+        <mat-card style="background: #35d0ba" *ngFor="let list of article">
           <mat-card-header>
-            <mat-card-title>{{list.productName}}</mat-card-title>
+            <mat-card-title>{{list.Nombre}}</mat-card-title>
           </mat-card-header>
           <mat-card> 
             <mat-card-content>
               <div>
-                <p>{{list.productDescription}}</p>
+                <p>{{list.Descripcion}}</p>
               </div>
               <div>
-                <p>Precio: {{list.productPrice}} Cocoins</p>
+                <p>Precio: {{list.Precio}} Cocoins</p>
               </div>
               <div>
-                <p>En existencia: {{list.productStock}}</p>
+                <p>En existencia: {{list.Stock}}</p>
               </div>
               <div>
                 <label for="productTotal">Cantidad: </label>
-                <input class="thisFont" name="productTotal" type="number" min="1" max={{list.productStock}} [(ngModel)]="list.productTotal" style="width: 45px"/>
+                <input class="thisFont" name="productTotal" type="number" min="1" max={{list.Stock}} [(ngModel)]="productTotal" style="width: 45px"/>
               </div>
             </mat-card-content>
           </mat-card>  
           <div style="display:flex; justify-content:flex-end;">  
             <div >
-              <button mat-raised-button style="background: #ffcd3c;margin-top: 5px" (click)="buyArticle()">Comprar</button>
+              <button mat-raised-button style="background: #ffcd3c;margin-top: 5px" (click)="buyArticle()" routerLink="/cart">Comprar</button>
             </div>
           </div>
         </mat-card>

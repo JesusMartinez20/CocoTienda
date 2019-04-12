@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormGroup, FormControl} from '@angular/forms';
-import { EditUserService } from './../Services/edit-user.service'
+import { EditUserService } from './../Services/edit-user.service';
 
 
 @Component({
@@ -49,7 +49,8 @@ export class EditUserComponent implements OnInit {
     });
 
     this.http.url=this.urlGetUsers;
-    this.data=this.http.getMethod().subscribe(d=>this.info=d);
+    this.data=this.http.getMethod().subscribe(d=>{this.info=d;console.log(this.info)});
+
 
   }
 

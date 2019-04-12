@@ -4,7 +4,7 @@ import { PassingDataService } from './../../Services/passing-data.service';
 
 export interface Pedido{
   name: String;
-  quantity: number;
+  cantidad: number;
   total: number;
   img: String;
 };
@@ -26,16 +26,16 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
   urlPostPedido="/checkout/checkout-pedido-post.php";
   address;
   ped;
-  Ttotal=15000;
+  Ttotal;
   ngOnInit() {
-    //this.data.currentMessage.subscribe(message=>{this.ped=message;this.pedido=JSON.parse(this.ped);});
+    this.data.currentMessage.subscribe(message=>{this.ped=message;this.pedido=JSON.parse(this.ped);console.log(this.pedido)});
     //this.http.url=this.urlGetUserAddress;
     this.http.getMethod().subscribe(d=>{this.userAddress=d;this.address=this.userAddress.fkAddress});
     
   }
   
-  //pedido:Pedido[]=[];
-  pedido:any[]=[
+  pedido:any[]=[];
+  /*pedido:any[]=[
     {
       name:"Dron",
       cantidad:6,
@@ -60,7 +60,7 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
       total:4000,
       img:"https://olimpica.vteximg.com.br/arquivos/ids/177568-900-900/Max-Steel-Turbo-Deslizador-Mattel.jpg?v=636782577566470000"
     }
-  ];
+  ];*/
 
   order=
     {

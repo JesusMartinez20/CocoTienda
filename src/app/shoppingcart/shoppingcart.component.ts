@@ -4,10 +4,12 @@ import { ShoppingcartService } from './../Services/shoppingcart.service';
 
 
 export interface Order{
+  total: number;
   name: String;
-  quantity: number;
-  price: number;
+  cantidad: number;
+  precio: number;
   img: String;
+  stock: number;
 };
 
 @Component({
@@ -25,7 +27,7 @@ export class ShoppingcartComponent implements OnInit {
   ped;
   x:number;
   visible: boolean;
-  currentOrders:Order[]=[];
+  currentOrders:any[]=[];
   constructor(private http:ShoppingcartService, private data: PassingDataService) { }
 
   ngOnInit() {
@@ -49,12 +51,13 @@ export class ShoppingcartComponent implements OnInit {
     
 
   }
-  static order:Order[]=[];
+  static order:any[]=[];
 
-calsubtotal(index: number){
-  this.numsubtotal = ShoppingcartComponent.order[index].quantity*ShoppingcartComponent.order[index].price;
-  console.log("Subtotal: ", this.numsubtotal);
+calsubtotal(index: number) {
+  this.numsubtotal = ShoppingcartComponent.order[index].cantidad*ShoppingcartComponent.order[index].precio;
+  console.log("Subtotal: ", this.numsubtotal,ShoppingcartComponent.order[index].cantidad);
   this.subtotal[index]=this.numsubtotal;
+  ShoppingcartComponent.order[index].total=this.subtotal[index];
 }
 
 
@@ -62,13 +65,14 @@ calsubtotal(index: number){
     this.numtotal = ShoppingcartComponent.order.reduce((
       acc,
       obj,
-    ) => acc + (obj.price * obj.quantity),
+    ) => acc + (obj.precio * obj.cantidad),
     0);
     console.log("Total: ", this.numtotal)
     this.Ttotal=this.numtotal;
   }
 
   passOrder() {
+    //ShoppingcartComponent.order[0].total=this.order1[0].total;
     this.data.changeMessage(ShoppingcartComponent.order);
   }
 

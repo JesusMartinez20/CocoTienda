@@ -11,9 +11,9 @@ export class ProductService {
   producto:any;
   constructor(private http: HttpClient) { }
 
-  getMethod(string): Observable<any>{
+  getMethod(url1): Observable<any>{
     const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
-    return this.http.get(environment.serverUrl+this.url, {headers: headers});
+    return this.http.get(environment.serverUrl+url1, {headers: headers});
   }
 
   deleteMethod(form): Observable<any>{

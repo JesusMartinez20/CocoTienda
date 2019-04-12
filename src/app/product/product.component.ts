@@ -4,6 +4,7 @@ import { ProductService } from './../Services/product.service';
 import { MatSnackBar } from '@angular/material';
 import { PassingDataService } from './../Services/passing-data.service';
 import { ActivatedRoute } from '@angular/router';
+import { identifierModuleUrl } from '@angular/compiler';
 
 export interface article{
   productName: String,
@@ -23,7 +24,7 @@ export interface article{
 export class ProductComponent implements OnInit {
 
   url;
-  urlGet="/prueba/prueba.php";
+  urlGet="/productos";
   urlGetI="";
   urlPut="";
   urlDelete="";
@@ -31,15 +32,20 @@ export class ProductComponent implements OnInit {
   
   constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute) 
   { 
-    //this.route.params.subscribe(params=>this.url="/productos?id="+params['id']);
+    this.route.params.subscribe(params=>this.url="/productos?id="+params['id']);
   }
 
   @ViewChild('slideshow') slideshow: any;
-  user: boolean = false; //False = Admin | True = Client or Guest
+  user: boolean = true; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
   article:any;
+  nom;
+  pre;
+  stock;
+  Total=15000;
+  productTotal=1;
 
   ngOnInit() {
     this.articleForm = new FormGroup({
@@ -55,7 +61,16 @@ export class ProductComponent implements OnInit {
       Img5: new FormControl()
     });
 
-    this.http.getMethod(this.url).subscribe(data=>this.article=data);
+
+    this.http.getMethod(this.url).subscribe(data=>{
+      this.article=data;console.log(this.article);
+      this.articleSend.name=this.article[0].Nombre;
+      this.articleSend.precio=this.article[0].Precio;
+      this.articleSend.producto=this.article[0].ID_Producto;
+      this.articleSend.stock=this.article[0].Stock;
+      console.error(data);
+    });
+    
   }
 
   //imageUrlArray:string[5];
@@ -77,9 +92,12 @@ export class ProductComponent implements OnInit {
   };*/
 
   articleSend:any = {
-    // name: this.article.productName,
-    // quantity: this.article.productTotal,
-    // price: this.article.productPrice,
+    total:null,
+     producto: null,
+     name: this.nom,
+     cantidad:this.productTotal,
+     precio: this.pre,
+     stock: this.stock,
     img: this.imageUrlArray[0],
   }
 
@@ -88,7 +106,8 @@ export class ProductComponent implements OnInit {
   ];
 
   buyArticle(){
-    //console.log(this.articleSend);
+    this.articleSend.cantidad=this.productTotal;
+    console.log(this.articleSend);
     this.data.changeMessage(this.articleSend);
     this.snackBar.open("Articulo agregado al carrito", "Ok", {duration: 3000,});
   }
