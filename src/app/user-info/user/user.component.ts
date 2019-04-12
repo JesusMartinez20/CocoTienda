@@ -19,6 +19,14 @@ export class UserComponent implements OnInit {
     
 
   }
+
+  //No se si esto este bien xd
+  ClickCloseSesion(){
+    localStorage.removeItem('token');
+  }
+
+
+
   /*user_data:any[]=[
     {
       nombre:"IsmzxZXael",

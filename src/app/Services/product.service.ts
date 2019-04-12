@@ -11,8 +11,7 @@ export class ProductService {
   producto:any;
   constructor(private http: HttpClient) { }
 
-  getMethod(): Observable<any>{
-    return this.producto=this.http.get(environment.serverUrl+this.url);
+  getMethod(string): Observable<any>{
     const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
     return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
