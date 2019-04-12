@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../Services/user.service'
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -9,7 +9,7 @@ import { UserService } from './../../Services/user.service'
 export class UserComponent implements OnInit {
   user_data:any;
   urlGet="/usuarios";
-  constructor(private http:UserService) { }
+  constructor(private http:UserService, private router : Router) { }
 
   ngOnInit() {
 
@@ -22,7 +22,11 @@ export class UserComponent implements OnInit {
 
   //No se si esto este bien xd
   ClickCloseSesion(){
-    localStorage.removeItem('token');
+    
+   // localStorage.removeItem('token');
+   localStorage.setItem('token', null);
+    this.router.navigate(['/']);
+    
   }
 
 

@@ -49,9 +49,8 @@ export class EditUserComponent implements OnInit {
     });
 
     this.http.url=this.urlGetUsers;
-    this.data=this.http.getMethod().subscribe(d=>{this.info=d;console.log(this.info)});
-
-
+    this.data=this.http.getMethod();
+    this.data.subscribe(d=>this.info=d);
   }
 
 
@@ -69,7 +68,7 @@ export class EditUserComponent implements OnInit {
     let form = JSON.stringify(this.EditUser.value);
     console.log(form);
     this.http.url = this.urlPutUsers;
-    this.http.putMethod(form);
+    this.http.putMethod(form).subscribe(d => {});
   }
 
 
