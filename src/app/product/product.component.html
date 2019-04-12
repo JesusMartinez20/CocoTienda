@@ -65,28 +65,25 @@
         </form>
       </li> -->
       <li class="right">
-        <form [formGroup]="articleForm"  class="product-form" >
+        <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article">
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Nombre del producto" formControlName="Name" required>
+            <input matInput placeholder="Nombre del producto" value="{{list.Nombre}}" formControlName="Name" required>
           </mat-form-field>
         
           <mat-form-field class="product-full-width">
-            <textarea matInput placeholder="Descripcion" formControlName="Description" required></textarea>
+            <textarea matInput placeholder="Descripcion" formControlName="Description" value="{{list.Descripcion}}" required></textarea>
           </mat-form-field>
   
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Precio" type="number" formControlName="Price"  required>
+            <input matInput placeholder="Precio" type="number" formControlName="Price" value="{{list.Precio}}" required>
           </mat-form-field>
   
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="En existencia" type="number" formControlName="Stock" required>
+            <input matInput placeholder="En existencia" type="number" formControlName="Stock" value="{{list.Stock}}" required>
           </mat-form-field>
   
           <mat-form-field class="product-full-width">
-            <mat-label>Categoria</mat-label>
-            <mat-select formControlName="Category" required>
-              <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
-            </mat-select>
+            <input matInput placeholder="Categoria" formControlName="Category" value="{{list.Category}}" required>
           </mat-form-field>
           
           <mat-form-field class="product-full-width">

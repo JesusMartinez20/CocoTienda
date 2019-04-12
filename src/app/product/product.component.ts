@@ -23,11 +23,7 @@ export interface article{
 
 export class ProductComponent implements OnInit {
 
-  url;
-  urlGet="/productos";
-  urlGetI="";
-  urlPut="";
-  urlDelete="";
+  url="/productos";
   id: number;
   
   constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute) 
@@ -44,17 +40,15 @@ export class ProductComponent implements OnInit {
   nom;
   pre;
   stock;
-  Total=15000;
+  Total;
   productTotal=1;
 
   ngOnInit() {
     const isAdmin = localStorage.getItem('admin');
     console.log(isAdmin);
     if (isAdmin === 'true') {
-      console.log('aasd');
       this.user = false;
     } else {
-      console.log('bbb');
       this.user = true;
     }
     this.articleForm = new FormGroup({
@@ -70,7 +64,6 @@ export class ProductComponent implements OnInit {
       Img5: new FormControl()
     });
 
-
     this.http.getMethod(this.url).subscribe(data=>{
       this.article=data;console.log(this.article);
       this.articleSend.name=this.article[0].Nombre;
@@ -78,8 +71,7 @@ export class ProductComponent implements OnInit {
       this.articleSend.producto=this.article[0].ID_Producto;
       this.articleSend.stock=this.article[0].Stock;
       console.error(data);
-    });
-    
+    });    
   }
 
   //imageUrlArray:string[5];
@@ -110,10 +102,6 @@ export class ProductComponent implements OnInit {
     img: this.imageUrlArray[0],
   }
 
-  categories: string[] = [
-    'Drones', 'Muñecas', 'Pelotas', 'Figuras de acción', 'Carros'
-  ];
-
   buyArticle(){
     this.articleSend.cantidad=this.productTotal;
     console.log(this.articleSend);
@@ -126,7 +114,7 @@ export class ProductComponent implements OnInit {
     if(this.articleForm.get('Name')!==null){
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
-    this.http.url=this.urlPut;
+    this.http.url=this.url;
     this.http.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
     }
@@ -136,7 +124,8 @@ export class ProductComponent implements OnInit {
     console.log(this.articleForm.value);
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
-    this.http.url=this.urlDelete;
+    this.http.url=this.url;
     this.http.deleteMethod(form);
+    this.snackBar.open("Producto eliminado", "Ok", {duration: 2000,});
   }
 }

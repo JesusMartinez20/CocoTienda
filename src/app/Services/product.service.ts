@@ -17,13 +17,10 @@ export class ProductService {
   }
 
   deleteMethod(form): Observable<any>{
-    //return this.producto=this.http.delete(environment.serverUrl+this.url,form);
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
-    return this.http.delete(environment.serverUrl+this.url,{headers: headers});
+    return this.producto=this.http.delete(environment.serverUrl+this.url,form);
   }
 
   putMethod(form): Observable<any>{
-    //return this.producto=this.http.put(environment.serverUrl+this.url,form);
     const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
     return this.http.put(environment.serverUrl+this.url, form, {headers: headers});
   }
