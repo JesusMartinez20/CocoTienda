@@ -72,7 +72,6 @@ calsubtotal(index: number){
     this.data.changeMessage(ShoppingcartComponent.order);
   }
 
-<<<<<<< HEAD
   delete(){/*
     console.log(this.order);
     let form = JSON.stringify(this.order)
@@ -85,9 +84,6 @@ calsubtotal(index: number){
     }else{
       this.order.splice(i,1,{name:this.order1.name})
     }*/
-=======
-  delete(index: number){
->>>>>>> f7a9e3d5bc7b7afa5ef19d1bfc4eb59b13022ef5
 
 
       if (ShoppingcartComponent.order[index]) {
