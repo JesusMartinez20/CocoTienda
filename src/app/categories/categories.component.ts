@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../Services/categories.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -10,8 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoriesComponent implements OnInit {
   url ="/productos?idCategoria=";
   elements:any;
-  constructor(private categoria:CategoriesService,private router:ActivatedRoute) { 
-    this.router.params.subscribe(params=>this.categoria.URL=this.url+params['id']);
+  constructor(private categoria:CategoriesService,private route:ActivatedRoute,private router:Router) { 
+    this.route.params.subscribe(params=>{this.categoria.URL=this.url+params['id'];
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;});
   }
 
   ngOnInit() {

@@ -12,7 +12,7 @@ export class UserInfoComponent implements OnInit {
   constructor(private router : Router) { 
     console.log("not urferfr"); 
     console.log(localStorage.getItem('token')); 
-    if((localStorage.getItem('token') === 'null')){
+    if(!(localStorage.getItem('token'))){
       console.log("holajsjs"); 
       this.router.navigate(['/login']);
 
