@@ -19,30 +19,30 @@
       </div>
     </li>
     <li class="right">
-      <mat-card style="background: #35d0ba">
+      <mat-card style="background: #35d0ba" *ngFor="let list of article | async">
         <mat-card-header>
-          <mat-card-title>{{article.productName}}</mat-card-title>
+          <mat-card-title>{{list.productName}}</mat-card-title>
         </mat-card-header>
-        <mat-card>
+        <mat-card> 
           <mat-card-content>
             <div>
-              <p>{{article.productDescription}}</p>
+              <p>{{list.productDescription}}</p>
             </div>
             <div>
-              <p>Precio: {{article.productPrice}} Cocoins</p>
+              <p>Precio: {{list.productPrice}} Cocoins</p>
             </div>
             <div>
-              <p>En existencia: {{article.productStock}}</p>
+              <p>En existencia: {{list.productStock}}</p>
             </div>
             <div>
               <label for="productTotal">Cantidad: </label>
-              <input class="thisFont" name="productTotal" type="number" min="1" max={{article.productStock}} [(ngModel)]="article.productTotal" style="width: 45px"/>
+              <input class="thisFont" name="productTotal" type="number" min="1" max={{list.productStock}} [(ngModel)]="list.productTotal" style="width: 45px"/>
             </div>
           </mat-card-content>
         </mat-card>  
         <div style="display:flex; justify-content:flex-end;">  
           <div >
-            <button mat-raised-button style="background: #ffcd3c;margin-top: 5px" (click)="buyArticle()" routerLink="/cart">Comprar</button>
+            <button mat-raised-button style="background: #ffcd3c;margin-top: 5px" (click)="buyArticle()">Comprar</button>
           </div>
         </div>
       </mat-card>
@@ -81,21 +81,21 @@
       </form>
     </li>
     <li class="right">
-      <form [formGroup]="articleForm"  class="product-form">
+      <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article | async">
         <mat-form-field class="product-full-width">
-          <input matInput placeholder="Nombre del producto" formControlName="Name" required>
+          <input matInput placeholder="Nombre del producto" formControlName="Name" value="{{list.productName}}" required>
         </mat-form-field>
       
         <mat-form-field class="product-full-width">
-          <textarea matInput placeholder="Descripcion" formControlName="Description" required></textarea>
+          <textarea matInput placeholder="Descripcion" formControlName="Description" value="{{list.productDescription}}" required></textarea>
         </mat-form-field>
 
         <mat-form-field class="product-full-width">
-          <input matInput placeholder="Precio" type="number" formControlName="Price" required>
+          <input matInput placeholder="Precio" type="number" formControlName="Price" value="{{list.productPrice}}" required>
         </mat-form-field>
 
         <mat-form-field class="product-full-width">
-          <input matInput placeholder="En existencia" type="number" formControlName="Stock" required>
+          <input matInput placeholder="En existencia" type="number" formControlName="Stock" value="{{list.productStock}}" required>
         </mat-form-field>
 
         <mat-form-field class="product-full-width">

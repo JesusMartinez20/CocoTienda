@@ -3,6 +3,7 @@ import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
 import { ProductService } from './../Services/product.service';
 import { MatSnackBar } from '@angular/material';
 import { PassingDataService } from './../Services/passing-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -12,72 +13,67 @@ import { PassingDataService } from './../Services/passing-data.service';
 
 export class ProductComponent implements OnInit {
 
-  urlGet="";
+  urlGet="/prueba/prueba.php";
   urlGetI="";
   urlPut="";
   urlDelete="";
-
-  constructor(private producto:ProductService, private snackBar: MatSnackBar, private data: PassingDataService) { }
+  id: number;
+  
+  constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute) 
+  { 
+    this.route.params.subscribe(params=>this.id=params['id']);
+  }
 
   @ViewChild('slideshow') slideshow: any;
   user: boolean = true; //False = Admin | True = Client or Guest
 
   articleForm : FormGroup;
   articleImages : FormGroup;
+  article:any;
 
   ngOnInit() {
-    this.producto.url=this.urlGet;
-    this.article=this.producto.getMethod();
-
-    this.producto.url=this.urlGetI;
-    //this.imageUrlArray=this.producto.getMethod();
-
     this.articleForm = new FormGroup({
       Name: new FormControl(),
       Description: new FormControl(),
       Price: new FormControl(),
       Stock: new FormControl(),
       Category: new FormControl(),
-    })
+    });
     this.articleImages = new FormGroup({
       Img1: new FormControl(),
       Img2: new FormControl(),
       Img3: new FormControl(),
       Img4: new FormControl(),
       Img5: new FormControl()
-    })
-    this.articleForm.setValue({
-      Name: this.article.productName, 
-      Description: this.article.productDescription, 
-      Price: this.article.productPrice,
-      Stock: this.article.productStock,
-      Category: this.article.productCategory
-    })
+    });
+
+    this.http.url=this.urlGet;
+    this.article=this.http.getMethod();
+    console.log(this.article);
   }
-  
-  imageUrlArray:string[5];
-  /*imageUrlArray:string[] = [
+
+  //imageUrlArray:string[5];
+  imageUrlArray:string[] = [
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg",
     "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg"
-  ];*/
+  ];
 
-  article:any;
   /*article:any = {
-    productName: 'Articulo de prueba', 
-    productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg', 
-    productPrice: '2000', 
+    productName: 'Articulo de prueba',
+    productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg',
+    productPrice: '2000',
     productStock: '10',
     productTotal: '1',
     productCategory: 'Drones',
   };*/
-  
+
   articleSend:any = {
-    name: this.article.productName,
-    quantity: this.article.productTotal,
-    price: this.article.productPrice,
+    //name: this.article.productName,
+    // quantity: this.article.productTotal,
+    // price: this.article.productPrice,
     img: this.imageUrlArray[0],
   }
 
@@ -86,8 +82,9 @@ export class ProductComponent implements OnInit {
   ];
 
   buyArticle(){
-    console.log(this.articleSend);
+    //console.log(this.articleSend);
     this.data.changeMessage(this.articleSend);
+    this.snackBar.open("Articulo agregado al carrito", "Ok", {duration: 3000,});
   }
 
   imageSubmit(){
@@ -95,8 +92,8 @@ export class ProductComponent implements OnInit {
     if(this.articleImages.get('Img1')!==null){
     let form = JSON.stringify(this.articleImages.value)
     console.log(form);
-    this.producto.url=this.urlPut;
-    this.producto.putMethod(form);
+    this.http.url=this.urlPut;
+    this.http.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
     }
   }
@@ -106,8 +103,8 @@ export class ProductComponent implements OnInit {
     if(this.articleForm.get('Name')!==null){
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
-    this.producto.url=this.urlPut;
-    this.producto.putMethod(form);
+    this.http.url=this.urlPut;
+    this.http.putMethod(form);
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
     }
   }
@@ -119,8 +116,8 @@ export class ProductComponent implements OnInit {
     console.log(this.articleImages.value);
     let formI = JSON.stringify(this.articleImages.value)
     console.log(formI);
-    this.producto.url=this.urlDelete;
-    this.producto.deleteMethod(form);
-    this.producto.deleteMethod(formI);
+    this.http.url=this.urlDelete;
+    this.http.deleteMethod(form);
+    this.http.deleteMethod(formI);
   }
 }

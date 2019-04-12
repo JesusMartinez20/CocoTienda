@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +11,21 @@ export class ProductService {
   producto:any;
   constructor(private http: HttpClient) { }
 
-  // getMethod(){
-  //   return this.http.get(environment.serverUrl+this.url);
-  // }
-
-  // deleteMethod(form){
-  //   return this.http.delete(environment.serverUrl+this.url,form);
-  // }
-
-  // putMethod(form){
-  //   return this.http.put(environment.serverUrl+this.url,form);
-  // }
-
-  getMethod(){
+  getMethod(): Observable<any>{
     return this.producto=this.http.get(environment.serverUrl+this.url);
+    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
 
-  deleteMethod(form){
-    return this.producto=this.http.delete(environment.serverUrl+this.url,form);
+  deleteMethod(form): Observable<any>{
+    //return this.producto=this.http.delete(environment.serverUrl+this.url,form);
+    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    return this.http.delete(environment.serverUrl+this.url,{headers: headers});
   }
 
-  putMethod(form){
-    return this.producto=this.http.put(environment.serverUrl+this.url,form);
+  putMethod(form): Observable<any>{
+    //return this.producto=this.http.put(environment.serverUrl+this.url,form);
+    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    return this.http.put(environment.serverUrl+this.url, form, {headers: headers});
   }
 }
