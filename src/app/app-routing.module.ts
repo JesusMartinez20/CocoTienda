@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'categories/:id', component: CategoriesComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'product', component: ProductComponent },
+  { path: 'product/:id', component: ProductComponent },
   {path: '**', redirectTo: ''}
 
 ];
