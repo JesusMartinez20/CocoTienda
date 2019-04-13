@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
 
     this.http.url=this.urlGet;
     this.user_data = this.http.getMethod();
+    console.log(this.user_data); 
     
 
   }

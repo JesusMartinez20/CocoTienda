@@ -28,6 +28,7 @@ export class LoginUserLogInComponent implements OnInit {
     this.http.url=this.urlP;
     this.http.postMethod(form).subscribe(token=>{
       localStorage.setItem('token',token.token);
+      localStorage.setItem('userID',token.id);
       console.log(token);
       console.log(token.userType === 'Usuario')
       if (token.userType === 'Usuario') {

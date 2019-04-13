@@ -16,7 +16,7 @@ export class OrdersComponent implements OnInit {
 
     this.http.url=this.urlGet;
     this.order_done=this.http.getMethod();
-
+    this.order_done.subscribe(d => console.log(d)); 
 
   }
   /*order_done:any[]=[

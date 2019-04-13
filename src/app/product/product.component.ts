@@ -70,18 +70,19 @@ export class ProductComponent implements OnInit {
       this.articleSend.precio=this.article[0].Precio;
       this.articleSend.producto=this.article[0].ID_Producto;
       this.articleSend.stock=this.article[0].Stock;
+      this.articleSend.img=this.article[0].img1; 
+      this.imageUrlArray.push(this.article[0].img1); 
+      this.imageUrlArray.push(this.article[0].img2); 
+      this.imageUrlArray.push(this.article[0].img3); 
+      this.imageUrlArray.push(this.article[0].img4); 
+      this.imageUrlArray.push(this.article[0].img5); 
+
       console.error(data);
     });    
   }
 
-  //imageUrlArray:string[5];
-  imageUrlArray = [
-    "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-17.jpg",
-    "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-65.jpg",
-    "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-59.jpg",
-    "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-28.jpg",
-    "https://nextshark-vxdsockgvw3ki.stackpathdns.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-62.jpg"
-  ];
+  imageUrlArray=[];
+  
 
   /*article:any = {
     productName: 'Articulo de prueba',

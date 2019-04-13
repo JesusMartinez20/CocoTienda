@@ -7,10 +7,25 @@
 
     <mat-card class="example-card-2" >
       <mat-card-content>
-      <h3 mat-line>NUMERO DE ORDEN</h3>
-        <p mat-line>
-          <span>{{list.ID}}</span>
-        </p>
+
+
+        <div style="display:inline-flex;width:50%;" >
+          <div>
+            <h3 mat-line>NUMERO DE ORDEN</h3>
+            <p mat-line>
+              <span>{{list.ID}}</span>
+            </p>
+          </div>
+        </div> 
+        <div style="display:inline-flex;" >
+          <div>
+            <h3 mat-line-end>Status</h3>
+            <p mat-line-end>
+              <span>{{list.Status}}</span>
+            </p>
+          </div>
+        </div>  
+
         <mat-divider></mat-divider>
         <div style="display:inline-flex;width:50%;" >
           <div>

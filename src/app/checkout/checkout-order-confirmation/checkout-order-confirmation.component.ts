@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckoutService } from './../../Services/checkout.service';
 import { PassingDataService } from './../../Services/passing-data.service';
+import { Router } from '@angular/router';
 
 export interface Pedido{
   name: String;
@@ -17,11 +18,21 @@ export interface Pedido{
 })
 export class CheckoutOrderConfirmationComponent implements OnInit {
   id;
-  userId=1;
+  userId;
   userAddress;
   urlOrden="/pedido";
   urlPedido="/orden"
-  constructor(private http:CheckoutService,private data: PassingDataService) { }
+  constructor(private http:CheckoutService,private data: PassingDataService,private router : Router) {
+    this.userId=Number.parseInt(localStorage.getItem('userID'));
+    this.order=
+  {
+    total:this.Ttotal,
+    estado:"Pedido",
+    direccion:2,
+    usuario:this.userId
+
+  }
+   }
   urlGetUserAddress="/checkout/checkout-order.php?userId="+this.userId;
   urlPostOrder="/checkout/checkout-order-post.php";
   urlPostPedido="/checkout/checkout-pedido-post.php";
@@ -37,6 +48,7 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
     });
     //this.http.url=this.urlGetUserAddress;
     this.http.getMethod().subscribe(d=>{this.userAddress=d;this.address=this.userAddress.fkAddress});
+    
     
   }
   
@@ -68,14 +80,9 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
     }
   ];*/
 
-  order=
-    {
-      total:this.Ttotal,
-      estado:"Pedido",
-      direccion:1,
-      usuario:1
+  order;
+  home;
 
-    }
   
   
   form;
@@ -91,6 +98,9 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
       this.http.url=this.urlOrden;
       this.http.postMethod(this.form).subscribe(r => console.log(r));
     });
+    if(this.home!=null){
+      this.router.navigate(['/']);
+    }
   }
 
   makeOrder(){
@@ -98,7 +108,7 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
     this.form= JSON.stringify(this.order);
     console.log(this.form);
     this.http.url=this.urlPedido;
-    return this.http.postMethod(this.form);
+    return this.home= this.http.postMethod(this.form);
   }
 
 }
