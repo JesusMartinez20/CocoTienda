@@ -46,6 +46,9 @@ export class EditUserComponent implements OnInit {
       nombreUsuario: new FormControl(),
       correo: this.correo,
       contrasena: new FormControl(),
+      direccion: new FormControl(),
+      CP: new FormControl(),
+      municipio : new FormControl()
     });
 
     this.http.url=this.urlGetUsers;
