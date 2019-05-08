@@ -50,7 +50,7 @@ export class EditUserComponent implements OnInit {
       CP: new FormControl(),
       municipio : new FormControl()
     });
-
+    console.log("olaasdasdasd"+this.data);
     this.http.url=this.urlGetUsers;
     this.data=this.http.getMethod();
     this.data.subscribe(d=>this.info=d);
