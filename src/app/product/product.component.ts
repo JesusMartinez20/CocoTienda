@@ -3,8 +3,9 @@ import {FormGroup, FormControl, NgModelGroup} from '@angular/forms';
 import { ProductService } from './../Services/product.service';
 import { MatSnackBar } from '@angular/material';
 import { PassingDataService } from './../Services/passing-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 export interface article{
   productName: String,
@@ -26,7 +27,7 @@ export class ProductComponent implements OnInit {
   url="/productos";
   id: number;
   
-  constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute) 
+  constructor(private http:ProductService, private snackBar: MatSnackBar, private data: PassingDataService, private route:ActivatedRoute,private router:Router) 
   { 
     this.route.params.subscribe(params=>this.url="/productos?id="+params['id']);
   }
@@ -104,10 +105,16 @@ export class ProductComponent implements OnInit {
   }
 
   buyArticle(){
+    console.log(this.articleSend.stock);
+    if(this.productTotal>this.articleSend.stock){
+      this.snackBar.open("La cantidad ha excedido el stock", "Ok", {duration: 3000,});
+      return;
+    }
     this.articleSend.cantidad=this.productTotal;
     console.log(this.articleSend);
     this.data.changeMessage(this.articleSend);
     this.snackBar.open("Articulo agregado al carrito", "Ok", {duration: 3000,});
+    this.router.navigate(["/cart"]);
   }
 
   articleSubmit(){
