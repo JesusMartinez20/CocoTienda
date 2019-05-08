@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://192.168.137.1:6543',
+  serverUrl: 'http://192.168.7.214:6543',
   dataG: '',
 };
 
