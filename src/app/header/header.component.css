@@ -9,7 +9,7 @@
 }
 
 .space-evenly{
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: baseline;
 }
 
@@ -23,7 +23,8 @@ mat-toolbar {
     left: 0px;
     right: 0px;
     z-index: 3;
-    height: 150px;
+    height: 20%;
+    min-height: 55px;
 }
 
 a{
@@ -31,8 +32,8 @@ a{
 }
 
 img{
-    width: 395px;
-    height: 145px;
+    width: 90%;
+    height: 33%;
     justify-content: center;
     display: flex;   
 }

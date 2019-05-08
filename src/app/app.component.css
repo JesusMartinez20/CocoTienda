@@ -10,8 +10,21 @@
 }
 
 .router-outlet{
-    padding-left: 2px;
-    padding-right: 2px;
-    width: 100%;
+    width: 85%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
+
+.asideCool{
+    width:15%;
+    min-width: 175px;
+    background-color: #ffcd3c;
+}
+
+@media only screen and (max-width: 375px) {
+    .asideCool {
+        width:30%;
+        background-color: #ffcd3c;
+    }
+  }
 
