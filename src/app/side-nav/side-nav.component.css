@@ -1,6 +1,7 @@
 button{
     display: list-item;
-    width: 180px;
+    width: 100%;
+    height: fit-content;
     padding: 5%
 }
 

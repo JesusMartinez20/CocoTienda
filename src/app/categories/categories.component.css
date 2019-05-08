@@ -3,6 +3,8 @@ mat-card{
     position: relative;
     float: left;
     padding: 20px, 20px;
+    width: 300px;
+    height: 430px;
     max-width: 275px;
     margin: 30px;
     margin-top: 10px;
