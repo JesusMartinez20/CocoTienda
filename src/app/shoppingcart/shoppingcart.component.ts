@@ -28,6 +28,7 @@ export class ShoppingcartComponent implements OnInit {
   ped;
   x:number;
   visible: boolean;
+  repetido: boolean;///Nuevo
   currentOrders:any[]=[];
   constructor(private http:ShoppingcartService, private data: PassingDataService) { }
 
@@ -37,8 +38,19 @@ export class ShoppingcartComponent implements OnInit {
     console.log(this.order1);
 
     if(this.order1.name!=null){
-      this.agregar();
-      this.caltotal();
+      for(this.cont=0; this.cont<ShoppingcartComponent.order.length;this.cont++){///Nuevo
+        if (this.order1.name==ShoppingcartComponent.order[this.cont].name){
+            this.repetido=true;
+            ShoppingcartComponent.order[this.cont].cantidad+=this.order1.cantidad;
+        }else{
+          this.repetido=false;
+        } 
+      }
+      
+      if(!this.repetido){
+        this.agregar();
+        this.caltotal();
+      }
       for(this.cont=0; this.cont<ShoppingcartComponent.order.length;this.cont++){
         this.calsubtotal(this.cont);
       }
@@ -53,6 +65,7 @@ export class ShoppingcartComponent implements OnInit {
 
   }
   static order:any[]=[];
+  static order2:any[]=[];///Nuevo
 
 calsubtotal(index: number) {
   this.numsubtotal = ShoppingcartComponent.order[index].cantidad*ShoppingcartComponent.order[index].precio;
@@ -79,6 +92,7 @@ calsubtotal(index: number) {
   passOrder() {
     //ShoppingcartComponent.order[0].total=this.order1[0].total;
     this.data.changeMessage(ShoppingcartComponent.order);
+    ShoppingcartComponent.order=ShoppingcartComponent.order2;
   }
 
   delete(index:number){/*
@@ -108,7 +122,7 @@ calsubtotal(index: number) {
   agregar(){
     console.log(ShoppingcartComponent.order);
     ShoppingcartComponent.order.push(this.order1);
-        
+    this.data.changeMessage(ShoppingcartComponent.order2); ///Nuevo    
   }
 
 
