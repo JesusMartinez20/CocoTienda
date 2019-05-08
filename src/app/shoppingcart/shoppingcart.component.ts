@@ -43,8 +43,9 @@ export class ShoppingcartComponent implements OnInit {
         if (this.order1.name==ShoppingcartComponent.order[this.cont].name){
             this.repetido=true;
             ShoppingcartComponent.order[this.cont].cantidad+=this.order1.cantidad;
-        }else{
-          this.repetido=false;
+            if(ShoppingcartComponent.order[this.cont].cantidad>ShoppingcartComponent.order[this.cont].stock){
+              ShoppingcartComponent.order[this.cont].cantidad=ShoppingcartComponent.order[this.cont].stock; 
+            }
         } 
       }
       
@@ -52,6 +53,7 @@ export class ShoppingcartComponent implements OnInit {
         this.agregar();
         this.caltotal();
       }
+      this.repetido=false;
       for(this.cont=0; this.cont<ShoppingcartComponent.order.length;this.cont++){
         this.calsubtotal(this.cont);
       }
