@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PassingDataService } from './../Services/passing-data.service';
 import { ShoppingcartService } from './../Services/shoppingcart.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 
 export interface Order{
@@ -30,7 +32,7 @@ export class ShoppingcartComponent implements OnInit {
   visible: boolean;
   repetido: boolean;///Nuevo
   currentOrders:any[]=[];
-  constructor(private http:ShoppingcartService, private data: PassingDataService) { }
+  constructor(private http:ShoppingcartService, private data: PassingDataService, private snackBar:MatSnackBar, private router:Router) { }
 
   ngOnInit() {
     this.currentOrders = ShoppingcartComponent.order;
@@ -91,8 +93,16 @@ calsubtotal(index: number) {
 
   passOrder() {
     //ShoppingcartComponent.order[0].total=this.order1[0].total;
+    for( let i=0;i<this.currentOrders.length;i++){
+      if(this.currentOrders[i].stock<this.currentOrders[i].cantidad){
+        this.snackBar.open("Se ha excedido la cantidad del stock en algún producto", "Ok", {duration: 2000});
+        return;
+      }
+    }
+  
     this.data.changeMessage(ShoppingcartComponent.order);
     ShoppingcartComponent.order=ShoppingcartComponent.order2;
+    this.router.navigate(["/checkout"])
   }
 
   delete(index:number){/*
