@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
 import { Router } from '@angular/router'
+
 @Component({
   selector: 'app-login-user-log-in',
   templateUrl: './login-user-log-in.component.html',
@@ -33,11 +34,18 @@ export class LoginUserLogInComponent implements OnInit {
       console.log(token.userType === 'Usuario')
       if (token.userType === 'Usuario') {
         localStorage.setItem('admin', 'false');
+
       }
       else {
         localStorage.setItem('admin', 'true');
       }
-      this.router.navigate(['/user-info']);
+      if(localStorage.getItem('source')=='cart'){
+        localStorage.removeItem('source'); 
+        this.router.navigate(['/cart']);
+      }else{
+        this.router.navigate(['/user-info']);
+      }
+      
     });
      
   }
