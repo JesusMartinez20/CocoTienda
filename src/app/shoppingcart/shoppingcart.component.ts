@@ -94,6 +94,16 @@ calsubtotal(index: number) {
 
   passOrder() {
     //ShoppingcartComponent.order[0].total=this.order1[0].total;
+    for( let i=0;i<this.currentOrders.length;i++){
+      if(this.currentOrders[i].stock<this.currentOrders[i].cantidad){
+        this.snackBar.open("Se ha excedido la cantidad del stock en algún producto", "Ok", {duration: 2000});
+        return;
+      }
+    }
+  
+    this.data.changeMessage(ShoppingcartComponent.order);
+    ShoppingcartComponent.order=ShoppingcartComponent.order2;
+    this.router.navigate(["/checkout"])
     if(!(localStorage.getItem('token'))){
       console.log("Debo iniciar sesion"); 
       localStorage.setItem('source', 'cart');
