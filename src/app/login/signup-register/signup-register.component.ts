@@ -72,6 +72,18 @@ export class SignupRegisterComponent implements OnInit {
     }
     return true;
 }
+
+private validCP = (_form: FormGroup): boolean => {
+  if (_form.controls['CP'].touched) {
+      if (_form.value.CP > 1000 && _form.value.CP < 99999) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+  return true;
+}
+
 /*
  validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
