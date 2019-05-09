@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Validators, FormGroup, FormControl} from '@angular/forms';
 import { EditUserService } from './../Services/edit-user.service';
 import { Router } from '@angular/router';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
 
 
 @Component({
@@ -49,17 +50,18 @@ export class EditUserComponent implements OnInit {
       contrasena: new FormControl(),
       direccion: new FormControl(),
       CP: new FormControl(),
-      municipio : new FormControl()
+      municipio : new FormControl(),
+      confcontrasena:new FormControl()
     });
-    console.log("olaasdasdasd"+this.data);
+   
     this.http.url=this.urlGetUsers;
     this.data=this.http.getMethod();
-    this.data.subscribe(d=>this.info=d);
+    this.data.subscribe(d=>{console.log(d);this.datos=d});
   }
 
 
 
-
+  datos:any;
   info:any;  
   /*[]=[
     {id:1,estado:'Jalisco'},
@@ -68,13 +70,24 @@ export class EditUserComponent implements OnInit {
   ];*/
   
   onSubmit(){
-    console.log(this.EditUser.value);
-    let form = JSON.stringify(this.EditUser.value);
-    console.log(form);
-    this.http.url = this.urlPutUsers;
-    this.http.putMethod(form).subscribe(d => {});
-    this.router.navigate(['/user-info']);
-  
+    // if (this.datos.Contrasena.touched && this.EditUser.controls['confcontrasena'].touched) {
+    //   console.log("holi");
+    console.log(this.datos.Contrasena); 
+    console.log(this.EditUser.get('confcontrasena').value)
+      if (this.datos.Contrasena == this.EditUser.get('confcontrasena').value) {
+        console.log(this.EditUser.value);
+        let form = JSON.stringify(this.EditUser.value);
+        console.log(form);
+        this.http.url = this.urlPutUsers;
+        this.http.putMethod(form).subscribe(d => {});
+        this.router.navigate(['/user-info']);
+      } else{
+          console.log("pues no entra xd");
+      }
+    
+    
+    
+    //}
   }
 
 
@@ -84,4 +97,10 @@ export class EditUserComponent implements OnInit {
         this.correo.hasError('email') ? 'Correo invalido' :
             '';
   }
+
+  goToUserInfo(){
+    this.router.navigate(['/user-info']);
+  }
 }
+
+
