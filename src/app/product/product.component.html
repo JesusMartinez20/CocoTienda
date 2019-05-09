@@ -67,26 +67,25 @@
       <li class="right">
         <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article">
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Nombre del producto" value="{{list.Nombre}}" formControlName="Name" required>
+            <input matInput placeholder="ID" [(ngModel)]="list.ID_Producto" formControlName="id" readonly="readonly">
+          </mat-form-field>
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Nombre del producto" [(ngModel)]="list.Nombre" formControlName="nombre">
           </mat-form-field>
         
           <mat-form-field class="product-full-width">
-            <textarea matInput placeholder="Descripcion" formControlName="Description" value="{{list.Descripcion}}" required></textarea>
+            <textarea matInput placeholder="Descripcion" formControlName="descripcion" [(ngModel)]="list.Descripcion"></textarea>
           </mat-form-field>
   
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Precio" type="number" formControlName="Price" value="{{list.Precio}}" required>
+            <input matInput placeholder="Precio" type="number" formControlName="precio" [(ngModel)]="list.Precio">
           </mat-form-field>
   
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="En existencia" type="number" formControlName="Stock" value="{{list.Stock}}" required>
-          </mat-form-field>
-  
-          <mat-form-field class="product-full-width">
-            <input matInput placeholder="Categoria" formControlName="Category" value="{{list.Category}}" required>
+            <input matInput placeholder="En existencia" type="number" formControlName="stock" [(ngModel)]="list.Stock">
           </mat-form-field>
           
-          <mat-form-field class="product-full-width">
+          <!-- <mat-form-field class="product-full-width">
             <input matInput placeholder="Imagen 1" formControlName="Img1" required>
           </mat-form-field>
           <mat-form-field class="product-full-width">
@@ -100,11 +99,11 @@
           </mat-form-field>
           <mat-form-field class="product-full-width">
             <input matInput placeholder="Imagen 5" formControlName="Img5" required>
-          </mat-form-field>
+          </mat-form-field> -->
 
           <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
           <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Guardar</button>
-          <button mat-button style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
+          <button type="button" mat-button style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
         </form>
       </li>
     </ul>

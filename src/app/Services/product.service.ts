@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  url='';
+  url;
   producto:any;
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,8 @@ export class ProductService {
   }
 
   deleteMethod(form): Observable<any>{
-    return this.producto=this.http.delete(environment.serverUrl+this.url,form);
+    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    return this.producto=this.http.delete(environment.serverUrl+this.url, {headers: headers});
   }
 
   putMethod(form): Observable<any>{

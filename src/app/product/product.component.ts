@@ -52,16 +52,17 @@ export class ProductComponent implements OnInit {
       this.user = true;
     }
     this.articleForm = new FormGroup({
-      Name: new FormControl(),
-      Description: new FormControl(),
-      Price: new FormControl(),
-      Stock: new FormControl(),
-      Category: new FormControl(),
-      Img1: new FormControl(),
-      Img2: new FormControl(),
-      Img3: new FormControl(),
-      Img4: new FormControl(),
-      Img5: new FormControl()
+      id: new FormControl(),
+      nombre: new FormControl(),
+      descripcion: new FormControl(),
+      precio: new FormControl(),
+      stock: new FormControl()
+
+      // Img1: new FormControl(),
+      // Img2: new FormControl(),
+      // Img3: new FormControl(),
+      // Img4: new FormControl(),
+      // Img5: new FormControl()
     });
 
     this.http.getMethod(this.url).subscribe(data=>{
@@ -82,16 +83,6 @@ export class ProductComponent implements OnInit {
   }
 
   imageUrlArray=[];
-  
-
-  /*article:any = {
-    productName: 'Articulo de prueba',
-    productDescription: 'Esto es un articulo de prueba, aqui se muestra toda la descripcion del articulo ggg',
-    productPrice: '2000',
-    productStock: '10',
-    productTotal: '1',
-    productCategory: 'Drones',
-  };*/
 
   articleSend:any = {
     total:null,
@@ -112,13 +103,11 @@ export class ProductComponent implements OnInit {
 
   articleSubmit(){
     console.log(this.articleForm.value);
-    if(this.articleForm.get('Name')!==null){
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
     this.http.url=this.url;
-    this.http.putMethod(form);
+    this.http.putMethod(form).subscribe(d => {});
     this.snackBar.open("¡Informacion guardada!", "Ok", {duration: 2000,});
-    }
   }
 
   deleteArticle(){
@@ -126,7 +115,7 @@ export class ProductComponent implements OnInit {
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
     this.http.url=this.url;
-    this.http.deleteMethod(form);
+    this.http.deleteMethod(form).subscribe(d => {});
     this.snackBar.open("Producto eliminado", "Ok", {duration: 2000,});
   }
 }
