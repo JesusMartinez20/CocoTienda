@@ -36,7 +36,7 @@
               </div>
               <div>
                 <label for="productTotal">Cantidad: </label>
-                <input class="thisFont" name="productTotal" type="number" min="1" max={{list.Stock}} [(ngModel)]="productTotal" style="width: 45px"/>
+                <input class="thisFont" name="productTotal" type="number" min="1" max={{list.Stock}} [(ngModel)]="productTotal" onkeydown="return false" style="width: 45px"/>
               </div>
             </mat-card-content>
           </mat-card>  
