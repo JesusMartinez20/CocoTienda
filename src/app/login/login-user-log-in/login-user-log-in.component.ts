@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
 import { Router } from '@angular/router'
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login-user-log-in',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router'
 export class LoginUserLogInComponent implements OnInit {
   urlP="/login"
 
-  constructor(private http:LoginService, private router : Router) { }
+  constructor(private http:LoginService, private snackBar: MatSnackBar, private router : Router) { }
 
   Userlogin : FormGroup;
   ngOnInit() {
@@ -46,7 +47,10 @@ export class LoginUserLogInComponent implements OnInit {
         this.router.navigate(['/user-info']);
       }
       
+    }, error=>{
+      this.snackBar.open("Se produjo un error. Revisa que el usuario y contraseña sean correctos.", "Ok", {duration: 3000,});
     });
+
      
   }
 
