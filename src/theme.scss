@@ -68,6 +68,9 @@ $custom-orange: (
   )
 );
 
+$custom-typography: mat-typography-config(
+  $font-family: 'Oswald, sans-serif'
+);
 
 $app-primary: mat-palette($custom-orange, A400);
 $app-accent: mat-palette($custom-orange, 200);
@@ -76,4 +79,5 @@ $app-warning: mat-palette($custom-blue, A100);
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warning);
 
 @include angular-material-theme($app-theme);
+@include mat-base-typography($custom-typography);
 
