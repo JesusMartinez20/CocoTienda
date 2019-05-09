@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormGroup, FormControl} from '@angular/forms';
 import { EditUserService } from './../Services/edit-user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class EditUserComponent implements OnInit {
     }
  ];*/
 
-  constructor(private http:EditUserService) { }
+  constructor(private http:EditUserService, private router:Router) { }
 
   EditUser : FormGroup;
   ngOnInit() {
@@ -72,6 +73,8 @@ export class EditUserComponent implements OnInit {
     console.log(form);
     this.http.url = this.urlPutUsers;
     this.http.putMethod(form).subscribe(d => {});
+    this.router.navigate(['/user-info']);
+  
   }
 
 
