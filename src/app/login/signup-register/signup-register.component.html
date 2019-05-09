@@ -64,8 +64,17 @@
         <input matInput placeholder="Expiración"  type="date" formControlName="fechaExpiracion" required>
     </mat-form-field>
     <br>
-    <div *ngIf="!passwordsMatch(Usersignup); else muestraBoton" class="invalid-feedback">
+    <div *ngIf="!passwordsMatch(Usersignup);" class="invalid-feedback">
         <h2>Las contraseñas no coinciden</h2>
+    </div>
+
+    <div *ngIf="!validCP(Usersignup);" class="invalid-feedback">
+        <h2>Codigo Postal no valido</h2>
+    </div>
+
+
+    <div *ngIf="!validCP(Usersignup)||!passwordsMatch(Usersignup); else muestraBoton" class="invalid-feedback">
+        <h2></h2>
     </div>
 
     <ng-template #muestraBoton>
