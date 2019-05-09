@@ -122,10 +122,14 @@ calsubtotal(index: number) {
 
       if (this.currentOrders[index]) {
         this.currentOrders.splice(index,1);
+        let variable:any[] =  JSON.parse(localStorage.getItem('cart'));
+        variable.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(variable));
       }
       if(this.currentOrders.length==0){
           this.visible==false;
-          window.location.reload();
+          localStorage.setItem('cart','');
+          //window.location.reload();
       }
       this.data.changeMessage(this.currentOrders);      
   }
