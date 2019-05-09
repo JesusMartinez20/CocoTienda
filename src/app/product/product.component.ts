@@ -80,6 +80,7 @@ export class ProductComponent implements OnInit {
       this.imageUrlArray.push(this.article[0].img4); 
       this.imageUrlArray.push(this.article[0].img5); 
 
+      console.log(this.url);
       console.error(data);
     });    
   }
@@ -129,6 +130,8 @@ export class ProductComponent implements OnInit {
     let form = JSON.stringify(this.articleForm.value)
     console.log(form);
     this.http.url=this.url;
+    console.log(this.http.url);
+
     this.http.deleteMethod(form).subscribe(d => {});
     this.snackBar.open("Producto eliminado", "Ok", {duration: 2000,});
   }
