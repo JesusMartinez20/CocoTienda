@@ -97,9 +97,10 @@ export class CheckoutOrderConfirmationComponent implements OnInit {
       console.log(this.form);
       this.http.url=this.urlOrden;
       this.http.postMethod(this.form).subscribe(r => console.log(r));
+      localStorage.setItem('cart','');
     });
     if(this.home!=null){
-      this.router.navigate(['/']);
+      this.router.navigate(['/user-info']);
     }
   }
 
