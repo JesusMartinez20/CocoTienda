@@ -97,15 +97,27 @@ export class ProductComponent implements OnInit {
   }
 
   buyArticle(){
+    let carrito:any[]=[
+      {
+        hola:"hola"
+      }
+    ];
     console.log(this.articleSend.stock);
     if(this.productTotal>this.articleSend.stock){
       this.snackBar.open("La cantidad ha excedido el stock", "Ok", {duration: 3000,});
       return;
     }
     if(localStorage.getItem("cart")){
-      let carrito: any[]=JSON.parse(localStorage.getItem("cart"));
+      console.log("alv");
+      carrito=JSON.parse(localStorage.getItem("cart"));
       carrito.push(this.articleSend);
       localStorage.setItem("cart",JSON.stringify(carrito));
+    }else{
+      console.log("mierda");
+      carrito.push(this.articleSend);
+      carrito.splice(0,1);
+      localStorage.setItem("cart",JSON.stringify(carrito));
+      console.log(carrito);
     }
     this.articleSend.cantidad=this.productTotal;
     console.log(this.articleSend);
