@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
 import { Router } from '@angular/router'
+import { MatSnackBar } from '@angular/material';
+
 @Component({
   selector: 'app-login-user-log-in',
   templateUrl: './login-user-log-in.component.html',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router'
 export class LoginUserLogInComponent implements OnInit {
   urlP="/login"
 
-  constructor(private http:LoginService, private router : Router) { }
+  constructor(private http:LoginService, private snackBar: MatSnackBar, private router : Router) { }
 
   Userlogin : FormGroup;
   ngOnInit() {
@@ -33,12 +35,22 @@ export class LoginUserLogInComponent implements OnInit {
       console.log(token.userType === 'Usuario')
       if (token.userType === 'Usuario') {
         localStorage.setItem('admin', 'false');
+
       }
       else {
         localStorage.setItem('admin', 'true');
       }
-      this.router.navigate(['/user-info']);
+      if(localStorage.getItem('source')=='cart'){
+        localStorage.removeItem('source'); 
+        this.router.navigate(['/cart']);
+      }else{
+        this.router.navigate(['/user-info']);
+      }
+      
+    }, error=>{
+      this.snackBar.open("Se produjo un error. Revisa que el usuario y contraseña sean correctos.", "Ok", {duration: 3000,});
     });
+
      
   }
 

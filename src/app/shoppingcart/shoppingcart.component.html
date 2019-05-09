@@ -1,32 +1,36 @@
 <mat-card>
   <mat-card-header>
-      <mat-card-title>CARRITO</mat-card-title>
+      <mat-card-title class="mat-headline">CARRITO</mat-card-title>
   </mat-card-header>
 <mat-card *ngFor="let list of currentOrders; let i=index;" >
   <mat-card-content style="display:inline-flex;">
     <div style="display:inline-flex; width: 400px;">
     <img src="{{list.img}}">
-      <h1>{{list.name}}</h1>
+      <h1 class="mat-headline">{{list.name}}</h1>
     </div>
-        <div style="display:inline-flex;">
-          <h2>PRECIO:</h2>
-          <p>{{list.precio}}</p>
-        </div>
-        <div style="display:inline-flex; ">
-          <h2>CANTIDAD:</h2>
-          <input type="number" (onload)="calsubtotal(i)" (click)="caltotal()" (click)="calsubtotal(i)"  min="1" max="{{list.stock}}"  style="height: 30px; width: 80px; margin-top: 37%; font-size: 20px" [(ngModel)]="list.cantidad" placeholder="0"/>
-          
-        </div>
-        <h2>Total:</h2>
-        <p>{{subtotal[i]}}</p>
-        <button (click)="delete(i)"  (click)="caltotal()" style="width: 150px;">Eliminar</button>
+    <div class="listInfo">
+      <div style="display:inline-flex;">
+        <h2 class="mat-title">PRECIO:</h2>
+        <p>{{list.precio}}</p>
+      </div>
+      <div style="display:inline-flex; ">          
+          <h2 class="mat-title">CANTIDAD:</h2>
+          <input type="number" (onload)="calsubtotal(i)" (click)="caltotal()" (click)="calsubtotal(i)"  min="1" max="{{list.stock}}"  
+          style="height: 30px; width: 80px; margin-top: 3%; font-size: 20px" [(ngModel)]="list.cantidad" onkeydown="return false" placeholder="0"/>
+      <h2 class="mat-title">Total:</h2>
+      <p>{{subtotal[i]}}</p>
+      <button (click)="delete(i)"  (click)="caltotal()" style="width: 150px; ">Eliminar</button>
+    </div>
+
+    </div>
+
   </mat-card-content>
 </mat-card>
 
 <div style="display:flex; justify-content:flex-end;">  
   <div *ngIf="this.visible;">
-    <h1 style="display:flex;justify-content:flex-end">{{Ttotal}}</h1>
-    <button  type="submit" id="bcomprar" style="width: 150px;" (click)="passOrder()" routerLink="/checkout">Comprar</button>
+    <h1 class="mat-headline" style="display:flex;justify-content:flex-end">{{Ttotal}}</h1>
+    <button  type="submit" id="bcomprar" style="width: 150px;" (click)="passOrder()" >Comprar</button>
   </div>
 </div>
 

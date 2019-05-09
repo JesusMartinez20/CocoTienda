@@ -1,6 +1,17 @@
 mat-card{
     margin: 30px;
     box-shadow: 10px 10px;
+    max-width: 100%;
+}
+
+/* mat-card-content{
+    max-width: 100%;
+} */
+
+
+button{
+    padding: 2%;
+    margin-left: 100%;
 }
 
 img{
@@ -12,9 +23,25 @@ img{
     margin-left: 20px;
     margin-right: 20px;
 }
+.listInfo{
+    padding: 5px;
+}
+
+ h1.listInfo{
+    margin: 3px;
+ }
+ p.listInfo{
+    margin: 2px;
+
+ }
+
+ input{
+    margin: 3%;
+ }
+
 
 p, h1{
-    padding: 5px;
+    padding: 5%;
     margin-left: 20px;
     margin-right: 20px;
     position: relative;
@@ -22,7 +49,7 @@ p, h1{
 }
 
 p, h2{
-    padding: 5px;
+    padding: 1%;
     position: relative;
     align-self: center;
 }
