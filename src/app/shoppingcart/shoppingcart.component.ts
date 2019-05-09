@@ -34,17 +34,21 @@ export class ShoppingcartComponent implements OnInit {
   constructor(private http:ShoppingcartService,private snackBar: MatSnackBar, private data: PassingDataService,private router : Router) { }
 
   ngOnInit() {
-    this.currentOrders = ShoppingcartComponent.order;
-    this.data.currentMessage.subscribe(message=>{this.ped=message;this.order1=JSON.parse(this.ped);});
+    this.currentOrders=JSON.parse(localStorage.getItem("cart"));
+    //this.currentOrders = ShoppingcartComponent.order;
+    //this.data.currentMessage.subscribe(message=>{this.ped=message;this.order1=JSON.parse(this.ped);});
+    this.order1=this.currentOrders[this.currentOrders.length-1];
     console.log(this.order1);
 
     if(this.order1.name!=null){
-      for(this.cont=0; this.cont<ShoppingcartComponent.order.length;this.cont++){///Nuevo
-        if (this.order1.name==ShoppingcartComponent.order[this.cont].name){
+      for(this.cont=0; this.cont<this.currentOrders.length-1;this.cont++){///Nuevo
+        if (this.order1.name==this.currentOrders[this.cont].name){
             this.repetido=true;
-            ShoppingcartComponent.order[this.cont].cantidad+=this.order1.cantidad;
-            if(ShoppingcartComponent.order[this.cont].cantidad>ShoppingcartComponent.order[this.cont].stock){
-              ShoppingcartComponent.order[this.cont].cantidad=ShoppingcartComponent.order[this.cont].stock; 
+            this.currentOrders[this.cont].cantidad+=this.order1.cantidad;
+            this.currentOrders.pop();
+            localStorage.setItem("cart", JSON.stringify(this.currentOrders));
+            if(this.currentOrders[this.cont].cantidad>ShoppingcartComponent.order[this.cont].stock){
+              this.currentOrders[this.cont].cantidad=ShoppingcartComponent.order[this.cont].stock; 
             }
         } 
       }
@@ -101,17 +105,14 @@ calsubtotal(index: number) {
       }
     }
   
-    this.data.changeMessage(ShoppingcartComponent.order);
-    ShoppingcartComponent.order=ShoppingcartComponent.order2;
-    this.router.navigate(["/checkout"])
     if(!(localStorage.getItem('token'))){
       console.log("Debo iniciar sesion"); 
       localStorage.setItem('source', 'cart');
       this.snackBar.open("Es necesario iniciar sesión para realizar una compra", "Ok", {duration: 3000,});
       this.router.navigate(['/login']);
     }else{
-      this.data.changeMessage(ShoppingcartComponent.order);
-      ShoppingcartComponent.order=ShoppingcartComponent.order2;
+      this.data.changeMessage(this.currentOrders);
+      this.router.navigate(["/checkout"])
     }
     
   }

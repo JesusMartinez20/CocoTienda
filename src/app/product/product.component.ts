@@ -24,6 +24,7 @@ export interface article{
 
 export class ProductComponent implements OnInit {
 
+
   url="/productos";
   id: number;
   
@@ -110,9 +111,15 @@ export class ProductComponent implements OnInit {
       this.snackBar.open("La cantidad ha excedido el stock", "Ok", {duration: 3000,});
       return;
     }
+    if(localStorage.getItem("cart")){
+      let carrito: any[]=JSON.parse(localStorage.getItem("cart"));
+      carrito.push(this.articleSend);
+      localStorage.setItem("cart",JSON.stringify(carrito));
+    }
     this.articleSend.cantidad=this.productTotal;
     console.log(this.articleSend);
     this.data.changeMessage(this.articleSend);
+    console.log(localStorage.getItem("cart"));
     this.snackBar.open("Articulo agregado al carrito", "Ok", {duration: 3000,});
     this.router.navigate(["/cart"]);
   }
