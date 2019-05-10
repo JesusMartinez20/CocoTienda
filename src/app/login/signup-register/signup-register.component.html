@@ -70,10 +70,14 @@
 
     <div *ngIf="!validCP(Usersignup);" class="invalid-feedback">
         <h2>Codigo Postal no valido</h2>
+    </div><
+       
+    <div *ngIf="!validExpireDate(Usersignup);" class="invalid-feedback">
+        <h2>La fecha de expiración de la tarjeta no es válida</h2>
+        
     </div>
 
-
-    <div *ngIf="!validCP(Usersignup)||!passwordsMatch(Usersignup); else muestraBoton" class="invalid-feedback">
+    <div *ngIf="!validCP(Usersignup)||!passwordsMatch(Usersignup)||!validExpireDate(Usersignup); else muestraBoton" class="invalid-feedback">
         <h2></h2>
     </div>
 

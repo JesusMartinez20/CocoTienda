@@ -2,17 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from './../../Services/login.service';
 import { Router } from '@angular/router'
+import { DatePipe } from '@angular/common';
+import {formatDate} from '@angular/common';
+
+
 @Component({
   selector: 'app-signup-register',
   templateUrl: './signup-register.component.html',
-  styleUrls: ['./signup-register.component.css']
+  styleUrls: ['./signup-register.component.css'],
+  providers: [DatePipe]
 })
 export class SignupRegisterComponent implements OnInit {
   urlP="/usuarios"
   
   email = new FormControl('', [Validators.required, Validators.email]);
-  constructor(private http:LoginService, private router : Router) { }
-
+  myDate = new Date();
+  
+  
+  constructor(private http:LoginService, private router : Router, private datePipe: DatePipe) { }
   Usersignup : FormGroup;
   ngOnInit() {
     this.Usersignup = new FormGroup({
@@ -33,7 +40,10 @@ export class SignupRegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.Usersignup.value)
+    console.log(this.Usersignup.value);
+    console.log(formatDate(this.myDate, 'yyyy-MM-dd', 'en'));
+    console.log(this.myDate);
+    console.log(this.Usersignup.value.fechaExpiracion)
     let form = JSON.stringify(this.Usersignup.value)
     console.log(form);
     this.http.url=this.urlP;
@@ -48,7 +58,14 @@ export class SignupRegisterComponent implements OnInit {
       else {
         localStorage.setItem('admin', 'true');
       }
-      this.router.navigate(['/user-info']);
+      
+      if(localStorage.getItem('source') == 'cart'){
+        localStorage.removeItem('source'); 
+        this.router.navigate(['/cart']);
+      }else{
+        this.router.navigate(['/user-info']);
+      }
+
     });
     
   }
@@ -79,6 +96,36 @@ private validCP = (_form: FormGroup): boolean => {
           return true;
       } else {
           return false;
+      }
+  }
+  return true;
+}
+
+
+private validExpireDate = (_form: FormGroup): boolean => {
+    if (_form.controls['fechaExpiracion'].touched) {
+      var yourYear = parseInt(formatDate(_form.value.fechaExpiracion, 'yyyy', 'en'), 10);
+      console.log(yourYear); 
+       
+      var myYear = parseInt(formatDate(this.myDate, 'yyyy-MM-dd', 'en'), 10);
+      console.log(myYear); 
+      formatDate(_form.value.fechaExpiracion, 'yyyy', 'en');
+      if (myYear < yourYear) {
+          return true;
+      } else {
+          var yourMonth = parseInt(formatDate(_form.value.fechaExpiracion, 'MM', 'en'), 10); 
+          var myMonth = parseInt(formatDate(this.myDate, 'MM', 'en'), 10);        
+          if(myMonth < yourMonth){
+            return true; 
+          }else{
+            var yourDay = parseInt(formatDate(_form.value.fechaExpiracion, 'dd', 'en'), 10); 
+            var myDay = parseInt(formatDate(this.myDate, 'dd', 'en'), 10);        
+            if(myDay < yourDay){
+              return true;
+            }else{
+              return false;
+            }
+          }
       }
   }
   return true;

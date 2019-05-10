@@ -3,6 +3,7 @@ import {Validators, FormGroup, FormControl} from '@angular/forms';
 import { EditUserService } from './../Services/edit-user.service';
 import { Router } from '@angular/router';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class EditUserComponent implements OnInit {
     }
  ];*/
 
-  constructor(private http:EditUserService, private router:Router) { }
+  constructor(private http:EditUserService, private router:Router, private snackBar: MatSnackBar) { }
 
   EditUser : FormGroup;
   ngOnInit() {
@@ -82,7 +83,7 @@ export class EditUserComponent implements OnInit {
         this.http.putMethod(form).subscribe(d => {});
         this.router.navigate(['/user-info']);
       } else{
-          console.log("pues no entra xd");
+        this.snackBar.open("La contraseña de confirmación es incorrecta", "Ok", {duration: 3000,});
       }
     
     
