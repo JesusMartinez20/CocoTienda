@@ -4,6 +4,7 @@ import { LoginService } from './../../Services/login.service';
 import { Router } from '@angular/router'
 import { DatePipe } from '@angular/common';
 import {formatDate} from '@angular/common';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -17,9 +18,11 @@ export class SignupRegisterComponent implements OnInit {
   
   email = new FormControl('', [Validators.required, Validators.email]);
   myDate = new Date();
+
+  cardState:boolean=false;
   
   
-  constructor(private http:LoginService, private router : Router, private datePipe: DatePipe) { }
+  constructor(private http:LoginService, private router : Router, private datePipe: DatePipe, private snack:MatSnackBar) { }
   Usersignup : FormGroup;
   ngOnInit() {
     this.Usersignup = new FormGroup({
@@ -50,24 +53,27 @@ export class SignupRegisterComponent implements OnInit {
     //this.http.postMethod(form);
     localStorage.setItem('userId', '');
     localStorage.getItem('userId');
-    this.http.createUser(form).subscribe(token=>{
-      localStorage.setItem('token',token.token);
-      if (token.userType === 'Usuario') {
-        localStorage.setItem('admin', 'false');
-      }
-      else {
-        localStorage.setItem('admin', 'true');
-      }
-      
-      if(localStorage.getItem('source') == 'cart'){
-        localStorage.removeItem('source'); 
-        this.router.navigate(['/cart']);
-      }else{
-        this.router.navigate(['/user-info']);
-      }
+    if(this.cardState){
+      this.http.createUser(form).subscribe(token=>{
+        localStorage.setItem('token',token.token);
+        if (token.userType === 'Usuario') {
+          localStorage.setItem('admin', 'false');
+        }
+        else {
+          localStorage.setItem('admin', 'true');
+        }
+        
+        if(localStorage.getItem('source') == 'cart'){
+          localStorage.removeItem('source'); 
+          this.router.navigate(['/cart']);
+        }else{
+          this.router.navigate(['/user-info']);
+        }
 
-    });
-    
+      });
+    }else{
+      this.snack.open("Información de tarjeta invalida", "OK",{duration:2000});
+    }
   }
   
   getErrorMessage() {
@@ -76,7 +82,15 @@ export class SignupRegisterComponent implements OnInit {
             '';
   }
 
- 
+ cardConfirmation(){
+   let url="";
+   console.log(this.Usersignup.get('fechaExpiracion').value); 
+   console.log(this.Usersignup.get('tarjeta').value); 
+   this.http.url=url;
+   this.http.getMethod().subscribe((d:boolean)=>{
+     this.cardState=d;
+   })
+ }
 
 
   private passwordsMatch = (_form: FormGroup): boolean => {
