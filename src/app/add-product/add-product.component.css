@@ -1,0 +1,37 @@
+.blocks{
+    width: 100%;
+    text-align: left;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+.blocks > li{
+    position: unset;
+    display: inline-block;
+}
+
+.left{
+    width: 50%;
+    height: 100%;
+    margin-left: 10%;
+    margin-top: 5%;
+    align-content: center;
+}
+
+.right{
+    width: 50%;
+    height: 100%;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.product-form {
+    min-width: 400px;
+    max-width: 800px;
+    width: 100%;
+}
+  
+.product-full-width {
+    width: 100%;
+}
