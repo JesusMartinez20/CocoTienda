@@ -53,58 +53,46 @@
   
   <ng-template #adminBlock>
     <ul class="blocks">
-      <!-- <li class="left">    
-        <form method="post" [formGroup]="articleImages" (ngSubmit)="imageSubmit()" class="product-form">
-          <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img1" style="margin: 10px" required/><br>
-          <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img2" style="margin: 10px" required/><br>
-          <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img3" style="margin: 10px" required/><br>
-          <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img4" style="margin: 10px" required/><br>
-          <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput1 formControlName="Img5" style="margin: 10px" required/><br>
-  
-          <button mat-button type="submit" style="background: #ffcd3c;margin: 10px">Guardar</button>
-        </form>
-      </li> -->
-      <li class="right">
-        <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article">
+      <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article">
+        <li class="left">
           <mat-form-field class="product-full-width">
             <input matInput placeholder="ID" [(ngModel)]="list.ID_Producto" formControlName="id" readonly="readonly">
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Nombre del producto" [(ngModel)]="list.Nombre" formControlName="nombre">
-          </mat-form-field>
-        
-          <mat-form-field class="product-full-width">
-            <textarea matInput placeholder="Descripcion" formControlName="descripcion" [(ngModel)]="list.Descripcion"></textarea>
-          </mat-form-field>
-  
-          <mat-form-field class="product-full-width">
-            <input matInput placeholder="Precio" type="number" formControlName="precio" [(ngModel)]="list.Precio">
-          </mat-form-field>
-  
-          <mat-form-field class="product-full-width">
-            <input matInput placeholder="En existencia" type="number" formControlName="stock" [(ngModel)]="list.Stock">
-          </mat-form-field>
-          
-          <!-- <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 1" formControlName="Img1" required>
+            <input matInput placeholder="Nombre del producto" [(ngModel)]="list.Nombre" formControlName="nombre" required>
           </mat-form-field>
           <mat-form-field class="product-full-width">
-              <input matInput placeholder="Imagen 2" formControlName="Img2" required>
+            <textarea matInput placeholder="Descripcion" formControlName="descripcion" [(ngModel)]="list.Descripcion" required></textarea>
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 3" formControlName="Img3" required>
+            <input matInput placeholder="Precio" type="number" formControlName="precio" [(ngModel)]="list.Precio" required>
           </mat-form-field>
           <mat-form-field class="product-full-width">
-              <input matInput placeholder="Imagen 4" formControlName="Img4" required>
+            <input matInput placeholder="En existencia" type="number" formControlName="stock" [(ngModel)]="list.Stock" required>
           </mat-form-field>
-          <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 5" formControlName="Img5" required>
-          </mat-form-field> -->
+        </li>
 
+        <li class="right">
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Imagen 1" formControlName="img1" required>
+          </mat-form-field>
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Imagen 2" formControlName="img2">
+          </mat-form-field>
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Imagen 3" formControlName="img3">
+          </mat-form-field>
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Imagen 4" formControlName="img4">
+          </mat-form-field>
+          <mat-form-field class="product-full-width">
+            <input matInput placeholder="Imagen 5" formControlName="img5">
+          </mat-form-field>
+    
           <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>
           <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Guardar</button>
-          <button type="button" mat-button style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
-        </form>
-      </li>
+          <button mat-button type="button" style="background: #ffcd3c" (click)="deleteArticle()" routerLink="/">Eliminar</button>
+        </li>
+      </form>
     </ul>
   </ng-template>
