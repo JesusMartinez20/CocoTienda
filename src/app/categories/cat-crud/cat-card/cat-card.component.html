@@ -1,0 +1,37 @@
+<mat-card class="example-card" *ngFor="let list of all_cat | async">
+  <mat-card-content style="display:inline-flex;"> 
+
+    <div  class="my-image">
+        <img mat-card-image src="https://previews.123rf.com/images/stockgiu/stockgiu1703/stockgiu170300821/77143003-color-kawaii-happy-pineapple-icon.jpg" alt="Palm Tree">
+    </div>
+
+    <mat-card class="example-card-2" >
+      <mat-card-content>
+
+        <div style="display:inline-flex;width:50%;" >
+          <div>
+            <h3>NOMBRE</h3>
+            <p mat-line *ngIf="!mod && !add"> 
+                  <span>{{list.categoria}}</span>
+            </p>                  
+                  <mat-form-field *ngIf="mod || add">
+                    <input matInput placeholder="Categoria"/>
+                  </mat-form-field>
+          </div>
+        </div> 
+        <div style="display:inline-flex;width:50%;">
+            <br>
+            <button mat-button *ngIf="add" (click)="addCat();"class="btn_save"> Agregar </button>
+            <button mat-button *ngIf="!mod && !add" (click)="modCat();"class="btn_mod"> Modificar </button>  <!--ng-click="acceptOffer();"-->
+            <button mat-button *ngIf="mod && !add" (click)="saveCat();" class="btn_save"> Guardar </button>  <!--ng-click="acceptOffer();"-->
+            <div style="display:inline-flex;width:70%;">
+                <br>
+                <button mat-button *ngIf="!add" class="btn_del" (click)="delCat();"> Eliminar </button>  <!--ng-click="acceptOffer();"-->
+              </div>
+          </div>
+      </mat-card-content>
+  </mat-card>
+  </mat-card-content>
+</mat-card>
+
+
