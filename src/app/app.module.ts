@@ -31,6 +31,7 @@ import { OrdersComponent } from './user-info/orders/orders.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProductComponent } from './product/product.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
@@ -62,6 +63,7 @@ import { ProductComponent } from './product/product.component';
     HomepageComponent,
     CategoriesComponent,
     ProductComponent,
+    AddProductComponent,
 
    
 
