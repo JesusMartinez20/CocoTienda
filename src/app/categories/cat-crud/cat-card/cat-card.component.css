@@ -1,0 +1,100 @@
+.example-form {
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .half-width {
+    width: 50%;
+  }
+
+  .halfwidth {
+    min-width: 50%;
+  }
+
+  .example-card {
+    width: 75%;
+    height: 140px;
+    align-content: flex-end;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px, 5px;
+  }
+
+  .square-format {
+    align-content: flex-end;
+    margin-right: 50px;
+
+
+  }
+
+
+  .example-card-2 {
+    width: 90%;
+    height: 10%;
+    box-shadow: none;
+  }
+  
+  .header-image {
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+  }
+
+  .my-image {
+    width: 15%;
+    height: 10%;
+    background-size: contain;
+    align-content: center;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .example-header-image {
+    background-image: url('https://www.pngfind.com/pngs/m/100-1007993_coco-kawaii-png-kawaii-coconut-png-transparent-png.png');
+    background-size: cover;
+    align-content: center;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .mat-line {
+    height: 2px;
+    
+  }
+
+  .mat-button {
+    padding: 0 6px 0 6px;
+    margin: 6px 8px 6px 8px;
+    min-width: 88px;
+    border-radius: 15px;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration:none;
+    border: none; 
+    outline: none;
+  }
+
+  .btn_del {
+    background-color: rgba(255, 0, 0, 0.712);
+    color: rgb(255, 255, 255);
+   }
+
+   .btn_save {
+    background-color: rgba(42, 150, 0, 0.712);
+    color: rgb(255, 255, 255);
+   }
+   
+  .btn_mod {
+    background-color: rgba(122, 0, 153, 0.767);
+    color: rgb(255, 255, 255);
+   }

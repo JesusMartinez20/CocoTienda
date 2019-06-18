@@ -1,0 +1,41 @@
+<div>
+    <form [formGroup]="articleForm" class="product-form">
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Nombre del producto" formControlName="nombre" required>
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <textarea matInput placeholder="Descripcion" formControlName="descripcion" required></textarea>
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Precio" type="number" formControlName="precio" required>
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Stock" type="number" min=1 formControlName="stock" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Seleccione una categoria</mat-label>
+          <mat-select formControlName="categoria" >
+            <mat-option *ngFor="let category of categories" [value]="category.ID">
+              {{category.Nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Imagen 1" formControlName="img1" required>
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Imagen 2" formControlName="img2">
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Imagen 3" formControlName="img3">
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Imagen 4" formControlName="img4">
+        </mat-form-field>
+        <mat-form-field class="product-full-width">
+          <input matInput placeholder="Imagen 5" formControlName="img5">
+        </mat-form-field>
+
+        <button mat-button style="background: #ffcd3c;margin-right: 10px" (click)="articleSubmit()">Agregar</button>
+    </form>
+</div>

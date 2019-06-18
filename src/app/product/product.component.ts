@@ -14,6 +14,7 @@ export interface article{
   productStock: number,
   productTotal: number,
   productCategory: String,
+
 };
 
 @Component({
@@ -58,13 +59,12 @@ export class ProductComponent implements OnInit {
       nombre: new FormControl(),
       descripcion: new FormControl(),
       precio: new FormControl(),
-      stock: new FormControl()
-
-      // Img1: new FormControl(),
-      // Img2: new FormControl(),
-      // Img3: new FormControl(),
-      // Img4: new FormControl(),
-      // Img5: new FormControl()
+      stock: new FormControl(),
+      img1: new FormControl(),
+      img2: new FormControl(),
+      img3: new FormControl(),
+      img4: new FormControl(),
+      img5: new FormControl()
     });
 
     this.http.getMethod(this.url).subscribe(data=>{
