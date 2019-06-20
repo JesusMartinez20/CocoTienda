@@ -24,12 +24,17 @@ export class CatCrudService {
     return this.http.post(environment.serverUrl+this.url,form, {headers: headers});
   }
 
-  deleteMethod(form): Observable<any>{
+  deleteMethod(url1): Observable<any>{
     const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
-    return this.http.request('delete',environment.serverUrl+this.url, {
-      headers: headers,
-      body: form
-    });
+    return this.http.delete(environment.serverUrl+url1, {headers: headers});
   }
+
+  // deleteMethod(form): Observable<any>{
+  //   const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+  //   return this.http.request('delete',environment.serverUrl+this.url, {
+  //     headers: headers,
+  //     body: form
+  //   });
+  // }
 
 }
