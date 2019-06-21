@@ -32,8 +32,8 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProductComponent } from './product/product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-
-
+import {CatCrudComponent} from './categories/cat-crud/cat-crud.component';
+import {CatCardComponent} from './categories/cat-crud/cat-card/cat-card.component'; 
 
 
 @NgModule({
@@ -65,7 +65,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     ProductComponent,
     AddProductComponent,
 
-   
+    CatCardComponent,
+    CatCrudComponent,
 
   ],
   imports: [

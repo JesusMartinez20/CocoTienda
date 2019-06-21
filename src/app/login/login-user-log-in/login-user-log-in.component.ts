@@ -50,9 +50,6 @@ export class LoginUserLogInComponent implements OnInit {
     }, error=>{
       this.snackBar.open("Se produjo un error. Revisa que el usuario y contraseña sean correctos.", "Ok", {duration: 3000,});
     });
-
-     
+    
   }
-
-
 }

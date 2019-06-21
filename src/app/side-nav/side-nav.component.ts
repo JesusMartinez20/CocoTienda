@@ -8,9 +8,15 @@ import { HomepageService } from '../Services/homepage.service';
 })
 export class SideNavComponent implements OnInit {
 
+  admin:boolean; 
   constructor(private catService:HomepageService) {
     this.catService.URLCategoria="/categorias";
-    
+    if(localStorage.getItem('admin') == 'true'){
+      this.admin = true; 
+    } else{
+      this.admin = false; 
+    }
+
    }
 
   ngOnInit() {
