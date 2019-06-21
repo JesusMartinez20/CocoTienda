@@ -3,6 +3,7 @@ import { PassingDataService } from './../Services/passing-data.service';
 import { ShoppingcartService } from './../Services/shoppingcart.service';
 import { Router } from '@angular/router'
 import { MatSnackBar } from '@angular/material';
+import { LoginService } from '../Services/login.service';
 
 export interface Order{
   total: number;
@@ -31,7 +32,8 @@ export class ShoppingcartComponent implements OnInit {
   visible: boolean;
   repetido: boolean;///Nuevo
   currentOrders:any[]=[];
-  constructor(private http:ShoppingcartService,private snackBar: MatSnackBar, private data: PassingDataService,private router : Router) { }
+  constructor(private http:ShoppingcartService,private snackBar: MatSnackBar, private data: PassingDataService,private router : Router
+    ,private check:LoginService) { }
 
   ngOnInit() {
     this.currentOrders=JSON.parse(localStorage.getItem("cart"));
@@ -112,6 +114,12 @@ calsubtotal(index: number) {
       this.snackBar.open("Es necesario iniciar sesión para realizar una compra", "Ok", {duration: 3000,});
       this.router.navigate(['/login']);
     }else{
+      this.check.checkLogIn().subscribe(r=>{},e=>{ 
+        
+      localStorage.setItem('source', 'cart');
+      this.snackBar.open("Es necesario iniciar sesión para realizar una compra", "Ok", {duration: 3000,});
+      this.router.navigate(['/login']);
+      });
       this.data.changeMessage(this.currentOrders);
       this.router.navigate(["/checkout"])
     }

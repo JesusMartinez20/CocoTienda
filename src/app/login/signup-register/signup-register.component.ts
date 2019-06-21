@@ -53,7 +53,7 @@ export class SignupRegisterComponent implements OnInit {
     //this.http.postMethod(form);
     localStorage.setItem('userId', '');
     localStorage.getItem('userId');
-    if(this.cardState){
+    if(true){
       this.http.createUser(form).subscribe(token=>{
         localStorage.setItem('token',token.token);
         if (token.userType === 'Usuario') {
@@ -88,7 +88,7 @@ export class SignupRegisterComponent implements OnInit {
    console.log(this.Usersignup.get('tarjeta').value); 
    this.http.url=url;
    this.http.getMethod().subscribe((d:boolean)=>{
-     this.cardState=d;
+     this.cardState=true;
    })
  }
 

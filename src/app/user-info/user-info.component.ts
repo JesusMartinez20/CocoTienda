@@ -13,13 +13,13 @@ export class UserInfoComponent implements OnInit {
   constructor(private router : Router, private check:LoginService) {
     
     console.log("not urferfr"); 
-    console.log(localStorage.getItem('token')); 
-    console.log(this.check.checkLogIn());
-    if(!this.check.checkLogIn()){
-      console.log("holajsjs"); 
+    console.log(localStorage.getItem('token'));
+    if(!localStorage.getItem('token'))
+      this.router.navigate(['/login']); 
+    this.check.checkLogIn().subscribe(r=>{},e=>{
       this.router.navigate(['/login']);
+    });
 
-    }
 
     
 

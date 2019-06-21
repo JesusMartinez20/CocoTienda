@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, of } from 'rxjs';
 import { UserService } from './user.service';
@@ -29,7 +29,7 @@ export class LoginService {
   checkLogIn(){
     if(!localStorage.getItem("token")){
       console.log("no token")
-      return of(false);}
+      return of("",HttpErrorResponse);}
     this.check.url="/usuarios";
     
     return this.check.getMethod();
