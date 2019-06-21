@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ CatCrudService } from './../../../Services/cat-crud.service'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cat-card',
@@ -11,7 +12,8 @@ export class CatCardComponent implements OnInit {
   mod: boolean; 
   add: boolean; 
   all_cat:any;
-  url="/";
+  url="/categorias";
+  EditCat:FormGroup;
   constructor(private http:CatCrudService) { 
     this.mod = false;
     this.add = false;
@@ -22,9 +24,13 @@ export class CatCardComponent implements OnInit {
     
   }
 
+  
+
   public saveCat(){
-    this.mod = false; 
-    console.log(this.mod);
+    let form = JSON.stringify(this.EditCat.value);
+    this.http.putMethod(form).subscribe(d => {});
+    this.mod=false; 
+    
   }
 
   public modCat(){
@@ -34,7 +40,8 @@ export class CatCardComponent implements OnInit {
   }
 
   public delCat(){
-
+    this.http.url = this.url; 
+    this.http.deleteMethod(this.EditCat.value.id)
   }
 
   public addCat(){
@@ -42,6 +49,10 @@ export class CatCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.EditCat = new FormGroup({
+      id: new FormControl(),
+      Categoria: new FormControl(),
+    }); 
 
   }
 

@@ -3,14 +3,14 @@
               <mat-card-title><h3>Categorias</h3></mat-card-title> 
           </mat-card-header>
           <mat-card-content>
-
+                <app-cat-card></app-cat-card>
           </mat-card-content>
           <mat-card-actions align="end">
               <button mat-button (click)="addCatDisplay();" class="btn_save"> Agregar </button>
           </mat-card-actions>
       </mat-card>
-      <mat-card *ngIf="add">
-
+      <form [formGroup]="EditCat">
+      <mat-card *ngIf="add" >
           <mat-card-content style="display:inline-flex;"> 
 
               <div  class="my-image">
@@ -22,7 +22,7 @@
                   <h3>Nombre</h3>
                   <div style="display:inline-flex;width:50%;" >
                             <mat-form-field>
-                              <input matInput placeholder="Categoria"/>
+                              <input matInput placeholder="Categoria" formControlName="categoria"/>
                             </mat-form-field>
                   </div> 
                   <div style="display:inline-flex;width:50%;">
@@ -32,3 +32,4 @@
             </mat-card>
             </mat-card-content>
       </mat-card>
+    </form>

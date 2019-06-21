@@ -9,7 +9,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
-
+import { CatCrudComponent } from './categories/cat-crud/cat-crud.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'cat-mod', component: CatCrudComponent },
   {path: '**', redirectTo: ''}
 
 ];
