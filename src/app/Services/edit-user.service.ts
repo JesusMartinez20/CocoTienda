@@ -12,12 +12,12 @@ export class EditUserService {
   constructor(private http: HttpClient) {}
 
   getMethod(): Observable<any>{
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
 
   putMethod(form): Observable<any>{
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.put(environment.serverUrl+this.url, form, {headers: headers});  
   }
 

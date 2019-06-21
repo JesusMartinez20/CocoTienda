@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getMethod(){
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
 
@@ -20,8 +20,13 @@ export class LoginService {
   }
 
   createUser(form): Observable<any>{
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.post(environment.serverUrl+this.url,form, {headers: headers});
+  }
+
+  checkLogIn(): Observable<any>{
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
+    return this.http.get(environment.serverUrl+'',{headers:headers});
   }
 
   

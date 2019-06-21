@@ -13,12 +13,12 @@ export class CheckoutService {
   constructor(private http: HttpClient) {}
 
   getMethod(){
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.get(environment.serverUrl+this.url,{headers:headers});
   }
 
   postMethod(form){
-    let authHeader = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    let authHeader = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     authHeader = authHeader.set('Authorization', `JWT ${localStorage.getItem('token')}`)
               .set('Content-Type', 'application/json');
     console.log(authHeader);
@@ -26,7 +26,7 @@ export class CheckoutService {
   }
 
   putMethod(form){
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     console.log(environment.serverUrl+this.url);
     return this.http.put(environment.serverUrl+this.url,form,{headers:headers});
   }

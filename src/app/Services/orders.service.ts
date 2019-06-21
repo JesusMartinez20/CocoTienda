@@ -11,7 +11,7 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   getMethod(): Observable<any>{
-    const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+    const headers = new HttpHeaders().append('Authorization', ''+localStorage.getItem('token'));
     return this.http.get(environment.serverUrl+this.url, {headers: headers});
   }
 }
