@@ -10,15 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CategoriesComponent implements OnInit {
   url ="/productos?idCategoria=";
   elements:any;
+  admin
   constructor(private categoria:CategoriesService,private route:ActivatedRoute,private router:Router) { 
     this.route.params.subscribe(params=>{this.categoria.URL=this.url+params['id'];
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;});
   }
 
   ngOnInit() {
+    this.admin=localStorage.getItem("admin");
+    console.log(this.admin);
     console.log(this.categoria.URL);
     this.categoria.getContenido().subscribe(content=>{this.elements=content;console.log(this.elements);});
- 
+    
   }
   // category:any[]=[
   //   {
