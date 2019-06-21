@@ -23,9 +23,6 @@ export class ProductService {
       headers: headers,
       body: form
     });
-    //console.log(this.url);
-
-    //return this.http.delete(environment.serverUrl+this.url, {headers: headers});
   }
 
   putMethod(form): Observable<any>{

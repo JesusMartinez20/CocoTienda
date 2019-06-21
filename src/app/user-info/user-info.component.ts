@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router'
+import { LoginService } from '../Services/login.service';
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -9,14 +10,17 @@ import { Router } from '@angular/router'
 export class UserInfoComponent implements OnInit {
 
   user: boolean = false; //False = Admin | True = Client or Guest
-  constructor(private router : Router) { 
+  constructor(private router : Router, private check:LoginService) {
+    
     console.log("not urferfr"); 
     console.log(localStorage.getItem('token')); 
-    if(!(localStorage.getItem('token'))){
+    console.log(this.check.checkLogIn());
+    if(!this.check.checkLogIn()){
       console.log("holajsjs"); 
       this.router.navigate(['/login']);
 
     }
+
     
 
   }

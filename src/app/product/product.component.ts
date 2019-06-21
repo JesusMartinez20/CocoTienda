@@ -144,7 +144,9 @@ export class ProductComponent implements OnInit {
     this.http.url=this.url;
     console.log(this.http.url);
 
-    this.http.deleteMethod(form).subscribe(d => {});
+    this.http.deleteMethod(this.url).subscribe(d => {});
+    //this.http.deleteMethod(form).subscribe(d => {});
+
     this.snackBar.open("Producto eliminado", "Ok", {duration: 2000,});
   }
 }

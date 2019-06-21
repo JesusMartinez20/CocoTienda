@@ -32,4 +32,12 @@ export class CatCrudService {
     });
   }
 
+  // deleteMethod(form): Observable<any>{
+  //   const headers = new HttpHeaders().append('Authorization', 'JWT ' + localStorage.getItem('token'));
+  //   return this.http.request('delete',environment.serverUrl+this.url, {
+  //     headers: headers,
+  //     body: form
+  //   });
+  // }
+
 }
