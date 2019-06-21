@@ -13,20 +13,20 @@
           <div>
             <h3>NOMBRE</h3>
             <p mat-line *ngIf="!mod"> 
-                  <span>{{list.categoria}}</span>
+                  <span>{{list.Nombre}}</span>
             </p>                  
                   <mat-form-field *ngIf="mod">
-                    <input matInput placeholder="Categoria" formControlName="Categoria" [(ngModel)]="list.Categoria"/>
+                    <input matInput placeholder="Categoria" formControlName="Nombre" [(ngModel)]="list.Nombre"/>
                   </mat-form-field>
           </div>
         </div> 
         <div style="display:inline-flex;width:50%;">
             <br>
             <button mat-button *ngIf="!mod" (click)="modCat();"class="btn_mod"> Modificar </button>  <!--ng-click="acceptOffer();"-->
-            <button mat-button *ngIf="mod" (click)="saveCat();" class="btn_save"> Guardar </button>  <!--ng-click="acceptOffer();"-->
+            <button mat-button *ngIf="!mod" (click)="saveCat();" class="btn_save"> Guardar </button>  <!--ng-click="acceptOffer();"-->
             <div style="display:inline-flex;width:70%;">
                 <br>
-                <button mat-button *ngIf="!add" class="btn_del" (click)="delCat();"> Eliminar </button>  <!--ng-click="acceptOffer();"-->
+                <button mat-button *ngIf="!this.add" class="btn_del" (click)="delCat();"> Eliminar </button>  <!--ng-click="acceptOffer();"-->
               </div>
           </div>
       </mat-card-content>

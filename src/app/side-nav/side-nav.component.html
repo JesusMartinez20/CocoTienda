@@ -1,4 +1,4 @@
 <button color="accent" mat-raised-button *ngFor="let category of categories" routerLink = "/categories/{{category.ID}}">
   {{category.Nombre}}
 </button>
-<button *ngIf="admin"  color="accent" mat-raised-button routerLink="/cat-mod">Agregar...</button>
+<button *ngIf="admin==true"  color="accent" mat-raised-button routerLink="/cat-mod">Agregar...</button>
