@@ -9,6 +9,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'add-product', component: AddProductComponent },
   {path: '**', redirectTo: ''}
 
 ];
