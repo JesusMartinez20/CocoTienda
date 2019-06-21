@@ -4,7 +4,7 @@
         <div class="carrousel">
           <slideshow #slideshow class="slide-homepage"
             [imageUrls]="imageUrlArray"
-            [autoPlay]="false"
+            [autoPlay]="false" 
             [height]="height"
             [minHeight]="'300px'"
             [showArrows]="false">
@@ -19,7 +19,7 @@
         </div>
       </li>
       <li class="right">
-        <mat-card style="background: #35d0ba" *ngFor="let list of article">
+        <mat-card style="background: #35d0ba" *ngIf="article as list ">
           <mat-card-header>
             <mat-card-title>{{list.Nombre}}</mat-card-title>
           </mat-card-header>
@@ -53,7 +53,7 @@
   
   <ng-template #adminBlock>
     <ul class="blocks">
-      <form [formGroup]="articleForm"  class="product-form" *ngFor="let list of article">
+      <form [formGroup]="articleForm"  class="product-form"  *ngIf="article as list ">
         <li class="left">
           <mat-form-field class="product-full-width">
             <input matInput placeholder="ID" [(ngModel)]="list.ID_Producto" formControlName="id" readonly="readonly">
@@ -74,19 +74,19 @@
 
         <li class="right">
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 1" formControlName="img1" required>
+            <input matInput placeholder="Imagen 1" formControlName="img1" [(ngModel)]="list.img1" required>
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 2" formControlName="img2">
+            <input matInput placeholder="Imagen 2" formControlName="img2" [(ngModel)]="list.img2">
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 3" formControlName="img3">
+            <input matInput placeholder="Imagen 3" formControlName="img3" [(ngModel)]="list.img3">
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 4" formControlName="img4">
+            <input matInput placeholder="Imagen 4" formControlName="img4" [(ngModel)]="list.img4">
           </mat-form-field>
           <mat-form-field class="product-full-width">
-            <input matInput placeholder="Imagen 5" formControlName="img5">
+            <input matInput placeholder="Imagen 5" formControlName="img5" [(ngModel)]="list.img5">
           </mat-form-field>
     
           <button mat-button type="reset" style="background: #ffcd3c;margin-right: 10px">Limpiar</button>

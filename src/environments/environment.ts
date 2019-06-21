@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://192.168.7.214:6543',
+  serverUrl: 'http://192.168.84.214:8080/JavackEnd',
   dataG: '',
 };
 

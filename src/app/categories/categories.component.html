@@ -1,4 +1,4 @@
-<div *ngIf="user;else adminBlock" class="contenedor">
+
   <h1 class="mat-headline">Categoría</h1>
   <mat-card class="category-card" *ngFor="let element of elements" routerLink ="/product/{{element.ID_Producto}}">
     <img mat-card-image src="{{element.img1}}" >
@@ -7,9 +7,13 @@
       <p>{{element.Precio}}</p>
     </mat-card-actions>
   </mat-card>
-</div>
+    <div *ngIf="admin=='true'" class="contenedor">
+        <button class="agregar" routerLink="/add-product">
+          <span>+</span>
+        </button>
+    </div>
 
-<ng-template #adminBlock>
+<!-- <ng-template #adminBlock>
   <div *ngIf="user;else adminBlock" class="contenedor">
     <h1 class="mat-headline">Categoría</h1>
     <mat-card class="category-card" *ngFor="let element of elements" routerLink ="/product/{{element.ID_Producto}}">
@@ -24,4 +28,4 @@
       <span>+</span>
     </button>
   </div>
-</ng-template>
+</ng-template> -->

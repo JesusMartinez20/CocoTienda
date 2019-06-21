@@ -1,3 +1,17 @@
-
+<h1>catalogo de vuelos</h1>
+<mat-card *ngFor="let flight of flights; index as i" class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{flight.aerolinea}}</mat-card-title>
+      <mat-card-subtitle>{{flight.origen}}</mat-card-subtitle>
+      <mat-card-subtitle>{{flight.destino}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{flight.capacidad}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="comprar(i)" mat-button>Comprar</button>
+    </mat-card-actions>
+  </mat-card>
+  
 
  

@@ -69,19 +69,19 @@ export class ProductComponent implements OnInit {
 
     this.http.getMethod(this.url).subscribe(data=>{
       this.article=data;console.log(this.article);
-      this.articleSend.name=this.article[0].Nombre;
-      this.articleSend.precio=this.article[0].Precio;
-      this.articleSend.producto=this.article[0].ID_Producto;
-      this.articleSend.stock=this.article[0].Stock;
-      this.articleSend.img=this.article[0].img1; 
-      this.imageUrlArray.push(this.article[0].img1); 
-      this.imageUrlArray.push(this.article[0].img2); 
-      this.imageUrlArray.push(this.article[0].img3); 
-      this.imageUrlArray.push(this.article[0].img4); 
-      this.imageUrlArray.push(this.article[0].img5); 
+      this.articleSend.name=this.article.Nombre;
+      this.articleSend.precio=this.article.Precio;
+      this.articleSend.producto=this.article.ID_Producto;
+      this.articleSend.stock=this.article.Stock;
+      this.articleSend.img=this.article.img1; 
+      this.imageUrlArray.push(this.article.img1); 
+      this.imageUrlArray.push(this.article.img2); 
+      this.imageUrlArray.push(this.article.img3); 
+      this.imageUrlArray.push(this.article.img4); 
+      this.imageUrlArray.push(this.article.img5); 
 
+      console.log(this.imageUrlArray);
       console.log(this.url);
-      console.error(data);
     });    
   }
 
